@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4299870a_0b7e36c8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-04-26T10:28:52Z",
+      "side": 1,
+      "message": "clearly I was too vague while selecting all config section but would say that:\nconnectionTimeout\nmaxTries\nretryInterval\nshould be endpoint specific with site globals...",
+      "parentUuid": "68deef84_465b95f2",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 77
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dae640e4_14680ab5",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
