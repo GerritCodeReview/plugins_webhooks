@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "bd2fd44c_9539bdcc",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1012987
+      },
+      "writtenOn": "2017-04-26T20:49:02Z",
+      "side": 1,
+      "message": "It would be better to provide a toString() method to get a meaningful task description in show-queue command.",
+      "range": {
+        "startLine": 103,
+        "startChar": 20,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89ff1590_08d04675",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpClientProvider.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1012987
+      },
+      "writtenOn": "2017-04-26T20:49:02Z",
+      "side": 1,
+      "message": "nit: extra empty line",
+      "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fbda365_2540e07c",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpClientProvider.java",
         "patchSetId": 2
