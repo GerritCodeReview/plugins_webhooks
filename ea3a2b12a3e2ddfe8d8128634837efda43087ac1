@@ -243,6 +243,30 @@
     },
     {
       "key": {
+        "uuid": "e0665d60_50ee5321",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-04-26T14:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e43b1e5b_2f3415cf",
+      "range": {
+        "startLine": 100,
+        "startChar": 33,
+        "endLine": 102,
+        "endChar": 21
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65fc02bf_2d39e161",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
         "patchSetId": 1
@@ -307,6 +331,24 @@
     },
     {
       "key": {
+        "uuid": "e2053676_b48f4074",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpClientProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-04-26T14:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3db4770c_866e8ce0",
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23faebfa_2f0bafdd",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpResponseHandler.java",
         "patchSetId": 1
@@ -318,6 +360,30 @@
       "writtenOn": "2017-04-26T10:34:17Z",
       "side": 1,
       "message": "how about making those properties package accessible and final, then you can get rid of getters ;)",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e731a721_4de9eeff",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpResponseHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-04-26T14:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23faebfa_2f0bafdd",
       "range": {
         "startLine": 33,
         "startChar": 4,
@@ -353,6 +419,30 @@
     },
     {
       "key": {
+        "uuid": "d7112593_5038483b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpResponseHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-04-26T14:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b86402f_5979d01a",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 18
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9d0bdd7_b4f698f4",
         "filename": "src/main/resources/Documentation/build.md",
         "patchSetId": 1
@@ -364,6 +454,30 @@
       "writtenOn": "2017-04-26T10:34:17Z",
       "side": 1,
       "message": "is `in tree` build for buck still supported after migrating to bazel?",
+      "range": {
+        "startLine": 6,
+        "startChar": 49,
+        "endLine": 6,
+        "endChar": 61
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab26488_e6dde82c",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-04-26T14:01:38Z",
+      "side": 1,
+      "message": "Bazel build will not be part of this change.",
+      "parentUuid": "d9d0bdd7_b4f698f4",
       "range": {
         "startLine": 6,
         "startChar": 49,
@@ -399,6 +513,30 @@
     },
     {
       "key": {
+        "uuid": "e02176e4_311a8855",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-04-26T14:01:38Z",
+      "side": 1,
+      "message": "I would prefer to keep this name the same as in the high-availability plugin, where this code was copied from ;-)",
+      "parentUuid": "dae640e4_14680ab5",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29849376_0b809910",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
@@ -410,6 +548,30 @@
       "writtenOn": "2017-04-26T10:01:51Z",
       "side": 1,
       "message": "nit: remove \u0027index\u0027",
+      "range": {
+        "startLine": 44,
+        "startChar": 43,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8fdf1bf_cbd40432",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-04-26T14:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29849376_0b809910",
       "range": {
         "startLine": 44,
         "startChar": 43,
