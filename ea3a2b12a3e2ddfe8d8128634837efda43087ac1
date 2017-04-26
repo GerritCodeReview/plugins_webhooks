@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b3668b4b_a418fc74",
+        "filename": "BUCK",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-04-26T13:18:06Z",
+      "side": 1,
+      "message": "Since, the referenced Gerrit API version is 2.13 and Gerrit 2.13 is still built with buck I started with buck build.\n\nAdding bazel build makes sense, but is not mandatory for the initial commit.",
+      "parentUuid": "23a76812_592aa0e2",
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8f1a8b7_1f6ab09c",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
         "patchSetId": 1
