@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8f1a8b7_1f6ab09c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-04-26T10:01:51Z",
+      "side": 1,
+      "message": "would that make sense to have like default settings that apply to all hooks but could also fine tune them on webhook level?",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 77
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dae640e4_14680ab5",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-04-26T10:01:51Z",
+      "side": 1,
+      "message": "nit:Retries?",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29849376_0b809910",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-04-26T10:01:51Z",
+      "side": 1,
+      "message": "nit: remove \u0027index\u0027",
+      "range": {
+        "startLine": 44,
+        "startChar": 43,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
