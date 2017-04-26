@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "d8f16b97_515c606a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-04-26T13:13:42Z",
+      "side": 1,
+      "message": "OK, we can consider adding this in the future. It is not absolutely necessary for the initial commit.",
+      "parentUuid": "4299870a_0b7e36c8",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 77
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f631ceca_fd9a985a",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
         "patchSetId": 1
@@ -170,6 +194,30 @@
       "writtenOn": "2017-04-26T10:34:17Z",
       "side": 1,
       "message": "create `serializedEvent` before you runnable is created so that it is not computed over and over again.",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bcdd5b7_707b22df",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-04-26T13:13:42Z",
+      "side": 1,
+      "message": "The run method will be called only once. The retry logic is deeper down, at the http client layer.",
+      "parentUuid": "65fc02bf_2d39e161",
       "range": {
         "startLine": 100,
         "startChar": 8,
