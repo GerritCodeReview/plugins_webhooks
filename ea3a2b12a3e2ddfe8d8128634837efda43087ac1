@@ -173,6 +173,30 @@
     },
     {
       "key": {
+        "uuid": "fd89ad7c_77b532e5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-04-26T13:25:11Z",
+      "side": 1,
+      "message": "Agree. But since this targets 2.13 Gerrit API I wouldn\u0027t like to block this change until a new 2.13 release is done.",
+      "parentUuid": "f631ceca_fd9a985a",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "ea3a2b12a3e2ddfe8d8128634837efda43087ac1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "104d6485_4e1b6c87",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
         "patchSetId": 1
