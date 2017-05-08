@@ -14,7 +14,6 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import java.io.IOException;
 import java.util.concurrent.Executor;
 
 import org.eclipse.jgit.lib.Config;
@@ -22,41 +21,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Strings;
-import com.google.common.base.Supplier;
 import com.google.gerrit.common.EventListener;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectEvent;
-import com.google.gerrit.server.events.SupplierSerializer;
 import com.google.gerrit.server.project.NoSuchProjectException;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.inject.Inject;
 
 class EventHandler implements EventListener {
   private static final Logger log = LoggerFactory
       .getLogger(EventHandler.class);
 
-  private final HttpSession session;
   private final PluginConfigFactory configFactory;
   private final String pluginName;
-  private final Executor executor;
-
-  private final Gson gson;
+  private final PostEventTask.Factory taskFactory;
 
   @Inject
   EventHandler(HttpSession session,
       PluginConfigFactory configFactory,
       @PluginName String pluginName,
+      PostEventTask.Factory taskFactory,
       @WebHooksExecutor Executor executor) {
-    this.session = session;
     this.configFactory = configFactory;
     this.pluginName = pluginName;
-    this.executor = executor;
-    this.gson = new GsonBuilder()
-        .registerTypeAdapter(Supplier.class, new SupplierSerializer())
-        .create();
+    this.taskFactory = taskFactory;
   }
 
   @Override
@@ -100,22 +89,6 @@ class EventHandler implements EventListener {
   }
 
   private void post(final String url, final ProjectEvent projectEvent) {
-    executor.execute(new Runnable() {
-      @Override
-      public void run() {
-        String serializedEvent = gson.toJson(projectEvent);
-        try {
-          session.post(url, serializedEvent);
-        } catch (IOException e) {
-          log.error("Coulnd't post event: " + projectEvent, e);
-        }
-      }
-
-      @Override
-      public String toString() {
-        return String.format("%s:%s > %s",
-            projectEvent.type, projectEvent.getProjectNameKey().get(), url);
-      }
-    });
+    taskFactory.create(url, projectEvent).schedule();
   }
 }
