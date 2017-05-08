@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "755f8ab8_8e2a1540",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostEventTask.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-08T23:25:54Z",
+      "side": 1,
+      "message": "Couldn\u0027t",
+      "range": {
+        "startLine": 69,
+        "startChar": 17,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "b550177e237757449b2b51b08af7b068f6b67c8c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
