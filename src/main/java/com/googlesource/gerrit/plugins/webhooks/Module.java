@@ -19,11 +19,11 @@ import java.util.concurrent.Executor;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 import com.google.gerrit.common.EventListener;
+import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.registration.DynamicSet;
-import com.google.inject.AbstractModule;
 import com.google.inject.Scopes;
 
-public class Module extends AbstractModule {
+public class Module extends FactoryModule {
 
   @Override
   protected void configure() {
@@ -33,6 +33,7 @@ public class Module extends AbstractModule {
     bind(Configuration.class).in(Scopes.SINGLETON);
     bind(CloseableHttpClient.class).toProvider(HttpClientProvider.class)
         .in(Scopes.SINGLETON);
+    factory(PostEventTask.Factory.class);
     DynamicSet.bind(binder(), EventListener.class).to(EventHandler.class);
   }
 }
