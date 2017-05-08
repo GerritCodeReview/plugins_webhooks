@@ -3,9 +3,33 @@
 
 The @PLUGIN@ plugin's per project configuration is stored in the
 `webhooks.config` file in project's `refs/meta/config` branch.
+For example, to propagate all events to `https://foo.org/gerrit-events`
+and propagate only `patchset-created` and `ref-updated` events to
+`https://bar.org/`:
+
+```
+[remote "foo"]
+  url = https://foo.org/gerrit-events
+
+[remote "bar"]
+  url = https://bar.org/
+  event = patchset-created
+  event = ref-updated
+```
+
 The configuration is inheritable.
 
 Global @PLUGIN@ plugin configuration is stored in the `gerrit.config` file.
+An example global @PLUGIN@ configuration section:
+
+```
+[plugin "@PLUGIN@"]
+  connectionTimeout = 3000
+  socketTimeout 2500
+  maxTries = 300
+  retryInterval = 2000
+  threadPoolSize = 3
+```
 
 File 'webhooks.config'
 ----------------------
