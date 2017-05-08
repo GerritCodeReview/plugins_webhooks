@@ -64,6 +64,7 @@ class EventHandler implements EventListener {
     for (String name : cfg.getSubsections("remote")) {
       String url = cfg.getString("remote", name, "url");
       if (Strings.isNullOrEmpty(url)) {
+        log.warn("remote.{}.url not defined, skipping this remote", name);
         continue;
       }
 
