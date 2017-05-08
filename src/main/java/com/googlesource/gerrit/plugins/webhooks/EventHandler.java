@@ -68,21 +68,27 @@ class EventHandler implements EventListener {
         continue;
       }
 
-      String[] eventTypes = cfg.getStringList("remote", name, "event");
-
-      if (eventTypes.length == 0) {
+      if (shouldPost(projectEvent, cfg.getStringList("remote", name, "event"))) {
         post(url, projectEvent);
       }
+    }
+  }
 
-      for (String type : eventTypes) {
-        if (Strings.isNullOrEmpty(type)) {
-          continue;
-        }
-        if (type.equals(projectEvent.getType())) {
-          post(url, projectEvent);
-        }
+  private boolean shouldPost(ProjectEvent projectEvent, String[] wantedEvents) {
+    if (wantedEvents.length == 0) {
+      return true;
+    }
+
+    for (String type : wantedEvents) {
+      if (Strings.isNullOrEmpty(type)) {
+        continue;
+      }
+      if (type.equals(projectEvent.getType())) {
+        return true;
       }
     }
+
+    return false;
   }
 
   private void post(final String url, final ProjectEvent projectEvent) {
