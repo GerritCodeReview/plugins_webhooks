@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c6d98d9_b38d5f66",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostEventTask.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-08T20:46:00Z",
+      "side": 1,
+      "message": "nit: wrong indentation level",
+      "revId": "0d901c233fddb9a66968a1d595f38ffe2a8035cc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
