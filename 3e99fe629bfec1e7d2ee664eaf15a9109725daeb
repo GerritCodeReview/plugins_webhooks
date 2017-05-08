@@ -22,6 +22,23 @@
       "revId": "3e99fe629bfec1e7d2ee664eaf15a9109725daeb",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fac28b2a_24b420c8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostEventTask.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-08T20:17:56Z",
+      "side": 1,
+      "message": "nit: one empty line too much",
+      "revId": "3e99fe629bfec1e7d2ee664eaf15a9109725daeb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
