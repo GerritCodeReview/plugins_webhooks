@@ -14,7 +14,7 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import java.util.concurrent.Executor;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 import org.apache.http.impl.client.CloseableHttpClient;
 
@@ -27,7 +27,7 @@ public class Module extends FactoryModule {
 
   @Override
   protected void configure() {
-    bind(Executor.class)
+    bind(ScheduledThreadPoolExecutor.class)
         .annotatedWith(WebHooksExecutor.class)
         .toProvider(ExecutorProvider.class);
     bind(Configuration.class).in(Scopes.SINGLETON);
