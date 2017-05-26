@@ -15,7 +15,10 @@
 package com.googlesource.gerrit.plugins.webhooks;
 
 import java.io.IOException;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.SSLException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +30,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
+import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 
 class PostEventTask implements Runnable {
   private static final Logger log = LoggerFactory
@@ -40,33 +44,69 @@ class PostEventTask implements Runnable {
     PostEventTask create(String url, ProjectEvent projectEvent);
   }
 
-  private final Executor executor;
+  private final ScheduledThreadPoolExecutor executor;
   private final HttpSession session;
+  private final Configuration cfg;
   private final String url;
   private final ProjectEvent projectEvent;
+  private final String serializedEvent;
+
+  private int execCnt;
 
   @AssistedInject
-  public PostEventTask(@WebHooksExecutor Executor executor,
+  public PostEventTask(@WebHooksExecutor ScheduledThreadPoolExecutor executor,
       HttpSession session,
+      Configuration cfg,
       @Assisted String url,
       @Assisted ProjectEvent projectEvent) {
     this.executor = executor;
     this.session = session;
+    this.cfg = cfg;
     this.url = url;
     this.projectEvent = projectEvent;
+    this.serializedEvent = GSON.toJson(projectEvent);
   }
 
   void schedule() {
     executor.execute(this);
   }
 
+  private void reschedule() {
+    executor.schedule(this, cfg.getRetryInterval(), TimeUnit.MILLISECONDS);
+  }
+
   @Override
   public void run() {
-    String serializedEvent = GSON.toJson(projectEvent);
     try {
-      session.post(url, serializedEvent);
+      execCnt++;
+      HttpResult result = session.post(url, serializedEvent);
+      if (!result.successful && execCnt < cfg.getMaxTries()) {
+        logRetry(result.message);
+        reschedule();
+      }
     } catch (IOException e) {
-      log.error("Couldn't post event: " + projectEvent, e);
+      if (isRecoverable(e) && execCnt < cfg.getMaxTries()) {
+        logRetry(e);
+        reschedule();
+      } else {
+        log.error("Failed to post event: {}", toString(), e);
+      }
+    }
+  }
+
+  private boolean isRecoverable(IOException e) {
+    return !(e instanceof SSLException);
+  }
+
+  private void logRetry(String reason) {
+    if (log.isDebugEnabled()) {
+      log.debug("Retrying {} in {}ms. Reason: {}", toString(), cfg.getRetryInterval(), reason);
+    }
+  }
+
+  private void logRetry(Throwable cause) {
+    if (log.isDebugEnabled()) {
+      log.debug("Retrying {} in {}ms. Cause: {}", toString(), cfg.getRetryInterval(), cause);
     }
   }
 

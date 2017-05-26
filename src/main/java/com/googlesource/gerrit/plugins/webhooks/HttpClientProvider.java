@@ -14,18 +14,15 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLException;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.ServiceUnavailableRetryStrategy;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.config.Registry;
@@ -71,7 +68,6 @@ class HttpClientProvider implements Provider<CloseableHttpClient> {
     return HttpClients.custom().setSSLSocketFactory(sslSocketFactory)
         .setConnectionManager(customConnectionManager())
         .setDefaultRequestConfig(customRequestConfig())
-        .setRetryHandler(customRetryHandler())
         .setServiceUnavailableRetryStrategy(customServiceUnavailRetryStrategy())
         .build();
   }
@@ -81,28 +77,6 @@ class HttpClientProvider implements Provider<CloseableHttpClient> {
         .setSocketTimeout(cfg.getSocketTimeout())
         .setConnectionRequestTimeout(cfg.getConnectionTimeout())
         .build();
-  }
-
-  private HttpRequestRetryHandler customRetryHandler() {
-    return new HttpRequestRetryHandler() {
-
-      @Override
-      public boolean retryRequest(IOException exception, int executionCount,
-          HttpContext context) {
-        if (executionCount > cfg.getMaxTries()
-            || exception instanceof SSLException) {
-          return false;
-        }
-        logRetry(exception.getMessage(), context);
-        try {
-          Thread.sleep(cfg.getRetryInterval());
-        } catch (InterruptedException e) {
-          Thread.currentThread().interrupt();
-          return false;
-        }
-        return true;
-      }
-    };
   }
 
   private ServiceUnavailableRetryStrategy customServiceUnavailRetryStrategy() {
