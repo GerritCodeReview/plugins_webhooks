@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ab1984c6_46c23fe5",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-08T20:22:07Z",
+      "side": 1,
+      "message": "\u003e [optional] Apart from the number of retries that sometimes is 3, sometime s is 100,\n\nArgh, this was obviously a typo on my side.\nOK, will do the setup in a @Before method.",
+      "parentUuid": "a15fb9d2_9c2a3001",
+      "revId": "280136a7ba69d031729716f966328c2d0bb8a163",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de401fb4_f3655a30",
         "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2017-06-08T18:38:38Z",
       "side": 1,
       "message": "You need to setup the configuration for retry otherwise it is possible there is no rescheduled because it\u0027s not configured.",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "280136a7ba69d031729716f966328c2d0bb8a163",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73a66c4a_11245d26",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-08T20:22:07Z",
+      "side": 1,
+      "message": "Initially I did setup the Configuration mock with:\n\n  when(cfg.getMaxTries()).thenReturn(MAX_TRIES);\n\nbut then Mockito started complaining with [1], and I removed it.\nI guess that when the setup is factored out in a @Before method then Mockito\nwill not be smart enough to detect unnecessary stubbing :-)\n\n[1] \norg.mockito.exceptions.misusing.UnnecessaryStubbingException: \nUnnecessary stubbings detected in test class: PostTaskTest\nClean \u0026 maintainable test code requires zero unnecessary code.\nFollowing stubbings are unnecessary (click to navigate to relevant line of code):\n  1. -\u003e at com.googlesource.gerrit.plugins.webhooks.PostTaskTest.noRescheduleOnSuccess(PostTaskTest.java:55)\nPlease remove unnecessary stubbings or use \u0027silent\u0027 option. More info: javadoc for UnnecessaryStubbingException class.\n\tat org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:49)\n\tat org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161)\n\tat org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)\n\tat org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)\n\tat org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)\n\tat org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)\n\tat org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)\n\tat org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)",
+      "parentUuid": "de401fb4_f3655a30",
       "range": {
         "startLine": 49,
         "startChar": 14,
@@ -99,6 +141,30 @@
       "writtenOn": "2017-06-08T18:38:38Z",
       "side": 1,
       "message": "[optional]no need to spy on you object, just check if task was rescheduled MAX_TRIES -1:\n\nverify(executor, times(MAX_TRIES -1)).schedule(task, RETRY_INTERVAL, TimeUnit.MILLISECONDS);",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 40
+      },
+      "revId": "280136a7ba69d031729716f966328c2d0bb8a163",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17ba4e99_63ecf73f",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-08T20:22:07Z",
+      "side": 1,
+      "message": "I did exactly that in my previous patch-set but then thought that checking\nthe number of run() method calls may be even better as the test doesn\u0027t\nneed to know the inner details of rescheduling.\n\nBut, since all other test methods already know about the executor I think I will\nagain do the same as in the previous patch-set (and as you suggested here).",
+      "parentUuid": "70c5c432_db8ae707",
       "range": {
         "startLine": 137,
         "startChar": 4,
