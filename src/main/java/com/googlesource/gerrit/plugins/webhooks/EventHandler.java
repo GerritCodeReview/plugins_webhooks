@@ -19,17 +19,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Strings;
+import com.google.common.base.Supplier;
 import com.google.gerrit.common.EventListener;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectEvent;
+import com.google.gerrit.server.events.SupplierSerializer;
 import com.google.gerrit.server.project.NoSuchProjectException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.inject.Inject;
 
 class EventHandler implements EventListener {
   private static final Logger log = LoggerFactory
       .getLogger(EventHandler.class);
+
+  private static Gson GSON = new GsonBuilder()
+      .registerTypeAdapter(Supplier.class, new SupplierSerializer())
+      .create();
 
   private final PluginConfigFactory configFactory;
   private final String pluginName;
@@ -89,6 +97,6 @@ class EventHandler implements EventListener {
   }
 
   private void post(final String url, final ProjectEvent projectEvent) {
-    taskFactory.create(url, projectEvent).schedule();
+    taskFactory.create(url, GSON.toJson(projectEvent)).schedule();
   }
 }
