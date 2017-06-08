@@ -20,40 +20,31 @@ import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Supplier;
-import com.google.gerrit.server.events.ProjectEvent;
-import com.google.gerrit.server.events.SupplierSerializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
 
-class PostEventTask implements Runnable {
+class PostTask implements Runnable {
   private static final Logger log = LoggerFactory
-      .getLogger(PostEventTask.class);
-
-  private static Gson GSON = new GsonBuilder()
-      .registerTypeAdapter(Supplier.class, new SupplierSerializer())
-      .create();
+      .getLogger(PostTask.class);
 
   interface Factory {
-    PostEventTask create(String url, ProjectEvent projectEvent);
+    PostTask create(@Assisted("url") String url, @Assisted("body") String body);
   }
 
   private final Executor executor;
   private final HttpSession session;
   private final String url;
-  private final ProjectEvent projectEvent;
+  private final String body;
 
   @AssistedInject
-  public PostEventTask(@WebHooksExecutor Executor executor,
+  public PostTask(@WebHooksExecutor Executor executor,
       HttpSession session,
-      @Assisted String url,
-      @Assisted ProjectEvent projectEvent) {
+      @Assisted("url") String url,
+      @Assisted("body") String body) {
     this.executor = executor;
     this.session = session;
     this.url = url;
-    this.projectEvent = projectEvent;
+    this.body = body;
   }
 
   void schedule() {
@@ -62,17 +53,15 @@ class PostEventTask implements Runnable {
 
   @Override
   public void run() {
-    String serializedEvent = GSON.toJson(projectEvent);
     try {
-      session.post(url, serializedEvent);
+      session.post(url, body);
     } catch (IOException e) {
-      log.error("Couldn't post event: " + projectEvent, e);
+      log.error("Couldn't post {}", body, e);
     }
   }
 
   @Override
   public String toString() {
-    return String.format("%s:%s > %s",
-        projectEvent.type, projectEvent.getProjectNameKey().get(), url);
+    return body;
   }
 }
