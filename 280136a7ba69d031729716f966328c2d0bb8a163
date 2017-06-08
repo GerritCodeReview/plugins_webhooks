@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "62b111b0_0b35bc76",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-08T20:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab1984c6_46c23fe5",
+      "revId": "280136a7ba69d031729716f966328c2d0bb8a163",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de401fb4_f3655a30",
         "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
         "patchSetId": 3
@@ -84,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "c37e22a5_2236a760",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-08T20:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73a66c4a_11245d26",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "280136a7ba69d031729716f966328c2d0bb8a163",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "078630d1_dec259ad",
         "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
         "patchSetId": 3
@@ -107,6 +149,30 @@
     },
     {
       "key": {
+        "uuid": "1f2a8a07_7a498a6d",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-08T20:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "078630d1_dec259ad",
+      "range": {
+        "startLine": 63,
+        "startChar": 14,
+        "endLine": 63,
+        "endChar": 51
+      },
+      "revId": "280136a7ba69d031729716f966328c2d0bb8a163",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d368b343_4f3db0d7",
         "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
         "patchSetId": 3
@@ -118,6 +184,30 @@
       "writtenOn": "2017-06-08T18:38:38Z",
       "side": 1,
       "message": "make this variable final otherwise it does not compile, not needed if you apply my comment at line 137 or my file comment",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 17
+      },
+      "revId": "280136a7ba69d031729716f966328c2d0bb8a163",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15702e51_ef13e4a3",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-08T20:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d368b343_4f3db0d7",
       "range": {
         "startLine": 123,
         "startChar": 4,
@@ -165,6 +255,30 @@
       "side": 1,
       "message": "I did exactly that in my previous patch-set but then thought that checking\nthe number of run() method calls may be even better as the test doesn\u0027t\nneed to know the inner details of rescheduling.\n\nBut, since all other test methods already know about the executor I think I will\nagain do the same as in the previous patch-set (and as you suggested here).",
       "parentUuid": "70c5c432_db8ae707",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 40
+      },
+      "revId": "280136a7ba69d031729716f966328c2d0bb8a163",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "523f4aaa_a76603d9",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-08T20:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17ba4e99_63ecf73f",
       "range": {
         "startLine": 137,
         "startChar": 4,
