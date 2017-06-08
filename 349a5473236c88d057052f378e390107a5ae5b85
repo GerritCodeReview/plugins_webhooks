@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8998b6b_f444e6ef",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostEventTask.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1012987
+      },
+      "writtenOn": "2017-06-08T14:41:34Z",
+      "side": 1,
+      "message": "I am not sure to understand the goal of this change.\n\nAre you trying to make this class generic to post any String as body of the request?\n\nif yes, maybe rename the class too PostTask and name this argument \u0027body\u0027 or \u0027content\u0027?\n\nIf no and this class is meant to Post any event, why not put it back the way it was and change the ProjectEvent argument to  the base class of all events (Event)?",
+      "range": {
+        "startLine": 31,
+        "startChar": 54,
+        "endLine": 31,
+        "endChar": 89
+      },
+      "revId": "349a5473236c88d057052f378e390107a5ae5b85",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
