@@ -46,6 +46,30 @@
       "revId": "349a5473236c88d057052f378e390107a5ae5b85",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df7b93c8_6512f5bd",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostEventTask.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-08T15:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8998b6b_f444e6ef",
+      "range": {
+        "startLine": 31,
+        "startChar": 54,
+        "endLine": 31,
+        "endChar": 89
+      },
+      "revId": "349a5473236c88d057052f378e390107a5ae5b85",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
