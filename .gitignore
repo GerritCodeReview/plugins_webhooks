@@ -4,6 +4,13 @@
 /.project
 /.settings/
 /.watchmanconfig
+/.primary_build_tool
+/bazel-bin
+/bazel-genfiles
+/bazel-out
+/bazel-reviewers
+/bazel-testlogs
+/bazel-webhooks
 /buck-out/
 /bucklets
 /eclipse-out/
