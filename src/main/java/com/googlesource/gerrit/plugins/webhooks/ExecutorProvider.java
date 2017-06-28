@@ -41,7 +41,6 @@ class ExecutorProvider
   @Override
   public void stop() {
     executor.shutdown();
-    executor.unregisterWorkQueue();
     executor = null;
   }
 
