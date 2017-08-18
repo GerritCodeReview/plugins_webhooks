@@ -14,17 +14,17 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.events.LifecycleListener;
 import com.google.gerrit.server.git.WorkQueue;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
+import java.util.concurrent.ScheduledExecutorService;
+
 class ExecutorProvider
-    implements Provider<ScheduledThreadPoolExecutor>, LifecycleListener {
-  private WorkQueue.Executor executor;
+    implements Provider<ScheduledExecutorService>, LifecycleListener {
+  private ScheduledExecutorService executor;
 
   @Inject
   ExecutorProvider(WorkQueue workQueue,
@@ -45,7 +45,7 @@ class ExecutorProvider
   }
 
   @Override
-  public ScheduledThreadPoolExecutor get() {
+  public ScheduledExecutorService get() {
     return executor;
   }
 }

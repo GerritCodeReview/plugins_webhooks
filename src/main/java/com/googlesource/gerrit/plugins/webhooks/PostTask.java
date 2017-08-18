@@ -15,7 +15,7 @@
 package com.googlesource.gerrit.plugins.webhooks;
 
 import java.io.IOException;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.SSLException;
@@ -35,7 +35,7 @@ class PostTask implements Runnable {
     PostTask create(@Assisted("url") String url, @Assisted("body") String body);
   }
 
-  private final ScheduledThreadPoolExecutor executor;
+  private final ScheduledExecutorService executor;
   private final HttpSession session;
   private final Configuration cfg;
   private final String url;
@@ -43,7 +43,7 @@ class PostTask implements Runnable {
   private int execCnt;
 
   @AssistedInject
-  public PostTask(@WebHooksExecutor ScheduledThreadPoolExecutor executor,
+  public PostTask(@WebHooksExecutor ScheduledExecutorService executor,
       HttpSession session,
       Configuration cfg,
       @Assisted("url") String url,

@@ -14,7 +14,6 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 import org.apache.http.impl.client.CloseableHttpClient;
 
@@ -22,12 +21,13 @@ import com.google.gerrit.common.EventListener;
 import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.inject.Scopes;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class Module extends FactoryModule {
 
   @Override
   protected void configure() {
-    bind(ScheduledThreadPoolExecutor.class)
+    bind(ScheduledExecutorService.class)
         .annotatedWith(WebHooksExecutor.class)
         .toProvider(ExecutorProvider.class);
     bind(Configuration.class).in(Scopes.SINGLETON);
