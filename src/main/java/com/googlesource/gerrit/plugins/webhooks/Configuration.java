@@ -14,14 +14,13 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Singleton
 public class Configuration {
@@ -39,8 +38,7 @@ public class Configuration {
   private final int threadPoolSize;
 
   @Inject
-  Configuration(PluginConfigFactory config,
-      @PluginName String pluginName) {
+  Configuration(PluginConfigFactory config, @PluginName String pluginName) {
     PluginConfig cfg = config.getFromGerritConfig(pluginName, true);
     connectionTimeout = getInt(cfg, "connectionTimeout", DEFAULT_TIMEOUT_MS);
     socketTimeout = getInt(cfg, "socketTimeout", DEFAULT_TIMEOUT_MS);
@@ -53,8 +51,7 @@ public class Configuration {
     try {
       return cfg.getInt(name, defaultValue);
     } catch (IllegalArgumentException e) {
-      log.error(String.format(
-          "invalid value for %s; using default value %d", name, defaultValue));
+      log.error(String.format("invalid value for %s; using default value %d", name, defaultValue));
       log.debug("Failed retrieve integer value: " + e.getMessage(), e);
       return defaultValue;
     }

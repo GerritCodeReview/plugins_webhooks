@@ -19,12 +19,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
+import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
 import javax.net.ssl.SSLException;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,8 +31,6 @@ import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
-
-import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PostTaskTest {
@@ -45,14 +42,11 @@ public class PostTaskTest {
   private static final int RETRY_INTERVAL = 100;
   private static final int MAX_TRIES = 3;
 
-  @Mock
-  private Configuration cfg;
+  @Mock private Configuration cfg;
 
-  @Mock
-  private HttpSession session;
+  @Mock private HttpSession session;
 
-  @Mock
-  private ScheduledThreadPoolExecutor executor;
+  @Mock private ScheduledThreadPoolExecutor executor;
 
   private PostTask task;
 
@@ -60,8 +54,7 @@ public class PostTaskTest {
   public void setup() {
     when(cfg.getRetryInterval()).thenReturn(RETRY_INTERVAL);
     when(cfg.getMaxTries()).thenReturn(MAX_TRIES);
-    task = new PostTask(
-        executor, session, cfg, WEBHOOK_URL, BODY);
+    task = new PostTask(executor, session, cfg, WEBHOOK_URL, BODY);
   }
 
   @Test
@@ -96,13 +89,14 @@ public class PostTaskTest {
   public void keepReschedulingMaxTriesTimes() throws IOException {
     when(session.post(WEBHOOK_URL, BODY)).thenThrow(IOException.class);
     when(executor.schedule(task, RETRY_INTERVAL, TimeUnit.MILLISECONDS))
-        .then(new Answer<Void>() {
-          @Override
-          public Void answer(InvocationOnMock invocation) throws Throwable {
-            task.run();
-            return null;
-          }
-        });
+        .then(
+            new Answer<Void>() {
+              @Override
+              public Void answer(InvocationOnMock invocation) throws Throwable {
+                task.run();
+                return null;
+              }
+            });
     task.run();
     verify(executor, times(MAX_TRIES - 1)).schedule(task, RETRY_INTERVAL, TimeUnit.MILLISECONDS);
   }

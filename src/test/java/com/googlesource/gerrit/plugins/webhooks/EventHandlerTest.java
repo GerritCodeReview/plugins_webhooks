@@ -20,13 +20,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
-import org.eclipse.jgit.lib.Config;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
-
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.reviewdb.client.Project.NameKey;
 import com.google.gerrit.server.config.PluginConfigFactory;
@@ -34,6 +27,12 @@ import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.google.gerrit.server.events.RefUpdatedEvent;
 import com.google.gerrit.server.project.NoSuchProjectException;
+import org.eclipse.jgit.lib.Config;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EventHandlerTest {
@@ -47,26 +46,25 @@ public class EventHandlerTest {
   private static final String FOO_URL = "foo-url";
   private static final String EVENT = "event";
 
-  private static final ProjectCreatedEvent PROJECT_CREATED = new ProjectCreatedEvent() {
-    public NameKey getProjectNameKey() {
-      return PROJECT_NAME;
-    }
-  };
+  private static final ProjectCreatedEvent PROJECT_CREATED =
+      new ProjectCreatedEvent() {
+        public NameKey getProjectNameKey() {
+          return PROJECT_NAME;
+        }
+      };
 
-  private static final RefUpdatedEvent REF_UPDATED = new RefUpdatedEvent() {
-    public NameKey getProjectNameKey() {
-      return PROJECT_NAME;
-    }
-  };
+  private static final RefUpdatedEvent REF_UPDATED =
+      new RefUpdatedEvent() {
+        public NameKey getProjectNameKey() {
+          return PROJECT_NAME;
+        }
+      };
 
-  @Mock
-  private PluginConfigFactory configFactory;
+  @Mock private PluginConfigFactory configFactory;
 
-  @Mock
-  private PostTask.Factory taskFactory;
+  @Mock private PostTask.Factory taskFactory;
 
-  @Mock
-  private PostTask postTask;
+  @Mock private PostTask postTask;
 
   private Config config = new Config();
 
@@ -117,8 +115,7 @@ public class EventHandlerTest {
   public void nonProjectEventNotPosted() {
     config.setString(REMOTE, FOO, URL, FOO_URL);
 
-    Event nonProjectEvent = new Event("non-project-event") {
-    };
+    Event nonProjectEvent = new Event("non-project-event") {};
     eventHandler.onEvent(nonProjectEvent);
     verifyZeroInteractions(postTask);
   }

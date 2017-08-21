@@ -14,16 +14,14 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-
 import com.google.common.net.MediaType;
 import com.google.inject.Inject;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
 
 class HttpSession {
   private final CloseableHttpClient httpClient;

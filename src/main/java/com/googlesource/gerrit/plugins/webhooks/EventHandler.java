@@ -14,10 +14,6 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import org.eclipse.jgit.lib.Config;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.common.base.Strings;
 import com.google.common.base.Supplier;
 import com.google.gerrit.common.EventListener;
@@ -30,21 +26,23 @@ import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.inject.Inject;
+import org.eclipse.jgit.lib.Config;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class EventHandler implements EventListener {
-  private static final Logger log = LoggerFactory
-      .getLogger(EventHandler.class);
+  private static final Logger log = LoggerFactory.getLogger(EventHandler.class);
 
-  private static Gson GSON = new GsonBuilder()
-      .registerTypeAdapter(Supplier.class, new SupplierSerializer())
-      .create();
+  private static Gson GSON =
+      new GsonBuilder().registerTypeAdapter(Supplier.class, new SupplierSerializer()).create();
 
   private final PluginConfigFactory configFactory;
   private final String pluginName;
   private final PostTask.Factory taskFactory;
 
   @Inject
-  EventHandler(PluginConfigFactory configFactory,
+  EventHandler(
+      PluginConfigFactory configFactory,
       @PluginName String pluginName,
       PostTask.Factory taskFactory) {
     this.configFactory = configFactory;
@@ -61,11 +59,14 @@ class EventHandler implements EventListener {
     ProjectEvent projectEvent = (ProjectEvent) event;
     Config cfg;
     try {
-      cfg = configFactory.getProjectPluginConfigWithInheritance(
-          projectEvent.getProjectNameKey(), pluginName);
+      cfg =
+          configFactory.getProjectPluginConfigWithInheritance(
+              projectEvent.getProjectNameKey(), pluginName);
     } catch (NoSuchProjectException e) {
-      log.warn("Ignoring event for a non-existing project {}, {}",
-          projectEvent.getProjectNameKey().get(), projectEvent);
+      log.warn(
+          "Ignoring event for a non-existing project {}, {}",
+          projectEvent.getProjectNameKey().get(),
+          projectEvent);
       return;
     }
 

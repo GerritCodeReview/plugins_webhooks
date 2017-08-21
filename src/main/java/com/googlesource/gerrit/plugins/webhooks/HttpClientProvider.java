@@ -14,14 +14,14 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
-
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ServiceUnavailableRetryStrategy;
 import org.apache.http.client.config.RequestConfig;
@@ -39,15 +39,9 @@ import org.apache.http.protocol.HttpContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-
-/**
- * Provides an HTTP client with SSL capabilities.
- */
+/** Provides an HTTP client with SSL capabilities. */
 class HttpClientProvider implements Provider<CloseableHttpClient> {
-  private static final Logger log = LoggerFactory
-      .getLogger(HttpClientProvider.class);
+  private static final Logger log = LoggerFactory.getLogger(HttpClientProvider.class);
   private static final int CONNECTIONS_PER_ROUTE = 100;
   // Up to 2 target instances with the max number of connections per host:
   private static final int MAX_CONNECTIONS = 2 * CONNECTIONS_PER_ROUTE;
@@ -65,7 +59,8 @@ class HttpClientProvider implements Provider<CloseableHttpClient> {
 
   @Override
   public CloseableHttpClient get() {
-    return HttpClients.custom().setSSLSocketFactory(sslSocketFactory)
+    return HttpClients.custom()
+        .setSSLSocketFactory(sslSocketFactory)
         .setConnectionManager(customConnectionManager())
         .setDefaultRequestConfig(customRequestConfig())
         .setServiceUnavailableRetryStrategy(customServiceUnavailRetryStrategy())
@@ -73,7 +68,8 @@ class HttpClientProvider implements Provider<CloseableHttpClient> {
   }
 
   private RequestConfig customRequestConfig() {
-    return RequestConfig.custom().setConnectTimeout(cfg.getConnectionTimeout())
+    return RequestConfig.custom()
+        .setConnectTimeout(cfg.getConnectionTimeout())
         .setSocketTimeout(cfg.getSocketTimeout())
         .setConnectionRequestTimeout(cfg.getConnectionTimeout())
         .build();
@@ -82,8 +78,7 @@ class HttpClientProvider implements Provider<CloseableHttpClient> {
   private ServiceUnavailableRetryStrategy customServiceUnavailRetryStrategy() {
     return new ServiceUnavailableRetryStrategy() {
       @Override
-      public boolean retryRequest(HttpResponse response, int executionCount,
-          HttpContext context) {
+      public boolean retryRequest(HttpResponse response, int executionCount, HttpContext context) {
         if (executionCount > cfg.getMaxTries()) {
           return false;
         }
@@ -102,16 +97,22 @@ class HttpClientProvider implements Provider<CloseableHttpClient> {
   }
 
   private void logRetry(String cause, HttpContext context) {
-    if (log.isDebugEnabled()){
-      log.debug("Retrying request caused by '" + cause + "', request: '"
-          + context.getAttribute("http.request") + "'");
+    if (log.isDebugEnabled()) {
+      log.debug(
+          "Retrying request caused by '"
+              + cause
+              + "', request: '"
+              + context.getAttribute("http.request")
+              + "'");
     }
   }
 
   private HttpClientConnectionManager customConnectionManager() {
-    Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder
-        .<ConnectionSocketFactory> create().register("https", sslSocketFactory)
-        .register("http", PlainConnectionSocketFactory.INSTANCE).build();
+    Registry<ConnectionSocketFactory> socketFactoryRegistry =
+        RegistryBuilder.<ConnectionSocketFactory>create()
+            .register("https", sslSocketFactory)
+            .register("http", PlainConnectionSocketFactory.INSTANCE)
+            .build();
     PoolingHttpClientConnectionManager connManager =
         new PoolingHttpClientConnectionManager(socketFactoryRegistry);
     connManager.setDefaultMaxPerRoute(CONNECTIONS_PER_ROUTE);
@@ -121,14 +122,12 @@ class HttpClientProvider implements Provider<CloseableHttpClient> {
   }
 
   private SSLConnectionSocketFactory buildSslSocketFactory() {
-    return new SSLConnectionSocketFactory(buildSslContext(),
-        NoopHostnameVerifier.INSTANCE);
+    return new SSLConnectionSocketFactory(buildSslContext(), NoopHostnameVerifier.INSTANCE);
   }
 
   private SSLContext buildSslContext() {
     try {
-      TrustManager[] trustAllCerts =
-          new TrustManager[] {new DummyX509TrustManager()};
+      TrustManager[] trustAllCerts = new TrustManager[] {new DummyX509TrustManager()};
       SSLContext context = SSLContext.getInstance("TLS");
       context.init(null, trustAllCerts, null);
       return context;

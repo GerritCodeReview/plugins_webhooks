@@ -14,22 +14,18 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import java.io.IOException;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
-import javax.net.ssl.SSLException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
+import java.io.IOException;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import javax.net.ssl.SSLException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class PostTask implements Runnable {
-  private static final Logger log = LoggerFactory
-      .getLogger(PostTask.class);
+  private static final Logger log = LoggerFactory.getLogger(PostTask.class);
 
   interface Factory {
     PostTask create(@Assisted("url") String url, @Assisted("body") String body);
@@ -43,7 +39,8 @@ class PostTask implements Runnable {
   private int execCnt;
 
   @AssistedInject
-  public PostTask(@WebHooksExecutor ScheduledExecutorService executor,
+  public PostTask(
+      @WebHooksExecutor ScheduledExecutorService executor,
       HttpSession session,
       Configuration cfg,
       @Assisted("url") String url,

@@ -16,11 +16,9 @@ package com.googlesource.gerrit.plugins.webhooks;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-import java.lang.annotation.Retention;
-
 import com.google.inject.BindingAnnotation;
+import java.lang.annotation.Retention;
 
 @Retention(RUNTIME)
 @BindingAnnotation
-@interface WebHooksExecutor {
-}
+@interface WebHooksExecutor {}

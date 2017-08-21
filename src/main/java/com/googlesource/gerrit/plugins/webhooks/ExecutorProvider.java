@@ -19,17 +19,13 @@ import com.google.gerrit.extensions.events.LifecycleListener;
 import com.google.gerrit.server.git.WorkQueue;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-
 import java.util.concurrent.ScheduledExecutorService;
 
-class ExecutorProvider
-    implements Provider<ScheduledExecutorService>, LifecycleListener {
+class ExecutorProvider implements Provider<ScheduledExecutorService>, LifecycleListener {
   private ScheduledExecutorService executor;
 
   @Inject
-  ExecutorProvider(WorkQueue workQueue,
-      Configuration cfg,
-      @PluginName String name) {
+  ExecutorProvider(WorkQueue workQueue, Configuration cfg, @PluginName String name) {
     executor = workQueue.createQueue(cfg.getThreadPoolSize(), name);
   }
 
