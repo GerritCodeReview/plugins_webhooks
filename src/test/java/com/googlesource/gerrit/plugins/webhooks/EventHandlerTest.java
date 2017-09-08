@@ -14,7 +14,7 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
@@ -27,37 +27,23 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.gerrit.reviewdb.client.Project;
-import com.google.gerrit.reviewdb.client.Project.NameKey;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
-import com.google.gerrit.server.events.RefUpdatedEvent;
 import com.google.gerrit.server.project.NoSuchProjectException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EventHandlerTest {
-
-  private static final String PROJECT = "p";
-  private static final Project.NameKey PROJECT_NAME = new Project.NameKey(PROJECT);
+  private static final Project.NameKey PROJECT_NAME = new Project.NameKey("p");
   private static final String PLUGIN = "webhooks";
   private static final String REMOTE = "remote";
   private static final String FOO = "foo";
-  private static final String URL = "url";
   private static final String FOO_URL = "foo-url";
-  private static final String EVENT = "event";
 
-  private static final ProjectCreatedEvent PROJECT_CREATED = new ProjectCreatedEvent() {
-    public NameKey getProjectNameKey() {
-      return PROJECT_NAME;
-    }
-  };
-
-  private static final RefUpdatedEvent REF_UPDATED = new RefUpdatedEvent() {
-    public NameKey getProjectNameKey() {
-      return PROJECT_NAME;
-    }
-  };
+  @Mock
+  private ProjectCreatedEvent projectCreated;
 
   @Mock
   private PluginConfigFactory configFactory;
@@ -66,60 +52,53 @@ public class EventHandlerTest {
   private PostTask.Factory taskFactory;
 
   @Mock
+  private RemoteConfig.Factory remoteFactory;
+
+  @Mock
   private PostTask postTask;
 
-  private Config config = new Config();
+  @Mock
+  private RemoteConfig remote;
+
+  @Mock
+  private Config config;
 
   private EventHandler eventHandler;
 
   @Before
   public void setup() throws NoSuchProjectException {
+    when(projectCreated.getProjectNameKey()).thenReturn(PROJECT_NAME);
     when(configFactory.getProjectPluginConfigWithInheritance(PROJECT_NAME, PLUGIN))
         .thenReturn(config);
-    when(taskFactory.create(anyString(), anyString())).thenReturn(postTask);
-    eventHandler = new EventHandler(configFactory, PLUGIN, taskFactory);
+    when(remoteFactory.create(eq(config), eq(FOO))).thenReturn(remote);
+    when(taskFactory.create(eq(projectCreated), eq(remote))).thenReturn(postTask);
+    eventHandler = new EventHandler(configFactory, PLUGIN, remoteFactory, taskFactory);
   }
 
   @Test
-  public void remoteUrlUndefinedEventsNotPosted() {
-    eventHandler.onEvent(PROJECT_CREATED);
+  public void remoteUrlUndefinedTaskNotScheduled() {
+    when(config.getSubsections(eq(REMOTE))).thenReturn(ImmutableSet.of(FOO));
+    eventHandler.onEvent(projectCreated);
+    verifyZeroInteractions(taskFactory);
     verifyZeroInteractions(postTask);
   }
 
   @Test
-  public void eventTypesNotSpecifiedAllEventsPosted() {
-    config.setString(REMOTE, FOO, URL, FOO_URL);
+  public void remoteUrlDefinedTaskScheduled() {
+    when(config.getSubsections(eq(REMOTE))).thenReturn(ImmutableSet.of(FOO));
+    when(remote.getUrl()).thenReturn(FOO_URL);
 
-    eventHandler.onEvent(PROJECT_CREATED);
-    eventHandler.onEvent(REF_UPDATED);
-    verify(postTask, times(2)).schedule();
-  }
-
-  @Test
-  public void specifiedEventTypesPosted() {
-    config.setString(REMOTE, FOO, URL, FOO_URL);
-    config.setString(REMOTE, FOO, EVENT, "project-created");
-
-    eventHandler.onEvent(PROJECT_CREATED);
+    eventHandler.onEvent(projectCreated);
+    verify(taskFactory, times(1)).create(eq(projectCreated), eq(remote));
     verify(postTask, times(1)).schedule();
   }
 
   @Test
-  public void nonSpecifiedProjectEventTypesNotPosted() {
-    config.setString(REMOTE, FOO, URL, FOO_URL);
-    config.setString(REMOTE, FOO, EVENT, "project-created");
-
-    eventHandler.onEvent(REF_UPDATED);
-    verifyZeroInteractions(postTask);
-  }
-
-  @Test
-  public void nonProjectEventNotPosted() {
-    config.setString(REMOTE, FOO, URL, FOO_URL);
-
-    Event nonProjectEvent = new Event("non-project-event") {
-    };
+  public void nonProjectEventNotProcessed() {
+    Event nonProjectEvent = new Event("non-project-event") {};
     eventHandler.onEvent(nonProjectEvent);
+    verifyZeroInteractions(remoteFactory);
+    verifyZeroInteractions(taskFactory);
     verifyZeroInteractions(postTask);
   }
 }

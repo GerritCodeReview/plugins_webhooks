@@ -39,7 +39,7 @@ public class Configuration {
   private final int threadPoolSize;
 
   @Inject
-  Configuration(PluginConfigFactory config,
+  protected Configuration(PluginConfigFactory config,
       @PluginName String pluginName) {
     PluginConfig cfg = config.getFromGerritConfig(pluginName, true);
     connectionTimeout = getInt(cfg, "connectionTimeout", DEFAULT_TIMEOUT_MS);
@@ -49,7 +49,7 @@ public class Configuration {
     threadPoolSize = getInt(cfg, "threadPoolSize", DEFAULT_THREAD_POOL_SIZE);
   }
 
-  private int getInt(PluginConfig cfg, String name, int defaultValue) {
+  protected int getInt(PluginConfig cfg, String name, int defaultValue) {
     try {
       return cfg.getInt(name, defaultValue);
     } catch (IllegalArgumentException e) {

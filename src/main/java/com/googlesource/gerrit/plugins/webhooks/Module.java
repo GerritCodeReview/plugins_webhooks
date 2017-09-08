@@ -21,9 +21,16 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import com.google.gerrit.common.EventListener;
 import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.registration.DynamicSet;
+import com.google.inject.Inject;
 import com.google.inject.Scopes;
 
 public class Module extends FactoryModule {
+  private final ProcessorModule processors;
+
+  @Inject
+  public Module(ProcessorModule processors) {
+    this.processors = processors;
+  }
 
   @Override
   protected void configure() {
@@ -34,6 +41,9 @@ public class Module extends FactoryModule {
     bind(CloseableHttpClient.class).toProvider(HttpClientProvider.class)
         .in(Scopes.SINGLETON);
     factory(PostTask.Factory.class);
+    factory(RemoteConfig.Factory.class);
     DynamicSet.bind(binder(), EventListener.class).to(EventHandler.class);
+
+    install(processors);
   }
 }
