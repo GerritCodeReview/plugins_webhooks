@@ -42,6 +42,10 @@ remote.NAME.event
   types can be specified, listing event types which should be posted.
   When no event type is configured, all events will be posted.
 
+remote.NAME.type
+: Type of webhook. Currently there is only one webhook-type implementation - Gerrit.
+  When not specified, the default value is `gerrit`.
+
 File 'gerrit.config'
 --------------------
 

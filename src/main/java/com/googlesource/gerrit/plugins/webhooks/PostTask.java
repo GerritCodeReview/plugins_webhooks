@@ -14,9 +14,13 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import com.google.common.base.Strings;
+import com.google.common.base.Supplier;
+import com.google.common.base.Suppliers;
 import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
+
 import java.io.IOException;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -28,14 +32,14 @@ class PostTask implements Runnable {
   private static final Logger log = LoggerFactory.getLogger(PostTask.class);
 
   interface Factory {
-    PostTask create(@Assisted("url") String url, @Assisted("body") String body);
+    PostTask create(@Assisted("url") String url, EventProcessor processor);
   }
 
   private final ScheduledExecutorService executor;
   private final HttpSession session;
   private final Configuration cfg;
   private final String url;
-  private final String body;
+  private final Supplier<String> body;
   private int execCnt;
 
   @AssistedInject
@@ -44,12 +48,19 @@ class PostTask implements Runnable {
       HttpSession session,
       Configuration cfg,
       @Assisted("url") String url,
-      @Assisted("body") String body) {
+      @Assisted EventProcessor processor) {
     this.executor = executor;
     this.session = session;
     this.cfg = cfg;
     this.url = url;
-    this.body = body;
+    this.body =
+        Suppliers.memoize(
+            new Supplier<String>() {
+              @Override
+              public String get() {
+                return processor.process();
+              }
+            });
   }
 
   void schedule() {
@@ -63,8 +74,14 @@ class PostTask implements Runnable {
   @Override
   public void run() {
     try {
+      String content = body.get();
+      if (Strings.isNullOrEmpty(content)) {
+        log.debug("No content. Webhook [{}] skipped.", url);
+        return;
+      }
+
       execCnt++;
-      HttpResult result = session.post(url, body);
+      HttpResult result = session.post(url, content);
       if (!result.successful && execCnt < cfg.getMaxTries()) {
         logRetry(result.message);
         reschedule();
@@ -74,7 +91,7 @@ class PostTask implements Runnable {
         logRetry(e);
         reschedule();
       } else {
-        log.error("Failed to post: {}", body, e);
+        log.error("Failed to post: {}", toString(), e);
       }
     }
   }
@@ -97,6 +114,6 @@ class PostTask implements Runnable {
 
   @Override
   public String toString() {
-    return body;
+    return body.get();
   }
 }
