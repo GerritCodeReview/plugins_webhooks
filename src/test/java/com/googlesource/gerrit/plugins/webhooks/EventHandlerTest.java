@@ -48,6 +48,7 @@ public class EventHandlerTest {
 
   private static final ProjectCreatedEvent PROJECT_CREATED =
       new ProjectCreatedEvent() {
+        @Override
         public NameKey getProjectNameKey() {
           return PROJECT_NAME;
         }
@@ -55,6 +56,7 @@ public class EventHandlerTest {
 
   private static final RefUpdatedEvent REF_UPDATED =
       new RefUpdatedEvent() {
+        @Override
         public NameKey getProjectNameKey() {
           return PROJECT_NAME;
         }
