@@ -48,13 +48,16 @@ public class PostTaskTest {
 
   @Mock private ScheduledThreadPoolExecutor executor;
 
+  @Mock private EventProcessor processor;
+
   private PostTask task;
 
   @Before
   public void setup() {
     when(cfg.getRetryInterval()).thenReturn(RETRY_INTERVAL);
     when(cfg.getMaxTries()).thenReturn(MAX_TRIES);
-    task = new PostTask(executor, session, cfg, WEBHOOK_URL, BODY);
+    when(processor.process()).thenReturn(BODY);
+    task = new PostTask(executor, session, cfg, WEBHOOK_URL, processor);
   }
 
   @Test

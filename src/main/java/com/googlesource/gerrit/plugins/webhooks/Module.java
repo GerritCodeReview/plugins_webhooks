@@ -18,6 +18,7 @@ import com.google.gerrit.common.EventListener;
 import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.inject.Scopes;
+import com.googlesource.gerrit.plugins.webhooks.processors.JenkinsEventProcessor;
 import java.util.concurrent.ScheduledExecutorService;
 import org.apache.http.impl.client.CloseableHttpClient;
 
@@ -32,5 +33,8 @@ public class Module extends FactoryModule {
     bind(CloseableHttpClient.class).toProvider(HttpClientProvider.class).in(Scopes.SINGLETON);
     factory(PostTask.Factory.class);
     DynamicSet.bind(binder(), EventListener.class).to(EventHandler.class);
+
+    DynamicSet.setOf(binder(), EventProcessor.Factory.class);
+    DynamicSet.bind(binder(), EventProcessor.Factory.class).to(JenkinsEventProcessor.Factory.class);
   }
 }
