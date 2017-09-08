@@ -43,7 +43,8 @@ remote.NAME.event
   When no event type is configured, all events will be posted.
 
 remote.NAME.type
-: Type of webhook. Currently there is only one webhook-type implementation - Gerrit.
+: Type of webhook. The following types are supported: `gerrit` - all ProjectEvent
+  events are supported, `github` - only RefUpdatedEvent is initially supported.
   When not specified, the default value is `gerrit`.
 
 File 'gerrit.config'

@@ -30,12 +30,16 @@ public class Configuration {
   private static final int DEFAULT_MAX_TRIES = 5;
   private static final int DEFAULT_RETRY_INTERVAL = 1000;
   private static final int DEFAULT_THREAD_POOL_SIZE = 1;
+  private static final int DEFAULT_GITHUB_PUSH_COMMITS_NO = 1000;
+  private static final int DEFAULT_GITHUB_PUSH_PATHS_NO = 1000;
 
   private final int connectionTimeout;
   private final int socketTimeout;
   private final int maxTries;
   private final int retryInterval;
   private final int threadPoolSize;
+  private final int gitHubPushCommitsNo;
+  private final int gitHubPushPathsNo;
 
   @Inject
   Configuration(PluginConfigFactory config, @PluginName String pluginName) {
@@ -45,6 +49,8 @@ public class Configuration {
     maxTries = getInt(cfg, "maxTries", DEFAULT_MAX_TRIES);
     retryInterval = getInt(cfg, "retryInterval", DEFAULT_RETRY_INTERVAL);
     threadPoolSize = getInt(cfg, "threadPoolSize", DEFAULT_THREAD_POOL_SIZE);
+    gitHubPushCommitsNo = getInt(cfg, "gitHubPushCommitsNo", DEFAULT_GITHUB_PUSH_COMMITS_NO);
+    gitHubPushPathsNo = getInt(cfg, "gitHubPushPathsNo", DEFAULT_GITHUB_PUSH_PATHS_NO);
   }
 
   private int getInt(PluginConfig cfg, String name, int defaultValue) {
@@ -75,5 +81,13 @@ public class Configuration {
 
   public int getThreadPoolSize() {
     return threadPoolSize;
+  }
+
+  public int getGitHubPushCommitsNo() {
+    return gitHubPushCommitsNo;
+  }
+
+  public int getGitHubPushPathsNo() {
+    return gitHubPushPathsNo;
   }
 }

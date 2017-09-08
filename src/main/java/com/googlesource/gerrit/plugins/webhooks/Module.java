@@ -19,6 +19,7 @@ import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.inject.Scopes;
 import com.googlesource.gerrit.plugins.webhooks.processors.GerritEventProcessor;
+import com.googlesource.gerrit.plugins.webhooks.processors.GitHubEventProcessor;
 import java.util.concurrent.ScheduledExecutorService;
 import org.apache.http.impl.client.CloseableHttpClient;
 
@@ -36,5 +37,6 @@ public class Module extends FactoryModule {
 
     DynamicSet.setOf(binder(), EventProcessor.Factory.class);
     DynamicSet.bind(binder(), EventProcessor.Factory.class).to(GerritEventProcessor.Factory.class);
+    install(GitHubEventProcessor.Factory.module());
   }
 }
