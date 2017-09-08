@@ -14,11 +14,13 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
+import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -42,11 +44,17 @@ public class PostTaskTest {
   private static final int RETRY_INTERVAL = 100;
   private static final int MAX_TRIES = 3;
 
+  @Mock private ProjectCreatedEvent projectCreated;
+
+  @Mock private RemoteConfig remote;
+
   @Mock private Configuration cfg;
 
   @Mock private HttpSession session;
 
   @Mock private ScheduledThreadPoolExecutor executor;
+
+  @Mock private EventProcessor processor;
 
   private PostTask task;
 
@@ -54,7 +62,17 @@ public class PostTaskTest {
   public void setup() {
     when(cfg.getRetryInterval()).thenReturn(RETRY_INTERVAL);
     when(cfg.getMaxTries()).thenReturn(MAX_TRIES);
-    task = new PostTask(executor, session, cfg, WEBHOOK_URL, BODY);
+    when(remote.getUrl()).thenReturn(WEBHOOK_URL);
+    when(processor.process(eq(projectCreated), eq(remote))).thenReturn(BODY);
+    task = new PostTask(executor, session, cfg, processor, projectCreated, remote);
+  }
+
+  @Test
+  public void noScheduleOnEmptyBody() throws Exception {
+    when(processor.process(eq(projectCreated), eq(remote))).thenReturn(null);
+    task.run();
+    verifyZeroInteractions(session);
+    verifyZeroInteractions(executor);
   }
 
   @Test
