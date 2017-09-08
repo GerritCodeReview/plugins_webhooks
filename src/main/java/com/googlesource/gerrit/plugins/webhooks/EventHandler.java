@@ -14,39 +14,38 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.REMOTE;
+
+import org.eclipse.jgit.lib.Config;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.base.Strings;
-import com.google.common.base.Supplier;
 import com.google.gerrit.common.EventListener;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectEvent;
-import com.google.gerrit.server.events.SupplierSerializer;
 import com.google.gerrit.server.project.NoSuchProjectException;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.inject.Inject;
-import org.eclipse.jgit.lib.Config;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class EventHandler implements EventListener {
   private static final Logger log = LoggerFactory.getLogger(EventHandler.class);
 
-  private static Gson GSON =
-      new GsonBuilder().registerTypeAdapter(Supplier.class, new SupplierSerializer()).create();
-
   private final PluginConfigFactory configFactory;
   private final String pluginName;
+  RemoteConfig.Factory remoteFactory;
   private final PostTask.Factory taskFactory;
 
   @Inject
   EventHandler(
       PluginConfigFactory configFactory,
       @PluginName String pluginName,
+      RemoteConfig.Factory remoteFactory,
       PostTask.Factory taskFactory) {
     this.configFactory = configFactory;
     this.pluginName = pluginName;
+    this.remoteFactory = remoteFactory;
     this.taskFactory = taskFactory;
   }
 
@@ -70,34 +69,14 @@ class EventHandler implements EventListener {
       return;
     }
 
-    for (String name : cfg.getSubsections("remote")) {
-      String url = cfg.getString("remote", name, "url");
-      if (Strings.isNullOrEmpty(url)) {
+    for (String name : cfg.getSubsections(REMOTE)) {
+      RemoteConfig remote = remoteFactory.create(cfg, name);
+      if (Strings.isNullOrEmpty(remote.getUrl())) {
         log.warn("remote.{}.url not defined, skipping this remote", name);
         continue;
       }
 
-      if (shouldPost(projectEvent, cfg.getStringList("remote", name, "event"))) {
-        post(url, projectEvent);
-      }
+      taskFactory.create(projectEvent, remote).schedule();
     }
-  }
-
-  private boolean shouldPost(ProjectEvent projectEvent, String[] wantedEvents) {
-    if (wantedEvents.length == 0) {
-      return true;
-    }
-
-    for (String type : wantedEvents) {
-      if (!Strings.isNullOrEmpty(type) && type.equals(projectEvent.getType())) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  private void post(final String url, final ProjectEvent projectEvent) {
-    taskFactory.create(url, GSON.toJson(projectEvent)).schedule();
   }
 }
