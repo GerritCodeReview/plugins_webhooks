@@ -5,6 +5,10 @@ def external_plugin_deps():
     name = "mockito",
     artifact = "org.mockito:mockito-core:2.7.21",
     sha1 = "23e9f7bfb9717e849a05b84c29ee3ac723f1a653",
+    deps = [
+      '@byte-buddy//jar',
+      '@objenesis//jar',
+    ],
   )
 
   maven_jar(
