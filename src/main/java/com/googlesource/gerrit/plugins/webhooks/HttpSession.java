@@ -31,10 +31,18 @@ class HttpSession {
     this.httpClient = httpClient;
   }
 
-  HttpResult post(String endpoint, String content) throws IOException {
+  HttpResult post(String endpoint, EventProcessor.Request request) throws IOException {
     HttpPost post = new HttpPost(endpoint);
     post.addHeader("Content-Type", MediaType.JSON_UTF_8.toString());
-    post.setEntity(new StringEntity(content, StandardCharsets.UTF_8));
+    request
+        .headers
+        .entrySet()
+        .stream()
+        .forEach(
+            e -> {
+              post.addHeader(e.getKey(), e.getValue());
+            });
+    post.setEntity(new StringEntity(request.body, StandardCharsets.UTF_8));
     return httpClient.execute(post, new HttpResponseHandler());
   }
 }

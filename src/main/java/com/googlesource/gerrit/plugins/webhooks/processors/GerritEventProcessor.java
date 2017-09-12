@@ -19,14 +19,16 @@ import com.google.gerrit.server.events.ProjectEvent;
 import com.google.gerrit.server.events.SupplierSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.googlesource.gerrit.plugins.webhooks.EventProcessor;
 import com.googlesource.gerrit.plugins.webhooks.RemoteConfig;
+import java.util.Optional;
 
 public class GerritEventProcessor extends AbstractEventProcessor {
   private static Gson GSON =
       new GsonBuilder().registerTypeAdapter(Supplier.class, new SupplierSerializer()).create();
 
   @Override
-  public String doProcess(ProjectEvent event, RemoteConfig remote) {
-    return GSON.toJson(event);
+  public Optional<EventProcessor.Request> doProcess(ProjectEvent event, RemoteConfig remote) {
+    return Optional.of(new EventProcessor.Request(GSON.toJson(event)));
   }
 }
