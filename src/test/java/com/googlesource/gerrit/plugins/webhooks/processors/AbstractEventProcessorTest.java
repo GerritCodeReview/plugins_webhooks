@@ -18,6 +18,8 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
+import java.util.Optional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -28,6 +30,7 @@ import com.google.gerrit.reviewdb.client.Project.NameKey;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.google.gerrit.server.events.ProjectEvent;
 import com.google.gerrit.server.events.RefUpdatedEvent;
+import com.googlesource.gerrit.plugins.webhooks.EventProcessor;
 import com.googlesource.gerrit.plugins.webhooks.RemoteConfig;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -86,9 +89,9 @@ public class AbstractEventProcessorTest {
 
   private class TestEventProcessor extends AbstractEventProcessor {
     @Override
-    public String doProcess(ProjectEvent event, RemoteConfig remote) {
+    public Optional<EventProcessor.Request> doProcess(ProjectEvent event, RemoteConfig remote) {
       // do nothing
-      return null;
+      return Optional.empty();
     }
   }
 }

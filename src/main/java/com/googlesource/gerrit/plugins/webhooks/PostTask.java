@@ -14,7 +14,6 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import com.google.common.base.Strings;
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
 import com.google.gerrit.server.events.ProjectEvent;
@@ -23,6 +22,7 @@ import com.google.inject.assistedinject.AssistedInject;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLException;
@@ -40,7 +40,7 @@ class PostTask implements Runnable {
   private final HttpSession session;
   private final Configuration cfg;
   private final String url;
-  private final Supplier<String> body;
+  private final Supplier<Optional<EventProcessor.Request>> processor;
   private int execCnt;
 
   @AssistedInject
@@ -55,7 +55,7 @@ class PostTask implements Runnable {
     this.session = session;
     this.cfg = cfg;
     this.url = remote.getUrl();
-    this.body = Suppliers.memoize(() -> processor.process(event, remote));
+    this.processor = Suppliers.memoize(() -> processor.process(event, remote));
   }
 
   void schedule() {
@@ -69,14 +69,14 @@ class PostTask implements Runnable {
   @Override
   public void run() {
     try {
-      String content = body.get();
-      if (Strings.isNullOrEmpty(content)) {
+      Optional<EventProcessor.Request> content = processor.get();
+      if (!content.isPresent()) {
         log.debug("No content. Webhook [{}] skipped.", url);
         return;
       }
 
       execCnt++;
-      HttpResult result = session.post(url, content);
+      HttpResult result = session.post(url, content.get().headers, content.get().body);
       if (!result.successful && execCnt < cfg.getMaxTries()) {
         logRetry(result.message);
         reschedule();
@@ -109,6 +109,7 @@ class PostTask implements Runnable {
 
   @Override
   public String toString() {
-    return body.get();
+    Optional<EventProcessor.Request> content = processor.get();
+    return content.isPresent() ? content.get().toString() : "no content";
   }
 }
