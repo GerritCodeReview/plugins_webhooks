@@ -20,6 +20,7 @@ import com.google.gerrit.server.events.SupplierSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.googlesource.gerrit.plugins.webhooks.EventProcessor;
+import java.util.Optional;
 
 public class JenkinsEventProcessor extends AbstractEventProcessor {
   public static class Factory implements EventProcessor.Factory {
@@ -43,7 +44,7 @@ public class JenkinsEventProcessor extends AbstractEventProcessor {
   }
 
   @Override
-  public String process() {
-    return GSON.toJson(event);
+  public Optional<Output> process() {
+    return Optional.of(new EventProcessor.Output(GSON.toJson(event)));
   }
 }
