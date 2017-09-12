@@ -14,8 +14,35 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.Optional;
+
+import com.google.common.base.MoreObjects;
 import com.google.gerrit.server.events.ProjectEvent;
 
 public interface EventProcessor {
-  String process(ProjectEvent event, RemoteConfig remote);
+  public class Result {
+    public final String body;
+    public final Map<String, String> headers;
+
+    public Result(String body) {
+      this(body, null);
+    }
+
+    public Result(String body, Map<String, String> headers) {
+      this.body = body;
+      this.headers = Optional.ofNullable(headers).orElse(Collections.emptyMap());
+    }
+
+    @Override
+    public String toString() {
+      return MoreObjects.toStringHelper(this)
+          .add("headers", headers)
+          .add("body", body)
+          .toString();
+    }
+  }
+
+  Optional<Result> process(ProjectEvent event, RemoteConfig remote);
 }
