@@ -22,15 +22,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
-import java.util.Optional;
-
-import org.eclipse.jgit.lib.Config;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
-
 import com.google.common.collect.ImmutableSet;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.reviewdb.client.Project.NameKey;
@@ -40,6 +31,13 @@ import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.google.gerrit.server.events.ProjectEvent;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.googlesource.gerrit.plugins.webhooks.processors.Factories;
+import java.util.Optional;
+import org.eclipse.jgit.lib.Config;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EventHandlerTest {

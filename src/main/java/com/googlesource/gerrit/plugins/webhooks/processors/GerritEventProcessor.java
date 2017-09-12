@@ -14,6 +14,8 @@
 
 package com.googlesource.gerrit.plugins.webhooks.processors;
 
+import java.util.Optional;
+
 import com.google.common.base.Supplier;
 import com.google.gerrit.server.events.ProjectEvent;
 import com.google.gerrit.server.events.SupplierSerializer;
@@ -43,7 +45,7 @@ public class GerritEventProcessor extends AbstractEventProcessor {
   }
 
   @Override
-  public String process() {
-    return GSON.toJson(event);
+  public Optional<Output> process() {
+    return Optional.of(new EventProcessor.Output(GSON.toJson(event)));
   }
 }

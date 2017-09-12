@@ -14,6 +14,11 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.Optional;
+
+import com.google.common.base.MoreObjects;
 import com.google.gerrit.server.events.ProjectEvent;
 
 public interface EventProcessor {
@@ -23,7 +28,29 @@ public interface EventProcessor {
     String type();
   }
 
+  public class Output {
+    public final String body;
+    public final Map<String, String> headers;
+
+    public Output(String body) {
+      this(body, null);
+    }
+
+    public Output(String body, Map<String, String> headers) {
+      this.body = body;
+      this.headers = Optional.ofNullable(headers).orElse(Collections.emptyMap());
+    }
+
+    @Override
+    public String toString() {
+      return MoreObjects.toStringHelper(this)
+          .add("headers", headers)
+          .add("body", body)
+          .toString();
+    }
+  }
+
   boolean shouldPost(String[] wantedEvents);
 
-  String process();
+  Optional<Output> process();
 }
