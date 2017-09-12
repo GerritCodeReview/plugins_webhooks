@@ -19,6 +19,8 @@ import com.google.inject.Inject;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
+
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -31,9 +33,12 @@ class HttpSession {
     this.httpClient = httpClient;
   }
 
-  HttpResult post(String endpoint, String content) throws IOException {
+  HttpResult post(String endpoint, Map<String, String> headers, String content) throws IOException {
     HttpPost post = new HttpPost(endpoint);
     post.addHeader("Content-Type", MediaType.JSON_UTF_8.toString());
+    headers.entrySet().stream().forEach(e -> {
+      post.addHeader(e.getKey(), e.getValue());
+    });
     post.setEntity(new StringEntity(content, StandardCharsets.UTF_8));
     return httpClient.execute(post, new HttpResponseHandler());
   }
