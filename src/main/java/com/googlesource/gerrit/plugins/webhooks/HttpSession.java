@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.webhooks;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Map.Entry;
 
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -33,10 +34,13 @@ class HttpSession {
     this.httpClient = httpClient;
   }
 
-  HttpResult post(String endpoint, String content) throws IOException {
+  HttpResult post(String endpoint, EventProcessor.Request request) throws IOException {
     HttpPost post = new HttpPost(endpoint);
     post.addHeader("Content-Type", MediaType.JSON_UTF_8.toString());
-    post.setEntity(new StringEntity(content, StandardCharsets.UTF_8));
+    for (Entry<String, String> header : request.headers.entrySet()) {
+      post.addHeader(header.getKey(), header.getValue());
+    }
+    post.setEntity(new StringEntity(request.body, StandardCharsets.UTF_8));
     return httpClient.execute(post, new HttpResponseHandler());
   }
 }

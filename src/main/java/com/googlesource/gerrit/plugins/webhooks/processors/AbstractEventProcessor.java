@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.webhooks.processors;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.google.gerrit.server.events.ProjectEvent;
 import com.googlesource.gerrit.plugins.webhooks.EventProcessor;
@@ -21,7 +22,7 @@ import com.googlesource.gerrit.plugins.webhooks.RemoteConfig;
 
 public abstract class AbstractEventProcessor implements EventProcessor {
   @Override
-  public String process(ProjectEvent event, RemoteConfig remote) {
+  public Optional<EventProcessor.Request> process(ProjectEvent event, RemoteConfig remote) {
     if (!shouldProcess(event, remote)) {
       return null;
     }
@@ -29,7 +30,8 @@ public abstract class AbstractEventProcessor implements EventProcessor {
     return doProcess(event, remote);
   }
 
-  protected abstract String doProcess(ProjectEvent event, RemoteConfig remote);
+  protected abstract Optional<EventProcessor.Request> doProcess(
+      ProjectEvent event, RemoteConfig remote);
 
   protected boolean shouldProcess(ProjectEvent event, RemoteConfig remote) {
     String[] wantedEvents = remote.getEvents();
