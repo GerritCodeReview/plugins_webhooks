@@ -18,6 +18,8 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
+import java.util.Optional;
+
 import org.eclipse.jgit.lib.Config;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -90,7 +92,7 @@ public class AbstractEventProcessorTest {
     }
 
     @Override
-    public String process() {
+    public Optional<Result> process() {
       // do nothing
       return null;
     }

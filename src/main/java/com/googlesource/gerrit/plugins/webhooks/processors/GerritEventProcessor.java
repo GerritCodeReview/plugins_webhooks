@@ -20,6 +20,7 @@ import com.google.gerrit.server.events.SupplierSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.googlesource.gerrit.plugins.webhooks.EventProcessor;
+import java.util.Optional;
 import org.eclipse.jgit.lib.Config;
 
 public class GerritEventProcessor extends AbstractEventProcessor {
@@ -39,7 +40,7 @@ public class GerritEventProcessor extends AbstractEventProcessor {
   }
 
   @Override
-  public String process() {
-    return GSON.toJson(event);
+  public Optional<Result> process() {
+    return Optional.of(new EventProcessor.Result(GSON.toJson(event)));
   }
 }
