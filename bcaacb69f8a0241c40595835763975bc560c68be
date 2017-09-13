@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "c42ef85b_8f59a72e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/FactoryProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-13T14:37:58Z",
+      "side": 1,
+      "message": "1. This is not really a guice Provider, it doesn\u0027t implements the Provider interface\n\n2. The name \"FactoryProvider\" sounds scary :-)\n\nHave you checked the PeerInfoProvider implementation in the high-availability plugin for an\nexample of solving the problem you are trying to solve here?",
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1aa2da_2226caa8",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
