@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "af5fb5d9_f1c39891",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/FactoryProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-13T14:52:57Z",
+      "side": 1,
+      "message": "hmm.. maybe it is not actually a good example as in the HA plugin we want to only instantiate one PeerInfoProvider and here we want to instantiate both factories.\n\nWhy not just declare two @Named factories and inject them both in an UniversalFactory:\n\n  @Inject\n  UniversalFactory(@Named(\"github\") ghFactory, @Named(\"jenkins\") jenkinsFactory) {\n  }\nwhich exposes:\n\n  EventProcessor getProcessor(ProcessorType type, ProjectEvent event) {\n    switch (type) {\n\n      case GITHUB:\n        return ghFactory.create(event);\n      case JENKINS:\n        return jenkinsFactory.create(event);\n      default:\n        throw ...\n    }\n  }",
+      "parentUuid": "c42ef85b_8f59a72e",
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1aa2da_2226caa8",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
