@@ -167,6 +167,24 @@
     },
     {
       "key": {
+        "uuid": "ee547bd7_16078228",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/FactoryProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-09-13T18:22:15Z",
+      "side": 1,
+      "message": "Which would also be for different requirement that I have in mind: dedicated webhooks plugin extension with proprietary types so that I could inject as many implementations as needed :)",
+      "parentUuid": "a8724638_c41cbef8",
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1aa2da_2226caa8",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
