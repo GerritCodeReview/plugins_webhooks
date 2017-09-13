@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a8ad0de6_45c8cbdd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-13T21:07:00Z",
+      "side": 1,
+      "message": "\u003e ... to be more specific want to post GitHub style events to webhook.\n\nYes, I understood that immediately from your series. Still we need a better\nname than \"jenkins\" for the native event types.",
+      "parentUuid": "2de4c2f5_2afbe6e1",
+      "range": {
+        "startLine": 17,
+        "startChar": 46,
+        "endLine": 17,
+        "endChar": 57
+      },
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c42ef85b_8f59a72e",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/FactoryProvider.java",
         "patchSetId": 1
@@ -179,6 +203,42 @@
       "side": 1,
       "message": "Which would also be for different requirement that I have in mind: dedicated webhooks plugin extension with proprietary types so that I could inject as many implementations as needed :)",
       "parentUuid": "a8724638_c41cbef8",
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b73d864_0150614f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/FactoryProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-13T21:07:00Z",
+      "side": 1,
+      "message": "I don\u0027t think it is the main goal here to support hundreds of new formats.",
+      "parentUuid": "ee547bd7_16078228",
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61b76a8e_07f71751",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/FactoryProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-13T21:07:00Z",
+      "side": 1,
+      "message": "\u003e 2. yeah, I wanted to avoid the need for both constructor and switch\n \u003e growing when new formats are being added.\n\nHow many new formats do you expect to be added after Github format is added? I guess zero.\n\nBut, if you don\u0027t like switch statements you can still have a Map of the two (gerrit and github) implementations. I just don\u0027t see what\u0027s the benefit.",
+      "parentUuid": "a322fc44_77e8e816",
       "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
