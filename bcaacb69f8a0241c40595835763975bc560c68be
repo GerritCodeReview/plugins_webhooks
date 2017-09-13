@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5aee3961_47ae918b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-09-13T15:51:59Z",
+      "side": 1,
+      "message": "SSH stream-events does exactly the same and in my experience (which is obviously limited) it is mostly used by GerritTriggerPlugin for Jenkins, hence the name - probably better name would be \u0027native\u0027, but feel free to propose another one I am open :)",
+      "parentUuid": "9b395f68_d9dfebd9",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb00dfc5_23133762",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-13T13:56:55Z",
       "side": 1,
       "message": "why do you assume that Jenkins is the only possible receiver of events distributed via this plugin?",
+      "range": {
+        "startLine": 17,
+        "startChar": 46,
+        "endLine": 17,
+        "endChar": 57
+      },
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2de4c2f5_2afbe6e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-09-13T15:51:59Z",
+      "side": 1,
+      "message": "Jenkins is not the only receiver but it is popular one. Having said that I want to resolve different problem which is: events incompatibility, or to be more specific want to post GitHub style events to webhook.",
+      "parentUuid": "fb00dfc5_23133762",
       "range": {
         "startLine": 17,
         "startChar": 46,
@@ -83,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "a322fc44_77e8e816",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/FactoryProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-09-13T15:51:59Z",
+      "side": 1,
+      "message": "1. Naming can be worked out - I am open\n\n2. yeah, I wanted to avoid the need for both constructor and switch growing when new formats are being added. They get bootstrapped automatically based on registration.",
+      "parentUuid": "af5fb5d9_f1c39891",
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1aa2da_2226caa8",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
@@ -94,6 +160,30 @@
       "writtenOn": "2017-09-13T13:56:55Z",
       "side": 1,
       "message": "Why jenkins? AFAIK Gerrit defines structure of its events, not Jenkins.\nFurther, Jenkins is not the only possible receiver of events.",
+      "range": {
+        "startLine": 47,
+        "startChar": 44,
+        "endLine": 47,
+        "endChar": 51
+      },
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b155e312_47f814e5",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-09-13T15:51:59Z",
+      "side": 1,
+      "message": "already answered in CommitMessage - how about \u0027native\u0027?",
+      "parentUuid": "8e1aa2da_2226caa8",
       "range": {
         "startLine": 47,
         "startChar": 44,
