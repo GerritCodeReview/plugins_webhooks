@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "a8724638_c41cbef8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/FactoryProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-09-13T16:01:32Z",
+      "side": 1,
+      "message": "\u003e 2. yeah, I wanted to avoid the need for both constructor and switch growing when new formats are being added. They get bootstrapped automatically based on registration.\n\nAgain I am open for proposals that could keep it rational and not involve lengthy constructor and switch ;)",
+      "parentUuid": "a322fc44_77e8e816",
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1aa2da_2226caa8",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
