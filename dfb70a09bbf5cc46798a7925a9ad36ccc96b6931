@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afaf392d_102fbf42",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-14T08:09:40Z",
+      "side": 1,
+      "message": "For my understanding: what is the purpose of this code?\nIf we would store the processor in an instance member (instead of the body) and call\nprocessor.process() at the line 77 wouldn\u0027t that also work?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 15
+      },
+      "revId": "dfb70a09bbf5cc46798a7925a9ad36ccc96b6931",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
