@@ -263,6 +263,24 @@
     },
     {
       "key": {
+        "uuid": "2532d7e7_fb0b1452",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/FactoryProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-14T09:23:41Z",
+      "side": 1,
+      "message": "\u003e * another part of it is that I need slightly modified version of GitHubEventProcessor with TeamForge integration specific data (that is why all classes there are public and have protected constructors ;)) but I see benefits in having it opened - people can adopt Gerrit and reuse it with theirs GitHub tooling\n\nLong term, who is going to maintain this translation of Gerrit events to Github events?\nThis is likely not possible to all Gerrit events but only for some.\nDo you want to document which exactly events are translated and to which Github events version?\nOtherwise, whenever Github changes format of some events we will get complaints that our\ntranslation doesn\u0027t work well.",
+      "parentUuid": "d57f6704_4547dc13",
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1aa2da_2226caa8",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
