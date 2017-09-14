@@ -245,6 +245,24 @@
     },
     {
       "key": {
+        "uuid": "d57f6704_4547dc13",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/FactoryProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-09-14T08:33:11Z",
+      "side": 1,
+      "message": "It is not, right. So let me elaborate how I am using it so that we could find better way to do it ;)\n\nWhat I do is:\n* build webhooks and install it in mvn repo\n* include it in proprietary plugin\n* create EventProcessor implementation\n* create Module that installs webhooks module and adds DynamicSet.bind(binder(), EventProcessor.Factory.class).to(MyEventProcessor.Factory.class);\n* and it is done - this way it is not harming open source version and we avoid webhooks plugin fork\n* another part of it is that I need slightly modified version of GitHubEventProcessor with TeamForge integration specific data (that is why all classes there are public and have protected constructors ;)) but I see benefits in having it opened - people can adopt Gerrit and reuse it with theirs GitHub tooling - buy this is totally up to the community if it gets accepted or not - as long as I can seamlessly plug it in (through mechanism described above or similar) I am happy ;)",
+      "parentUuid": "8b73d864_0150614f",
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1aa2da_2226caa8",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
