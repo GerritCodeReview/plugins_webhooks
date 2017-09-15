@@ -281,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "0fbc00fc_4f90a6d8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/FactoryProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-09-15T06:31:04Z",
+      "side": 1,
+      "message": "\u003e Long term, who is going to maintain this translation of Gerrit events to Github events?\n\nI will further events on our internal demand\n\n\u003e This is likely not possible to all Gerrit events but only for some.\n\u003e Do you want to document which exactly events are translated and to which Github events version?\n\u003e Otherwise, whenever Github changes format of some events we will get complaints that our translation doesn\u0027t work well.\n\nI will document it in the change in question. I am aware that it will never be as good as real events from GitHub but would say that for many tools it will be enough to do what they are supposed to do. OTOH if we decide that it is not good enough, as long as I can plug it into plugin, it doesn\u0027t have to be in community version ;)",
+      "parentUuid": "2532d7e7_fb0b1452",
+      "revId": "bcaacb69f8a0241c40595835763975bc560c68be",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1aa2da_2226caa8",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
