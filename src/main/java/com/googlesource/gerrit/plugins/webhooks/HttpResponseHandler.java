@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import static javax.servlet.http.HttpServletResponse.SC_CREATED;
 import static javax.servlet.http.HttpServletResponse.SC_NO_CONTENT;
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
@@ -47,7 +48,7 @@ class HttpResponseHandler implements ResponseHandler<HttpResult> {
 
   private boolean isSuccessful(HttpResponse response) {
     int sc = response.getStatusLine().getStatusCode();
-    return sc == SC_NO_CONTENT || sc == SC_OK;
+    return sc == SC_CREATED || sc == SC_NO_CONTENT || sc == SC_OK;
   }
 
   private String parseResponse(HttpResponse response) {
