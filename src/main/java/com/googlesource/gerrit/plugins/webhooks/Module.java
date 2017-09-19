@@ -28,7 +28,6 @@ public class Module extends FactoryModule {
     bind(ScheduledExecutorService.class)
         .annotatedWith(WebHooksExecutor.class)
         .toProvider(ExecutorProvider.class);
-    bind(Configuration.class).in(Scopes.SINGLETON);
     bind(CloseableHttpClient.class).toProvider(HttpClientProvider.class).in(Scopes.SINGLETON);
     factory(PostTask.Factory.class);
     DynamicSet.bind(binder(), EventListener.class).to(EventHandler.class);
