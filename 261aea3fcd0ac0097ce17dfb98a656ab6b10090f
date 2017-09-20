@@ -1,0 +1,399 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9497f749_775b0caf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "rephrase: However, enabling implementation of different formats may be useful.",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2431eeac_880ae0bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "Really? How often?",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93691c52_66f9a355",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "Empty line above",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9649f6a8_9f877623",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "configuration type or format type?",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7febf99_4bf1b425",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "which place are you referring to?\n\nremove the text in parentheses?",
+      "range": {
+        "startLine": 12,
+        "startChar": 59,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b086a2ee_5626f573",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "event to HTTP request translation",
+      "range": {
+        "startLine": 14,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b087685_46f26472",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "Is there any subclass of Configuration in this change? If not remove \"protected\"",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d90b16a0_b0007bbf",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5185a155_60e22c9f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "It feels strange to call shouldPost but not pass the event itself as a parameter.\nThis would feel more natural if this would be:\n\n  processor.shouldPost(projectEvent)\n\nThe processor should be able to get the Configuration injected and can get the list of wanted events on its own.",
+      "range": {
+        "startLine": 87,
+        "startChar": 10,
+        "endLine": 87,
+        "endChar": 73
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5266ad8_05a025ee",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "shouldPost or shouldProcess?\nWhatever you choose, it should be compatible with the method name in the list 28",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f241d4f_a3934410",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "I think it would be better if the Event is passed here as a parameter and not given to the Factory.create method. After all, the API of the EventProcessor interface should have reference to the Event somewhere in its method signature(s)?",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3ac4ea5_a38207db",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/Factories.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "If we want to have this kind of constants then they all belong to the Configuration class.",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bf907c6_d327c97d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/Factories.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "REMOTE",
+      "range": {
+        "startLine": 28,
+        "startChar": 29,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43e7ec0_f7089b68",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/Factories.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "parentheses not needed",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff96780d_0c2b9b4e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/Factories.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "Can we use DynamicMap of EventProcessor.Factory instead of DynamicSet and avoid this translation of DynamicSet to Map here?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c79fdb_212b9d96",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/GerritEventProcessor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "Probably minor issue but this will create a new instance every time this method is called.\nIf this would be a Provider\u003cEventProcessor\u003e then we could bind it in SINGLETON scope and guice would care to instantiate only one instance. We don\u0027t need more than one instance of the GerritEventProcessor.",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13de816d_858b444e",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "format",
+      "range": {
+        "startLine": 46,
+        "startChar": 55,
+        "endLine": 46,
+        "endChar": 59
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f90ada28_e1a945da",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "Event format",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebb02411_1df18915",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-09-20T18:13:08Z",
+      "side": 1,
+      "message": "It is difficult to justify existence of an option with only one possible value which when not specified again assumes exactly that value.\n\nAFAIR you need to make the code extensible so that you can implement a different format in your fork. Can you also introduce this configuration option in your fork?",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
