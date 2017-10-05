@@ -157,6 +157,30 @@
     },
     {
       "key": {
+        "uuid": "3bf78553_cf2e3662",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "If I remove protected I cannot extend it in my version of plugin hence I cannot effectively introduce another configuration parameters",
+      "parentUuid": "0b087685_46f26472",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d90b16a0_b0007bbf",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
         "patchSetId": 3
@@ -168,6 +192,24 @@
       "writtenOn": "2017-09-20T18:13:08Z",
       "side": 1,
       "message": "same here",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "303e640d_bef80f30",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "as above - I have to redefine this method again :/",
+      "parentUuid": "d90b16a0_b0007bbf",
       "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
@@ -197,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "19e59c5c_8e94338a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "The idea is to create Event based processor that contains also reference to particular remote and config (that way processor is responsible for getting of what is needed. Adding processor specific options to remote is also possible in such case).",
+      "parentUuid": "5185a155_60e22c9f",
+      "range": {
+        "startLine": 87,
+        "startChar": 10,
+        "endLine": 87,
+        "endChar": 73
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5266ad8_05a025ee",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
         "patchSetId": 3
@@ -214,6 +280,24 @@
     },
     {
       "key": {
+        "uuid": "cbf09a43_9ebd4d98",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "shouldProcess",
+      "parentUuid": "e5266ad8_05a025ee",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f241d4f_a3934410",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
         "patchSetId": 3
@@ -225,6 +309,24 @@
       "writtenOn": "2017-09-20T18:13:08Z",
       "side": 1,
       "message": "I think it would be better if the Event is passed here as a parameter and not given to the Factory.create method. After all, the API of the EventProcessor interface should have reference to the Event somewhere in its method signature(s)?",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a344e9cf_466a3865",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "I believe that passing event to processor when it gets created eliminates the need of taking the same decision in 2 places. Let me elaborate:\nimagine that you have more than one processor types (that depends on remote\u0027s configuration) than you have to select it twice: first in shouldProcess() method and later in process() again following the same logic and it just hurts :).",
+      "parentUuid": "5f241d4f_a3934410",
       "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
@@ -271,6 +373,48 @@
     },
     {
       "key": {
+        "uuid": "7ceec8a5_f1b8a4f3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/Factories.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3ac4ea5_a38207db",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3d4928d_f2b688ce",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/Factories.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bf907c6_d327c97d",
+      "range": {
+        "startLine": 28,
+        "startChar": 29,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a43e7ec0_f7089b68",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/Factories.java",
         "patchSetId": 3
@@ -282,6 +426,30 @@
       "writtenOn": "2017-09-20T18:13:08Z",
       "side": 1,
       "message": "parentheses not needed",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69fb7b0b_1acedd8e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/Factories.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "not relevant",
+      "parentUuid": "a43e7ec0_f7089b68",
       "range": {
         "startLine": 36,
         "startChar": 8,
@@ -317,6 +485,30 @@
     },
     {
       "key": {
+        "uuid": "dd5cf1ab_9d7bcf97",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/Factories.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "removed this all implementation from EventProcessor proposal - it was hard to rationalise some design decisions related to it and in fact it was not needed. New commit message provides explanation of what and why is happening ;)",
+      "parentUuid": "ff96780d_0c2b9b4e",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42c79fdb_212b9d96",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/GerritEventProcessor.java",
         "patchSetId": 3
@@ -328,6 +520,24 @@
       "writtenOn": "2017-09-20T18:13:08Z",
       "side": 1,
       "message": "Probably minor issue but this will create a new instance every time this method is called.\nIf this would be a Provider\u003cEventProcessor\u003e then we could bind it in SINGLETON scope and guice would care to instantiate only one instance. We don\u0027t need more than one instance of the GerritEventProcessor.",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df2248bd_bf9f373a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/processors/GerritEventProcessor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "I have moved logic that is responsible for taking the decision about whether particular event should be processed or not from EventHandler to AbstractEventProcessor (main rationale is that I can extend it without touching EventHandler) therefore Event context is needed (and I have also explained why I believe it is ok to actually create processor for Event \u0026 Remote in [1] and [2]). From resources perspective it is just a wrapper to call static GSON - IOW no heavy resource mangling is done.\n\n[1] https://gerrit-review.googlesource.com/c/plugins/webhooks/+/127030/3/src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java#87\n\n[2] https://gerrit-review.googlesource.com/c/plugins/webhooks/+/127030/3/src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java#28",
+      "parentUuid": "42c79fdb_212b9d96",
       "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
@@ -380,6 +590,54 @@
     },
     {
       "key": {
+        "uuid": "68da6868_a71e90dd",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "not relevant anymore - see line #47 comment",
+      "parentUuid": "13de816d_858b444e",
+      "range": {
+        "startLine": 46,
+        "startChar": 55,
+        "endLine": 46,
+        "endChar": 59
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "791656ca_91cdc44e",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "not relevant anymore - see line #47 comment",
+      "parentUuid": "f90ada28_e1a945da",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebb02411_1df18915",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 3
@@ -391,6 +649,24 @@
       "writtenOn": "2017-09-20T18:13:08Z",
       "side": 1,
       "message": "It is difficult to justify existence of an option with only one possible value which when not specified again assumes exactly that value.\n\nAFAIR you need to make the code extensible so that you can implement a different format in your fork. Can you also introduce this configuration option in your fork?",
+      "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e427a87c_a8ff5f74",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:42:53Z",
+      "side": 1,
+      "message": "Removed this section as it will be done through plugin extension",
+      "parentUuid": "ebb02411_1df18915",
       "revId": "261aea3fcd0ac0097ce17dfb98a656ab6b10090f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
