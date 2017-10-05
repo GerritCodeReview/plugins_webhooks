@@ -22,6 +22,30 @@
       "revId": "6074df2ec1e5357d4ff3b93cabcdfb3495b9050a",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71dc89dd_d0141f46",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-05T13:43:01Z",
+      "side": 1,
+      "message": "Yeah :) HttpRequest is to common and could be wrongly understood have decided to be call it Result that comes along with process IMHO ;)",
+      "parentUuid": "638e035d_f77838e5",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "6074df2ec1e5357d4ff3b93cabcdfb3495b9050a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
