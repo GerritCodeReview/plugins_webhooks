@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map.Entry;
 
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -34,13 +35,22 @@ class HttpSession {
     this.httpClient = httpClient;
   }
 
-  HttpResult post(String endpoint, EventProcessor.Request request) throws IOException {
-    HttpPost post = new HttpPost(endpoint);
+  HttpResult post(RemoteConfig remote, EventProcessor.Request request) throws IOException {
+    HttpPost post = new HttpPost(remote.getUrl());
     post.addHeader("Content-Type", MediaType.JSON_UTF_8.toString());
+    post.setConfig(getConfig(remote));
     for (Entry<String, String> header : request.headers.entrySet()) {
       post.addHeader(header.getKey(), header.getValue());
     }
     post.setEntity(new StringEntity(request.body, StandardCharsets.UTF_8));
     return httpClient.execute(post, new HttpResponseHandler());
+  }
+
+  private RequestConfig getConfig(RemoteConfig remote) {
+    return RequestConfig.custom()
+        .setConnectTimeout(remote.getConnectionTimeout())
+        .setConnectionRequestTimeout(remote.getConnectionTimeout())
+        .setSocketTimeout(remote.getSocketTimeout())
+        .build();
   }
 }

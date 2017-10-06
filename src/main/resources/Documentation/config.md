@@ -1,24 +1,6 @@
 @PLUGIN@ Configuration
 =========================
 
-The @PLUGIN@ plugin's per project configuration is stored in the
-`webhooks.config` file in project's `refs/meta/config` branch.
-For example, to propagate all events to `https://foo.org/gerrit-events`
-and propagate only `patchset-created` and `ref-updated` events to
-`https://bar.org/`:
-
-```
-[remote "foo"]
-  url = https://foo.org/gerrit-events
-
-[remote "bar"]
-  url = https://bar.org/
-  event = patchset-created
-  event = ref-updated
-```
-
-The configuration is inheritable.
-
 Global @PLUGIN@ plugin configuration is stored in the `gerrit.config` file.
 An example global @PLUGIN@ configuration section:
 
@@ -31,16 +13,26 @@ An example global @PLUGIN@ configuration section:
   threadPoolSize = 3
 ```
 
-File 'webhooks.config'
-----------------------
+The @PLUGIN@ plugin's per project configuration is stored in the
+`@PLUGIN@.config` file in project's `refs/meta/config` branch.
+For example, to propagate all events to `https://foo.org/gerrit-events`
+and propagate only `patchset-created` and `ref-updated` events to
+`https://bar.org/`:
 
-remote.NAME.url
-: Address of the remote server to post events to.
+```
+[remote "foo"]
+  url = https://foo.org/gerrit-events
+  maxTries = 3
 
-remote.NAME.event
-: Type of the event which will be posted to the remote url. Multiple event
-  types can be specified, listing event types which should be posted.
-  When no event type is configured, all events will be posted.
+[remote "bar"]
+  url = https://bar.org/
+  event = patchset-created
+  event = ref-updated
+```
+
+The configuration is inheritable. Connection parameters
+`connectionTimeout`, `socketTimeout`, `maxTries` and `retryInterval`
+can be fine-tuned at remote level.
 
 File 'gerrit.config'
 --------------------
@@ -67,3 +59,33 @@ File 'gerrit.config'
 @PLUGIN@.threadPoolSize
 :   Maximum number of threads used to send events to the target instance.
     Defaults to 2.
+
+File '@PLUGIN@.config'
+----------------------
+
+remote.NAME.url
+: Address of the remote server to post events to.
+
+remote.NAME.event
+: Type of the event which will be posted to the remote url. Multiple event
+  types can be specified, listing event types which should be posted.
+  When no event type is configured, all events will be posted.
+
+remote.NAME.connectionTimeout
+: Maximum interval of time in milliseconds the plugin waits for a connection
+  to the target instance. When not specified, the default value is derrived
+  from global configuration.
+
+remote.NAME.socketTimeout
+: Maximum interval of time in milliseconds the plugin waits for a response from the
+  target instance once the connection has been established. When not specified,
+  the default value is derrived from global configuration.
+
+remote.NAME.maxTries
+: Maximum number of times the plugin should attempt when posting an event to
+  the target url. Setting this value to 0 will disable retries. When not
+  specified, the default value is derrived from global configuration.
+
+remote.NAME.retryInterval
+: The interval of time in milliseconds between the subsequent auto-retries.
+  When not specified, the default value is derrived from global configuration.
