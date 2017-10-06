@@ -66,11 +66,11 @@ public class PostTaskTest {
 
   @Before
   public void setup() {
-    when(cfg.getRetryInterval()).thenReturn(RETRY_INTERVAL);
-    when(cfg.getMaxTries()).thenReturn(MAX_TRIES);
+    when(remote.getRetryInterval()).thenReturn(RETRY_INTERVAL);
+    when(remote.getMaxTries()).thenReturn(MAX_TRIES);
     when(remote.getUrl()).thenReturn(WEBHOOK_URL);
     when(processor.process(eq(projectCreated), eq(remote))).thenReturn(CONTENT);
-    task = new PostTask(executor, session, cfg, processor, projectCreated, remote);
+    task = new PostTask(executor, session, processor, projectCreated, remote);
   }
 
   @Test
@@ -83,35 +83,35 @@ public class PostTaskTest {
 
   @Test
   public void noRescheduleOnSuccess() throws IOException {
-    when(session.post(WEBHOOK_URL, HEADERS, BODY)).thenReturn(OK_RESULT);
+    when(session.post(WEBHOOK_URL, HEADERS, remote, BODY)).thenReturn(OK_RESULT);
     task.run();
     verifyZeroInteractions(executor);
   }
 
   @Test
   public void noRescheduleOnNonRecoverableException() throws IOException {
-    when(session.post(WEBHOOK_URL, HEADERS, BODY)).thenThrow(SSLException.class);
+    when(session.post(WEBHOOK_URL, HEADERS, remote, BODY)).thenThrow(SSLException.class);
     task.run();
     verifyZeroInteractions(executor);
   }
 
   @Test
   public void rescheduleOnError() throws IOException {
-    when(session.post(WEBHOOK_URL, HEADERS, BODY)).thenReturn(ERR_RESULT);
+    when(session.post(WEBHOOK_URL, HEADERS, remote, BODY)).thenReturn(ERR_RESULT);
     task.run();
     verify(executor, times(1)).schedule(task, RETRY_INTERVAL, TimeUnit.MILLISECONDS);
   }
 
   @Test
   public void rescheduleOnRecoverableException() throws IOException {
-    when(session.post(WEBHOOK_URL, HEADERS, BODY)).thenThrow(IOException.class);
+    when(session.post(WEBHOOK_URL, HEADERS, remote, BODY)).thenThrow(IOException.class);
     task.run();
     verify(executor, times(1)).schedule(task, RETRY_INTERVAL, TimeUnit.MILLISECONDS);
   }
 
   @Test
   public void keepReschedulingMaxTriesTimes() throws IOException {
-    when(session.post(WEBHOOK_URL, HEADERS, BODY)).thenThrow(IOException.class);
+    when(session.post(WEBHOOK_URL, HEADERS, remote, BODY)).thenThrow(IOException.class);
     when(executor.schedule(task, RETRY_INTERVAL, TimeUnit.MILLISECONDS))
         .then(
             new Answer<Void>() {
