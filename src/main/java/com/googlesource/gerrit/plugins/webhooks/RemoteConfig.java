@@ -25,12 +25,20 @@ public class RemoteConfig {
 
   public static final String REMOTE = "remote";
 
+  static final String CONNECTION_TIMEOUT = "connectionTimeout";
+  static final String SOCKET_TIMEOUT = "socketTimeout";
+  static final String MAX_TRIES = "maxTries";
+  static final String RETRY_INTERVAL = "retryInterval";
+
+  private final Configuration global;
   private final Config config;
   private final String url;
   private final String name;
 
   @Inject
-  RemoteConfig(@Assisted("config") Config config, @Assisted("name") String name) {
+  RemoteConfig(
+      Configuration global, @Assisted("config") Config config, @Assisted("name") String name) {
+    this.global = global;
     this.config = config;
     this.name = name;
     this.url = config.getString(REMOTE, name, "url");
@@ -44,9 +52,29 @@ public class RemoteConfig {
     return config.getStringList(REMOTE, name, "event");
   }
 
+  public int getConnectionTimeout() {
+    return config.getInt(REMOTE, name, CONNECTION_TIMEOUT, global.getConnectionTimeout());
+  }
+
+  public int getSocketTimeout() {
+    return config.getInt(REMOTE, name, SOCKET_TIMEOUT, global.getSocketTimeout());
+  }
+
+  public int getMaxTries() {
+    return config.getInt(REMOTE, name, MAX_TRIES, global.getMaxTries());
+  }
+
+  public int getRetryInterval() {
+    return config.getInt(REMOTE, name, RETRY_INTERVAL, global.getRetryInterval());
+  }
+
   // methods were added in order to make configuration
   // extensible in EvenptProcessor implementations
-  public Config getConfig() {
+  public Configuration getGlobal() {
+    return global;
+  }
+
+  public Config getEffective() {
     return config;
   }
 
