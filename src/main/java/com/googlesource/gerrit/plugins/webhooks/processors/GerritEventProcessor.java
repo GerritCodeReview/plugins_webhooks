@@ -20,14 +20,14 @@ import com.google.gerrit.server.events.SupplierSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.googlesource.gerrit.plugins.webhooks.EventProcessor;
+import com.googlesource.gerrit.plugins.webhooks.RemoteConfig;
 import java.util.Optional;
-import org.eclipse.jgit.lib.Config;
 
 public class GerritEventProcessor extends AbstractEventProcessor {
   public static class Factory implements EventProcessor.Factory {
     @Override
-    public GerritEventProcessor create(ProjectEvent event, Config cfg, String name) {
-      return new GerritEventProcessor(event, cfg, name);
+    public GerritEventProcessor create(ProjectEvent event, RemoteConfig remote) {
+      return new GerritEventProcessor(event, remote);
     }
   }
 
@@ -35,8 +35,8 @@ public class GerritEventProcessor extends AbstractEventProcessor {
   private static Gson GSON =
       new GsonBuilder().registerTypeAdapter(Supplier.class, new SupplierSerializer()).create();
 
-  GerritEventProcessor(ProjectEvent event, Config cfg, String name) {
-    super(event, cfg, name);
+  GerritEventProcessor(ProjectEvent event, RemoteConfig remote) {
+    super(event, remote);
   }
 
   @Override

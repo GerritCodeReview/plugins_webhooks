@@ -14,8 +14,6 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import org.eclipse.jgit.lib.Config;
-
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
@@ -25,7 +23,7 @@ import com.google.gerrit.server.events.ProjectEvent;
 
 public interface EventProcessor {
   public interface Factory {
-    EventProcessor create(ProjectEvent event, Config cfg, String name);
+    EventProcessor create(ProjectEvent event, RemoteConfig remote);
   }
 
   public class Result {

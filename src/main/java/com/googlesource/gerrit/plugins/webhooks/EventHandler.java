@@ -14,7 +14,7 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import static com.googlesource.gerrit.plugins.webhooks.Configuration.REMOTE;
+import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.REMOTE;
 
 import org.eclipse.jgit.lib.Config;
 import org.slf4j.Logger;
@@ -36,17 +36,20 @@ class EventHandler implements EventListener {
   private final String pluginName;
   private final PostTask.Factory taskFactory;
   private final EventProcessor.Factory processorFactory;
+  private final RemoteConfig.Factory remoteFactory;
 
   @Inject
   EventHandler(
       PluginConfigFactory configFactory,
       @PluginName String pluginName,
       PostTask.Factory taskFactory,
-      EventProcessor.Factory processorFactory) {
+      EventProcessor.Factory processorFactory,
+      RemoteConfig.Factory remoteFactory) {
     this.configFactory = configFactory;
     this.pluginName = pluginName;
     this.taskFactory = taskFactory;
     this.processorFactory = processorFactory;
+    this.remoteFactory = remoteFactory;
   }
 
   @Override
@@ -70,20 +73,20 @@ class EventHandler implements EventListener {
     }
 
     for (String name : cfg.getSubsections(REMOTE)) {
-      String url = cfg.getString(REMOTE, name, "url");
-      if (Strings.isNullOrEmpty(url)) {
+      RemoteConfig remote = remoteFactory.create(cfg, name);
+      if (Strings.isNullOrEmpty(remote.getUrl())) {
         log.warn("remote.{}.url not defined, skipping this remote", name);
         continue;
       }
 
-      EventProcessor processor = processorFactory.create(projectEvent, cfg, name);
+      EventProcessor processor = processorFactory.create(projectEvent, remote);
       if (processor.shouldProcess()) {
-        post(url, processor);
+        post(remote, processor);
       }
     }
   }
 
-  private void post(String url, EventProcessor processor) {
-    taskFactory.create(url, processor).schedule();
+  private void post(RemoteConfig remote, EventProcessor processor) {
+    taskFactory.create(remote, processor).schedule();
   }
 }

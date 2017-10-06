@@ -15,12 +15,10 @@
 package com.googlesource.gerrit.plugins.webhooks.processors;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
 
-import org.eclipse.jgit.lib.Config;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -31,14 +29,12 @@ import com.google.gerrit.reviewdb.client.Project.NameKey;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.google.gerrit.server.events.ProjectEvent;
 import com.google.gerrit.server.events.RefUpdatedEvent;
+import com.googlesource.gerrit.plugins.webhooks.RemoteConfig;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AbstractEventProcessorTest {
   private static final String PROJECT = "p";
   private static final Project.NameKey PROJECT_NAME = new Project.NameKey(PROJECT);
-  private static final String REMOTE = "remote";
-  private static final String FOO = "foo";
-  private static final String EVENT = "event";
 
   private static final ProjectCreatedEvent PROJECT_CREATED =
       new ProjectCreatedEvent() {
@@ -56,39 +52,39 @@ public class AbstractEventProcessorTest {
         }
       };
 
-  @Mock private Config config;
+  @Mock private RemoteConfig remote;
 
   @Test
   public void eventsNotSpecifiedAllEventsShouldPost() throws Exception {
-    when(config.getStringList(eq(REMOTE), eq(FOO), eq(EVENT))).thenReturn(new String[] {});
-    AbstractEventProcessor objectUnderTest = new TestEventProcessor(PROJECT_CREATED, config, FOO);
+    when(remote.getEvents()).thenReturn(new String[] {});
+    AbstractEventProcessor objectUnderTest = new TestEventProcessor(PROJECT_CREATED, remote);
     boolean actual = objectUnderTest.shouldProcess();
     assertThat(actual).isTrue();
 
-    objectUnderTest = new TestEventProcessor(REF_UPDATED, config, FOO);
+    objectUnderTest = new TestEventProcessor(REF_UPDATED, remote);
     actual = objectUnderTest.shouldProcess();
     assertThat(actual).isTrue();
   }
 
   @Test
   public void specifiedEventTypesShouldPost() throws Exception {
-    when(config.getStringList(eq(REMOTE), eq(FOO), eq(EVENT))).thenReturn(new String[] {"project-created"});
-    AbstractEventProcessor objectUnderTest = new TestEventProcessor(PROJECT_CREATED, config, FOO);
+    when(remote.getEvents()).thenReturn(new String[] {"project-created"});
+    AbstractEventProcessor objectUnderTest = new TestEventProcessor(PROJECT_CREATED, remote);
     boolean actual = objectUnderTest.shouldProcess();
     assertThat(actual).isTrue();
   }
 
   @Test
   public void nonSpecifiedProjectEventTypesNotPosted() throws Exception {
-    when(config.getStringList(eq(REMOTE), eq(FOO), eq(EVENT))).thenReturn(new String[] {"project-created"});
-    AbstractEventProcessor objectUnderTest = new TestEventProcessor(REF_UPDATED, config, FOO);
+    when(remote.getEvents()).thenReturn(new String[] {"project-created"});
+    AbstractEventProcessor objectUnderTest = new TestEventProcessor(REF_UPDATED, remote);
     boolean actual = objectUnderTest.shouldProcess();
     assertThat(actual).isFalse();
   }
 
   private class TestEventProcessor extends AbstractEventProcessor {
-    protected TestEventProcessor(ProjectEvent event, Config cfg, String name) {
-      super(event, cfg, name);
+    protected TestEventProcessor(ProjectEvent event, RemoteConfig remote) {
+      super(event, remote);
     }
 
     @Override

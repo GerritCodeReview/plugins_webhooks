@@ -39,6 +39,7 @@ public class Module extends FactoryModule {
         .toProvider(ExecutorProvider.class);
     bind(CloseableHttpClient.class).toProvider(HttpClientProvider.class).in(Scopes.SINGLETON);
     factory(PostTask.Factory.class);
+    factory(RemoteConfig.Factory.class);
     DynamicSet.bind(binder(), EventListener.class).to(EventHandler.class);
 
     install(processors);

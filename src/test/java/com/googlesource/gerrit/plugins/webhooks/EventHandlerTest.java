@@ -15,7 +15,6 @@
 package com.googlesource.gerrit.plugins.webhooks;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -45,7 +44,6 @@ public class EventHandlerTest {
   private static final String PLUGIN = "webhooks";
   private static final String REMOTE = "remote";
   private static final String FOO = "foo";
-  private static final String URL = "url";
   private static final String FOO_URL = "foo-url";
 
   private static final ProjectCreatedEvent PROJECT_CREATED =
@@ -66,6 +64,10 @@ public class EventHandlerTest {
 
   @Mock private EventProcessor processor;
 
+  @Mock private RemoteConfig remote;
+
+  @Mock private RemoteConfig.Factory remoteFactory;
+
   @Mock private Config config;
 
   private EventHandler eventHandler;
@@ -74,9 +76,10 @@ public class EventHandlerTest {
   public void setup() throws NoSuchProjectException {
     when(configFactory.getProjectPluginConfigWithInheritance(PROJECT_NAME, PLUGIN))
         .thenReturn(config);
-    when(factory.create(any(ProjectEvent.class), eq(config), eq(FOO))).thenReturn(processor);
-    when(taskFactory.create(anyString(), eq(processor))).thenReturn(postTask);
-    eventHandler = new EventHandler(configFactory, PLUGIN, taskFactory, factory);
+    when(factory.create(any(ProjectEvent.class), eq(remote))).thenReturn(processor);
+    when(taskFactory.create(eq(remote), eq(processor))).thenReturn(postTask);
+    when(remoteFactory.create(any(Config.class), eq(FOO))).thenReturn(remote);
+    eventHandler = new EventHandler(configFactory, PLUGIN, taskFactory, factory, remoteFactory);
   }
 
   @Test
@@ -116,6 +119,6 @@ public class EventHandlerTest {
 
   private void mockConfig() {
     when(config.getSubsections(eq(REMOTE))).thenReturn(ImmutableSet.of(FOO));
-    when(config.getString(eq(REMOTE), eq(FOO), eq(URL))).thenReturn(FOO_URL);
+    when(remote.getUrl()).thenReturn(FOO_URL);
   }
 }

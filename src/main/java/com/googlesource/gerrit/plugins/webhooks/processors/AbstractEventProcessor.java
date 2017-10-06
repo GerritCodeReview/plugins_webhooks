@@ -16,24 +16,21 @@ package com.googlesource.gerrit.plugins.webhooks.processors;
 
 import com.google.common.base.Strings;
 import com.google.gerrit.server.events.ProjectEvent;
-import com.googlesource.gerrit.plugins.webhooks.Configuration;
 import com.googlesource.gerrit.plugins.webhooks.EventProcessor;
-import org.eclipse.jgit.lib.Config;
+import com.googlesource.gerrit.plugins.webhooks.RemoteConfig;
 
 public abstract class AbstractEventProcessor implements EventProcessor {
   protected final ProjectEvent event;
-  protected final Config cfg;
-  protected final String name;
+  protected final RemoteConfig remote;
 
-  protected AbstractEventProcessor(ProjectEvent event, Config cfg, String name) {
+  protected AbstractEventProcessor(ProjectEvent event, RemoteConfig remote) {
     this.event = event;
-    this.cfg = cfg;
-    this.name = name;
+    this.remote = remote;
   }
 
   @Override
   public boolean shouldProcess() {
-    String[] wantedEvents = cfg.getStringList(Configuration.REMOTE, name, "event");
+    String[] wantedEvents = remote.getEvents();
     if (wantedEvents.length == 0) {
       return true;
     }

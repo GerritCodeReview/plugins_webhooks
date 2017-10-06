@@ -24,8 +24,6 @@ import org.slf4j.LoggerFactory;
 
 @Singleton
 public class Configuration {
-  public static final String REMOTE = "remote";
-
   private static final Logger log = LoggerFactory.getLogger(Configuration.class);
 
   private static final int DEFAULT_TIMEOUT_MS = 5000;
@@ -42,10 +40,10 @@ public class Configuration {
   @Inject
   protected Configuration(PluginConfigFactory config, @PluginName String pluginName) {
     PluginConfig cfg = config.getFromGerritConfig(pluginName, true);
-    connectionTimeout = getInt(cfg, "connectionTimeout", DEFAULT_TIMEOUT_MS);
-    socketTimeout = getInt(cfg, "socketTimeout", DEFAULT_TIMEOUT_MS);
-    maxTries = getInt(cfg, "maxTries", DEFAULT_MAX_TRIES);
-    retryInterval = getInt(cfg, "retryInterval", DEFAULT_RETRY_INTERVAL);
+    connectionTimeout = getInt(cfg, RemoteConfig.CONNECTION_TIMEOUT, DEFAULT_TIMEOUT_MS);
+    socketTimeout = getInt(cfg, RemoteConfig.SOCKET_TIMEOUT, DEFAULT_TIMEOUT_MS);
+    maxTries = getInt(cfg, RemoteConfig.MAX_TRIES, DEFAULT_MAX_TRIES);
+    retryInterval = getInt(cfg, RemoteConfig.RETRY_INTERVAL, DEFAULT_RETRY_INTERVAL);
     threadPoolSize = getInt(cfg, "threadPoolSize", DEFAULT_THREAD_POOL_SIZE);
   }
 
