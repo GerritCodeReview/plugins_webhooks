@@ -38,8 +38,7 @@ class PostTask implements Runnable {
 
   private final ScheduledExecutorService executor;
   private final HttpSession session;
-  private final Configuration cfg;
-  private final String url;
+  private final RemoteConfig remote;
   private final Supplier<Optional<EventProcessor.Request>> processor;
   private int execCnt;
 
@@ -47,14 +46,12 @@ class PostTask implements Runnable {
   public PostTask(
       @WebHooksExecutor ScheduledExecutorService executor,
       HttpSession session,
-      Configuration cfg,
       EventProcessor processor,
       @Assisted ProjectEvent event,
       @Assisted RemoteConfig remote) {
     this.executor = executor;
     this.session = session;
-    this.cfg = cfg;
-    this.url = remote.getUrl();
+    this.remote = remote;
     this.processor = Suppliers.memoize(() -> processor.process(event, remote));
   }
 
@@ -63,7 +60,7 @@ class PostTask implements Runnable {
   }
 
   private void reschedule() {
-    executor.schedule(this, cfg.getRetryInterval(), TimeUnit.MILLISECONDS);
+    executor.schedule(this, remote.getRetryInterval(), TimeUnit.MILLISECONDS);
   }
 
   @Override
@@ -71,18 +68,18 @@ class PostTask implements Runnable {
     try {
       Optional<EventProcessor.Request> content = processor.get();
       if (!content.isPresent()) {
-        log.debug("No content. Webhook [{}] skipped.", url);
+        log.debug("No content. Webhook [{}] skipped.", remote.getUrl());
         return;
       }
 
       execCnt++;
-      HttpResult result = session.post(url, content.get());
-      if (!result.successful && execCnt < cfg.getMaxTries()) {
+      HttpResult result = session.post(remote, content.get());
+      if (!result.successful && execCnt < remote.getMaxTries()) {
         logRetry(result.message);
         reschedule();
       }
     } catch (IOException e) {
-      if (isRecoverable(e) && execCnt < cfg.getMaxTries()) {
+      if (isRecoverable(e) && execCnt < remote.getMaxTries()) {
         logRetry(e);
         reschedule();
       } else {
@@ -97,13 +94,13 @@ class PostTask implements Runnable {
 
   private void logRetry(String reason) {
     if (log.isDebugEnabled()) {
-      log.debug("Retrying {} in {}ms. Reason: {}", toString(), cfg.getRetryInterval(), reason);
+      log.debug("Retrying {} in {}ms. Reason: {}", toString(), remote.getRetryInterval(), reason);
     }
   }
 
   private void logRetry(Throwable cause) {
     if (log.isDebugEnabled()) {
-      log.debug("Retrying {} in {}ms. Cause: {}", toString(), cfg.getRetryInterval(), cause);
+      log.debug("Retrying {} in {}ms. Cause: {}", toString(), remote.getRetryInterval(), cause);
     }
   }
 
