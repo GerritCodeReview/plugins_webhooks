@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ec321a8a_b1516048",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-11T09:28:16Z",
+      "side": 1,
+      "message": "Why do you actually need to check shouldProcess before submitting a post task (line 87)?\nBefore your change the PostTask.Factory was only accepting a JSON body, but now it accepts a processor (EventProcessor) which can check shouldProcess on its own.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 29
+      },
+      "revId": "a652ee92f4cd359d0b7293f337a7cf13e3f5143b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77313e83_a4282b8e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-11T09:28:16Z",
+      "side": 1,
+      "message": "remoteSubsectionName?",
+      "range": {
+        "startLine": 23,
+        "startChar": 65,
+        "endLine": 23,
+        "endChar": 69
+      },
+      "revId": "a652ee92f4cd359d0b7293f337a7cf13e3f5143b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "822cef64_eb190f14",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
         "patchSetId": 4
