@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71842e63_b8a62cdf",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-11T12:37:52Z",
+      "side": 0,
+      "message": "[1] If the taskFactory.create would accept the ProjectEvent as a parameter then this would be:\n\n  taskFactory.create(url, projectEvent).schedule();",
+      "revId": "ee9eb5b59fbce645cf5c24b927a60f70d1014a96",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
