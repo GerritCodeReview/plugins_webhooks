@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46d1cdd1_fc196c6f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-11T12:37:52Z",
+      "side": 1,
+      "message": "This all could be just (see my comment [1] at the left hand side):\n\n  post(url, projectEvent);\n\nAs already wrote in another comment, I believe that you only need to provide custom\nimplementations of the PostTask.Factory. EventProcessor and EventProcessor.Factory seem like\nunnecessary.",
+      "parentUuid": "ec321a8a_b1516048",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 29
+      },
+      "revId": "a652ee92f4cd359d0b7293f337a7cf13e3f5143b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77313e83_a4282b8e",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
         "patchSetId": 4
@@ -65,6 +89,23 @@
         "endLine": 28,
         "endChar": 19
       },
+      "revId": "a652ee92f4cd359d0b7293f337a7cf13e3f5143b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4673c70_006f10e4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-11T12:37:52Z",
+      "side": 1,
+      "message": "With your use-case in mind, I believe that the only thing you need is to provide custom PostTask.Factory implementation(s). Therefore, this could be:\n\n  PostTask create(@Assisted(\"url\") String url, ProjectEvent event);\n\nHaving said that see also my comment [1] in the EventHandler.",
       "revId": "a652ee92f4cd359d0b7293f337a7cf13e3f5143b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
