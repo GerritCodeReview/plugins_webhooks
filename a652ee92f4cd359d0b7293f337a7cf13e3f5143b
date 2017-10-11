@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "822cef64_eb190f14",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-11T07:59:11Z",
+      "side": 1,
+      "message": "I cannot follow this API.\n\nAn EventProcessor should process events. When process or shouldProcess method is called, which event it refers to?\n\nI don\u0027t consider the Factory as part of this API. Looking at the EventProcessor interface there is no method which references an Event. It is strange to have an API called FooProcessor and not refer to Foo anywhere in its API.\n\nShould one event processor be able to process more than one event? If not, why not?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "a652ee92f4cd359d0b7293f337a7cf13e3f5143b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
