@@ -16,6 +16,24 @@
       "revId": "ee9eb5b59fbce645cf5c24b927a60f70d1014a96",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7df69dd_92a3c1dd",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-16T11:03:02Z",
+      "side": 0,
+      "message": "I get the idea but IMHO unfortunately this is not enough:\n1. both cfg and remote name are needed in order to give task a chance to read additional configuration parameters otherwise it would resolve to tedious walk over config and comparing URLs\n2. I am not sure if scheduling execution to decide later if it even makes sense to post is not to costly - I like method `shouldPost` but IMHO decision about posting or not should happen in processor (we are for instance adding parameter that enables posting of `refs/meta` - by default it is \u0027false\u0027 for us) - and having sth like 2 steps `should I post` check doesn\u0027t sound too good to me",
+      "parentUuid": "71842e63_b8a62cdf",
+      "revId": "ee9eb5b59fbce645cf5c24b927a60f70d1014a96",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }

@@ -49,6 +49,54 @@
     },
     {
       "key": {
+        "uuid": "4fe5c003_aa227759",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-16T11:03:02Z",
+      "side": 1,
+      "message": "will give it a try and see how that works ;)",
+      "parentUuid": "46d1cdd1_fc196c6f",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 29
+      },
+      "revId": "a652ee92f4cd359d0b7293f337a7cf13e3f5143b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f32d77de_d2c12d00",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-16T11:03:02Z",
+      "side": 1,
+      "message": "I would say that it is fast enough to happen in main thread without passing all requests through executor, but on the other hand that should increase the overall throughput so I will consider it ;)",
+      "parentUuid": "ec321a8a_b1516048",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 29
+      },
+      "revId": "a652ee92f4cd359d0b7293f337a7cf13e3f5143b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77313e83_a4282b8e",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
         "patchSetId": 4
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "c262a842_0fad54b5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-16T11:03:02Z",
+      "side": 1,
+      "message": "IMHO there is nothing inherently bad in such approach e.g. Runnable, Provider interface are another examples of it. One creates instance with all necessary details and that instance is responsible for dragging it from the beginning to the end. IOW this is stateless vs stateful instance approach. As I have already written it has some benefits to have stateful instance as the same decision about who is handling event (again this is the problem for multiple webhooks that I have) doesn\u0027t have to be taken 2 times.",
+      "parentUuid": "822cef64_eb190f14",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "a652ee92f4cd359d0b7293f337a7cf13e3f5143b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d4673c70_006f10e4",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
         "patchSetId": 4
@@ -106,6 +178,24 @@
       "writtenOn": "2017-10-11T12:37:52Z",
       "side": 1,
       "message": "With your use-case in mind, I believe that the only thing you need is to provide custom PostTask.Factory implementation(s). Therefore, this could be:\n\n  PostTask create(@Assisted(\"url\") String url, ProjectEvent event);\n\nHaving said that see also my comment [1] in the EventHandler.",
+      "revId": "a652ee92f4cd359d0b7293f337a7cf13e3f5143b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "701ed592_41311ad9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-16T11:03:02Z",
+      "side": 1,
+      "message": "Will give this a try and see how that works ;)",
+      "parentUuid": "d4673c70_006f10e4",
       "revId": "a652ee92f4cd359d0b7293f337a7cf13e3f5143b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
