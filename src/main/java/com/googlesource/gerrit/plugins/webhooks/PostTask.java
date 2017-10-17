@@ -27,6 +27,7 @@ import com.google.common.base.Optional;
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
 import com.google.gerrit.server.events.ProjectEvent;
+import com.google.inject.Provider;
 import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
@@ -40,20 +41,27 @@ class PostTask implements Runnable {
   }
 
   private final ScheduledThreadPoolExecutor executor;
-  private final HttpSession session;
+  private final Supplier<HttpSession> session;
   private final RemoteConfig remote;
   private final Supplier<Optional<EventProcessor.Request>> processor;
   private int execCnt;
 
   @AssistedInject
   public PostTask(@WebHooksExecutor ScheduledThreadPoolExecutor executor,
-      HttpSession session,
+      final Provider<HttpSession> session,
       final EventProcessor processor,
       @Assisted final ProjectEvent event,
       @Assisted final RemoteConfig remote) {
     this.executor = executor;
-    this.session = session;
     this.remote = remote;
+    // postpone creation of HttpSession so that it is obtained only when processor
+    // returns non-empty content
+    this.session = Suppliers.memoize(new Supplier<HttpSession>() {
+      @Override
+      public HttpSession get() {
+        return session.get();
+      }
+    });
     this.processor = Suppliers.memoize(new Supplier<Optional<EventProcessor.Request>>() {
       @Override
       public Optional<EventProcessor.Request> get() {
@@ -80,7 +88,7 @@ class PostTask implements Runnable {
       }
 
       execCnt++;
-      HttpResult result = session.post(remote, content.get());
+      HttpResult result = session.get().post(remote, content.get());
       if (!result.successful && execCnt < remote.getMaxTries()) {
         logRetry(result.message);
         reschedule();
