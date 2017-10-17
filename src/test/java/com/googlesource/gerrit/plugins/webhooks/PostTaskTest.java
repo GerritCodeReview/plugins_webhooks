@@ -20,15 +20,15 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
-import com.google.gerrit.server.events.ProjectCreatedEvent;
-import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
 import javax.net.ssl.SSLException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,6 +36,10 @@ import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
+
+import com.google.gerrit.server.events.ProjectCreatedEvent;
+import com.google.inject.util.Providers;
+import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PostTaskTest {
@@ -70,7 +74,7 @@ public class PostTaskTest {
     when(remote.getMaxTries()).thenReturn(MAX_TRIES);
     when(remote.getUrl()).thenReturn(WEBHOOK_URL);
     when(processor.process(eq(projectCreated), eq(remote))).thenReturn(CONTENT);
-    task = new PostTask(executor, session, processor, projectCreated, remote);
+    task = new PostTask(executor, Providers.of(session), processor, projectCreated, remote);
   }
 
   @Test
