@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9f11b7ee_36c1ade0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-17T16:24:48Z",
+      "side": 1,
+      "message": "Have mixture feelings - that asks for dedicated topic in readme.md as it would have to mention the other parts of it... can we add it later as follow up change?",
+      "parentUuid": "153ce7a4_1cec03f2",
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "364ecab8_f971e3c3",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "08018990_0009c113",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-17T16:24:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "364ecab8_f971e3c3",
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff93c0f4_179c1ec0",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
         "patchSetId": 5
@@ -47,6 +83,30 @@
       "writtenOn": "2017-10-17T12:47:32Z",
       "side": 1,
       "message": "Using lambda expression this becomes one liner:\n\n      this.body \u003d Suppliers.memoize(() -\u003e processor.process(event, remote));",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1436fee6_ab5674de",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-17T16:24:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff93c0f4_179c1ec0",
       "range": {
         "startLine": 58,
         "startChar": 0,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "404b1bde_b5a480ca",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/RemoteConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-17T16:24:48Z",
+      "side": 1,
+      "message": "I just hate when it gets asked over and over again ;) - obtained it in constructor",
+      "parentUuid": "65f4b52c_130f2d7a",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e85355d1_8956be4b",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/RemoteConfig.java",
         "patchSetId": 5
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "9d907610_f9e98524",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/RemoteConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-17T16:24:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e85355d1_8956be4b",
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e09857d_0b251868",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/RemoteConfig.java",
         "patchSetId": 5
@@ -110,6 +212,30 @@
       "writtenOn": "2017-10-17T12:47:32Z",
       "side": 1,
       "message": "extensible?\n\nDavid P. can tell more about the proper wording here :-)",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfecfeed_3945fafa",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/RemoteConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-17T16:24:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e09857d_0b251868",
       "range": {
         "startLine": 58,
         "startChar": 5,
