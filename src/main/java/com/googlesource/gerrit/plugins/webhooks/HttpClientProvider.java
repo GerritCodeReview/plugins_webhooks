@@ -49,18 +49,15 @@ class HttpClientProvider implements Provider<CloseableHttpClient> {
   private static final int MAX_CONNECTION_INACTIVITY = 10000;
 
   private final Configuration cfg;
-  private final SSLConnectionSocketFactory sslSocketFactory;
 
   @Inject
   HttpClientProvider(Configuration cfg) {
     this.cfg = cfg;
-    this.sslSocketFactory = buildSslSocketFactory();
   }
 
   @Override
   public CloseableHttpClient get() {
     return HttpClients.custom()
-        .setSSLSocketFactory(sslSocketFactory)
         .setConnectionManager(customConnectionManager())
         .setDefaultRequestConfig(customRequestConfig())
         .setServiceUnavailableRetryStrategy(customServiceUnavailRetryStrategy())
@@ -110,7 +107,7 @@ class HttpClientProvider implements Provider<CloseableHttpClient> {
   private HttpClientConnectionManager customConnectionManager() {
     Registry<ConnectionSocketFactory> socketFactoryRegistry =
         RegistryBuilder.<ConnectionSocketFactory>create()
-            .register("https", sslSocketFactory)
+            .register("https", buildSslSocketFactory())
             .register("http", PlainConnectionSocketFactory.INSTANCE)
             .build();
     PoolingHttpClientConnectionManager connManager =
