@@ -60,7 +60,6 @@ class HttpClientProvider implements Provider<CloseableHttpClient> {
   @Override
   public CloseableHttpClient get() {
     return HttpClients.custom()
-        .setSSLSocketFactory(sslSocketFactory)
         .setConnectionManager(customConnectionManager())
         .setDefaultRequestConfig(customRequestConfig())
         .setServiceUnavailableRetryStrategy(customServiceUnavailRetryStrategy())
