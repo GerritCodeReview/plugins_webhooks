@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "153ce7a4_1cec03f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-17T12:47:32Z",
+      "side": 1,
+      "message": "Does this need to be documented in the config.md or somewhere else?",
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "364ecab8_f971e3c3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-17T12:47:32Z",
+      "side": 1,
+      "message": "private final",
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff93c0f4_179c1ec0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-17T12:47:32Z",
+      "side": 1,
+      "message": "Using lambda expression this becomes one liner:\n\n      this.body \u003d Suppliers.memoize(() -\u003e processor.process(event, remote));",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f4b52c_130f2d7a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/RemoteConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-17T12:47:32Z",
+      "side": 1,
+      "message": "1. using lambda expression this get simplified to just:\n\n  private final Supplier\u003cString\u003e url \u003d\n      Suppliers.memoize(() -\u003e config.getString(REMOTE, name, \"url\"));\n\n2. do we really need a Supplier in this case? Reading from Config is fast, I don\u0027t remember\nwe optimize it this way anywhere in Gerrit and plugins code.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e85355d1_8956be4b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/RemoteConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-17T12:47:32Z",
+      "side": 1,
+      "message": "Looks like GJF wasn\u0027t applied?",
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e09857d_0b251868",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/RemoteConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-17T12:47:32Z",
+      "side": 1,
+      "message": "extensible?\n\nDavid P. can tell more about the proper wording here :-)",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
