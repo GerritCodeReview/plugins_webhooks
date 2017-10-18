@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90c2a2b8_f952f509",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-10-18T06:09:54Z",
+      "side": 1,
+      "message": "Unrelated change: import order is changed. The rule number one: never ever mix content and formatting changes in the same commit.",
+      "revId": "0054279f1c8d7f1461d044f515184d42297ad0b4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd50341_579985a6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-10-18T06:09:54Z",
+      "side": 1,
+      "message": "Just to check my understanding: there are two Suppliers.memoize constructs used here, but they are completely different:\n\n* 1. materialization of session instance from Provider\n* 2. Lazy processor.process() invocation on the next line\n\nMay be add a comment and mention that?\n\nHttpSession only creates CloseableHttpClient that is bound to HttpClientProvider. The optimization is here to avoid the creation of CloseableHttpClient in case the processor returns no result for this event?",
+      "revId": "0054279f1c8d7f1461d044f515184d42297ad0b4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "908892aa_404dc895",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-10-18T06:09:54Z",
+      "side": 1,
+      "message": "This is subtle, but the optimization is lost, if the post is  failed. The machinery used here, is to reschedule the post attempt a number of times (depends on the configuration) but as it\u0027s currently done, the constuction of HttpSession instance from the Provider\u003cHttpSession\u003e would always take place, even though the same HttpSession instance could be reused and as such, a fresh instance of CloseableHttpClient would be re-created (that you wanted to avoid).\n\nOne solution here, is to rename the session attribute to sessionSupplier, and introduce non final HttpSession session attribute, that is only initialized once.\n\nThen, on line 77 you would iniialize it if it wasn\u0027t yet:\n\n  if (session !\u003d null) {\n    session \u003d sessionSupplier.get();\n  }",
+      "range": {
+        "startLine": 79,
+        "startChar": 26,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "0054279f1c8d7f1461d044f515184d42297ad0b4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5025a7bf_eee992ad",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-10-18T06:09:54Z",
+      "side": 1,
+      "message": "Unrelated change: import order is changed.",
+      "revId": "0054279f1c8d7f1461d044f515184d42297ad0b4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
