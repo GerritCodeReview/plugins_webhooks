@@ -30,12 +30,14 @@ public class Configuration {
   private static final int DEFAULT_MAX_TRIES = 5;
   private static final int DEFAULT_RETRY_INTERVAL = 1000;
   private static final int DEFAULT_THREAD_POOL_SIZE = 1;
+  private static final boolean DEFAULT_DISABLE_SSL_VERIFICATION = true;
 
   private final int connectionTimeout;
   private final int socketTimeout;
   private final int maxTries;
   private final int retryInterval;
   private final int threadPoolSize;
+  private final boolean disableSslVerification;
 
   @Inject
   protected Configuration(PluginConfigFactory config, @PluginName String pluginName) {
@@ -45,16 +47,31 @@ public class Configuration {
     maxTries = getInt(cfg, RemoteConfig.MAX_TRIES, DEFAULT_MAX_TRIES);
     retryInterval = getInt(cfg, RemoteConfig.RETRY_INTERVAL, DEFAULT_RETRY_INTERVAL);
     threadPoolSize = getInt(cfg, "threadPoolSize", DEFAULT_THREAD_POOL_SIZE);
+    disableSslVerification =
+        getBoolean(cfg, RemoteConfig.DISABLE_SSL_VERIFICATION, DEFAULT_DISABLE_SSL_VERIFICATION);
+  }
+
+  protected boolean getBoolean(PluginConfig cfg, String name, boolean defaultValue) {
+    try {
+      return cfg.getBoolean(name, defaultValue);
+    } catch (IllegalArgumentException e) {
+      logError(name, "boolean", defaultValue, e);
+      return defaultValue;
+    }
   }
 
   protected int getInt(PluginConfig cfg, String name, int defaultValue) {
     try {
       return cfg.getInt(name, defaultValue);
     } catch (IllegalArgumentException e) {
-      log.error(String.format("invalid value for %s; using default value %d", name, defaultValue));
-      log.debug("Failed retrieve integer value: " + e.getMessage(), e);
+      logError(name, "integer", defaultValue, e);
       return defaultValue;
     }
+  }
+
+  protected void logError(String name, String type, Object defaultValue, Exception e) {
+    log.error("invalid value for{}; using default value {}", name, defaultValue);
+    log.debug("Failed retrieve {} value: {}", type, e.getMessage(), e);
   }
 
   public int getConnectionTimeout() {
@@ -75,5 +92,9 @@ public class Configuration {
 
   public int getThreadPoolSize() {
     return threadPoolSize;
+  }
+
+  public boolean getDisableSslVerification() {
+    return disableSslVerification;
   }
 }
