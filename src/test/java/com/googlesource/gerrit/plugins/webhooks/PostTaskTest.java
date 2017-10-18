@@ -21,7 +21,6 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 import com.google.gerrit.server.events.ProjectCreatedEvent;
-import com.google.inject.util.Providers;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import java.util.Collections;
@@ -59,6 +58,8 @@ public class PostTaskTest {
 
   @Mock private HttpSession session;
 
+  @Mock private HttpSession.Factory sessionFactory;
+
   @Mock private ScheduledThreadPoolExecutor executor;
 
   @Mock private EventProcessor processor;
@@ -71,7 +72,8 @@ public class PostTaskTest {
     when(remote.getMaxTries()).thenReturn(MAX_TRIES);
     when(remote.getUrl()).thenReturn(WEBHOOK_URL);
     when(processor.process(eq(projectCreated), eq(remote))).thenReturn(CONTENT);
-    task = new PostTask(executor, Providers.of(session), processor, projectCreated, remote);
+    when(sessionFactory.create(eq(remote))).thenReturn(session);
+    task = new PostTask(executor, sessionFactory, processor, projectCreated, remote);
   }
 
   @Test

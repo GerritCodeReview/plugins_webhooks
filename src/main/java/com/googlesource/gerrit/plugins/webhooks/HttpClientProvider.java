@@ -14,51 +14,35 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import com.google.inject.Inject;
 import com.google.inject.Provider;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.X509Certificate;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ServiceUnavailableRetryStrategy;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.config.Registry;
-import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.HttpClientConnectionManager;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.conn.ssl.NoopHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.protocol.HttpContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /** Provides an HTTP client with SSL capabilities. */
-class HttpClientProvider implements Provider<CloseableHttpClient> {
+abstract class HttpClientProvider implements Provider<CloseableHttpClient> {
   private static final Logger log = LoggerFactory.getLogger(HttpClientProvider.class);
-  private static final int CONNECTIONS_PER_ROUTE = 100;
-  // Up to 2 target instances with the max number of connections per host:
-  private static final int MAX_CONNECTIONS = 2 * CONNECTIONS_PER_ROUTE;
   private static final int ERROR_CODES = 500;
-  private static final int MAX_CONNECTION_INACTIVITY = 10000;
 
   private final Configuration cfg;
+  private final Provider<HttpClientConnectionManager> mgr;
 
-  @Inject
-  HttpClientProvider(Configuration cfg) {
+  protected HttpClientProvider(Configuration cfg, Provider<HttpClientConnectionManager> mgr) {
     this.cfg = cfg;
+    this.mgr = mgr;
   }
 
   @Override
   public CloseableHttpClient get() {
     return HttpClients.custom()
-        .setConnectionManager(customConnectionManager())
+        .setConnectionManager(mgr.get())
         .setDefaultRequestConfig(customRequestConfig())
         .setServiceUnavailableRetryStrategy(customServiceUnavailRetryStrategy())
         .build();
@@ -101,53 +85,6 @@ class HttpClientProvider implements Provider<CloseableHttpClient> {
               + "', request: '"
               + context.getAttribute("http.request")
               + "'");
-    }
-  }
-
-  private HttpClientConnectionManager customConnectionManager() {
-    Registry<ConnectionSocketFactory> socketFactoryRegistry =
-        RegistryBuilder.<ConnectionSocketFactory>create()
-            .register("https", buildSslSocketFactory())
-            .register("http", PlainConnectionSocketFactory.INSTANCE)
-            .build();
-    PoolingHttpClientConnectionManager connManager =
-        new PoolingHttpClientConnectionManager(socketFactoryRegistry);
-    connManager.setDefaultMaxPerRoute(CONNECTIONS_PER_ROUTE);
-    connManager.setMaxTotal(MAX_CONNECTIONS);
-    connManager.setValidateAfterInactivity(MAX_CONNECTION_INACTIVITY);
-    return connManager;
-  }
-
-  private SSLConnectionSocketFactory buildSslSocketFactory() {
-    return new SSLConnectionSocketFactory(buildSslContext(), NoopHostnameVerifier.INSTANCE);
-  }
-
-  private SSLContext buildSslContext() {
-    try {
-      TrustManager[] trustAllCerts = new TrustManager[] {new DummyX509TrustManager()};
-      SSLContext context = SSLContext.getInstance("TLS");
-      context.init(null, trustAllCerts, null);
-      return context;
-    } catch (KeyManagementException | NoSuchAlgorithmException e) {
-      log.warn("Error building SSLContext object", e);
-      return null;
-    }
-  }
-
-  private static class DummyX509TrustManager implements X509TrustManager {
-    @Override
-    public X509Certificate[] getAcceptedIssuers() {
-      return new X509Certificate[0];
-    }
-
-    @Override
-    public void checkClientTrusted(X509Certificate[] certs, String authType) {
-      // no check
-    }
-
-    @Override
-    public void checkServerTrusted(X509Certificate[] certs, String authType) {
-      // no check
     }
   }
 }
