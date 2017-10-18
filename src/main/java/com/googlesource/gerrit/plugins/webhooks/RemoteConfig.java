@@ -30,6 +30,7 @@ public class RemoteConfig {
   static final String SOCKET_TIMEOUT = "socketTimeout";
   static final String MAX_TRIES = "maxTries";
   static final String RETRY_INTERVAL = "retryInterval";
+  static final String SSL_VERIFY = "sslVerify";
 
   private final Configuration global;
   private final Config config;
@@ -67,6 +68,10 @@ public class RemoteConfig {
 
   public int getRetryInterval() {
     return config.getInt(REMOTE, name, RETRY_INTERVAL, global.getRetryInterval());
+  }
+
+  public boolean getSslVerify() {
+    return config.getBoolean(REMOTE, name, SSL_VERIFY, global.getSslVerify());
   }
 
   // methods were added in order to make configuration

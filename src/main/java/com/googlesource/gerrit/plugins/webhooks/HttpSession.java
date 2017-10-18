@@ -14,25 +14,38 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Map.Entry;
+import static com.googlesource.gerrit.plugins.webhooks.DefaultHttpClientProvider.DEFAULT;
+import static com.googlesource.gerrit.plugins.webhooks.SslVerifyingHttpClientProvider.SSL_VERIFY;
+
+import com.google.common.net.MediaType;
+import com.google.inject.Inject;
+import com.google.inject.Provider;
+import com.google.inject.assistedinject.Assisted;
+import com.google.inject.name.Named;
+
+import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 
-import com.google.common.net.MediaType;
-import com.google.inject.Inject;
-import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Map.Entry;
 
 class HttpSession {
+  interface Factory {
+    HttpSession create(RemoteConfig remote);
+  }
   private final CloseableHttpClient httpClient;
 
   @Inject
-  HttpSession(CloseableHttpClient httpClient) {
-    this.httpClient = httpClient;
+  HttpSession(@Named(DEFAULT) Provider<CloseableHttpClient> defaultClientProvider,
+      @Named(SSL_VERIFY) Provider<CloseableHttpClient> sslVerifyingClientProvider,
+      @Assisted RemoteConfig remote) {
+    this.httpClient =
+        remote.getSslVerify() ? sslVerifyingClientProvider.get() : defaultClientProvider.get();
   }
 
   HttpResult post(RemoteConfig remote, EventProcessor.Request request) throws IOException {

@@ -27,7 +27,6 @@ import com.google.common.base.Optional;
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
 import com.google.gerrit.server.events.ProjectEvent;
-import com.google.inject.Provider;
 import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
@@ -48,7 +47,7 @@ class PostTask implements Runnable {
 
   @AssistedInject
   public PostTask(@WebHooksExecutor ScheduledThreadPoolExecutor executor,
-      final Provider<HttpSession> session,
+      final HttpSession.Factory session,
       final EventProcessor processor,
       @Assisted final ProjectEvent event,
       @Assisted final RemoteConfig remote) {
@@ -59,7 +58,7 @@ class PostTask implements Runnable {
     this.session = Suppliers.memoize(new Supplier<HttpSession>() {
       @Override
       public HttpSession get() {
-        return session.get();
+        return session.create(remote);
       }
     });
     this.processor = Suppliers.memoize(new Supplier<Optional<EventProcessor.Request>>() {

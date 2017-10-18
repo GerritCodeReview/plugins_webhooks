@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 
 import com.google.common.base.Optional;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
-import com.google.inject.util.Providers;
+
 import java.io.IOException;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -64,6 +64,9 @@ public class PostTaskTest {
   private ScheduledThreadPoolExecutor executor;
 
   @Mock
+  private HttpSession.Factory sessionFactory;
+
+  @Mock
   private EventProcessor processor;
 
   @Mock private EventProcessor.Request content;
@@ -76,7 +79,8 @@ public class PostTaskTest {
     when(remote.getMaxTries()).thenReturn(MAX_TRIES);
     when(remote.getUrl()).thenReturn(WEBHOOK_URL);
     when(processor.process(eq(projectCreated), eq(remote))).thenReturn(Optional.of(content));
-    task = new PostTask(executor, Providers.of(session), processor, projectCreated, remote);
+    when(sessionFactory.create(eq(remote))).thenReturn(session);
+    task = new PostTask(executor, sessionFactory, processor, projectCreated, remote);
   }
 
   @Test

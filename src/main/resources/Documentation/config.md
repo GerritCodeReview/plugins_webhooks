@@ -23,6 +23,7 @@ and propagate only `patchset-created` and `ref-updated` events to
 [remote "foo"]
   url = https://foo.org/gerrit-events
   maxTries = 3
+  sslVerify = true
 
 [remote "bar"]
   url = https://bar.org/
@@ -60,6 +61,11 @@ File 'gerrit.config'
 :   Maximum number of threads used to send events to the target instance.
     Defaults to 2.
 
+@PLUGIN@.sslVerify
+:   When 'true' SSL certificate verification of all webhooks *is* performed
+    when payload is delivered.
+    Default value is 'false'.
+
 File '@PLUGIN@.config'
 ----------------------
 
@@ -89,3 +95,7 @@ remote.NAME.maxTries
 remote.NAME.retryInterval
 : The interval of time in milliseconds between the subsequent auto-retries.
   When not specified, the default value is derrived from global configuration.
+
+remote.NAME.sslVerify
+: When 'true' SSL certificate verification of remote url *is* performed
+  when payload is delivered, the default value is derived from global configuration.
