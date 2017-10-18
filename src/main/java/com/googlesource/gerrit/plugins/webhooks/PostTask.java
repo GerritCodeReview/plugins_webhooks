@@ -17,7 +17,6 @@ package com.googlesource.gerrit.plugins.webhooks;
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
 import com.google.gerrit.server.events.ProjectEvent;
-import com.google.inject.Provider;
 import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
@@ -45,7 +44,7 @@ class PostTask implements Runnable {
   @AssistedInject
   public PostTask(
       @WebHooksExecutor ScheduledExecutorService executor,
-      Provider<HttpSession> session,
+      HttpSession.Factory session,
       EventProcessor processor,
       @Assisted ProjectEvent event,
       @Assisted RemoteConfig remote) {
@@ -55,7 +54,7 @@ class PostTask implements Runnable {
     // returns content
     // note that subsequent calls to session.get() (repeated for recoverable failure)
     // return the same HttpSession instance (memoize).
-    this.session = Suppliers.memoize(() -> session.get());
+    this.session = Suppliers.memoize(() -> session.create(remote));
     this.processor = Suppliers.memoize(() -> processor.process(event, remote));
   }
 
