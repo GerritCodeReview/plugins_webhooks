@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0af0614_4d3c3390",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventProcessor.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-18T11:29:29Z",
+      "side": 1,
+      "message": "Request?",
+      "range": {
+        "startLine": 25,
+        "startChar": 15,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "a48d516c69340da5ba24d72724fc2231c001acd4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
