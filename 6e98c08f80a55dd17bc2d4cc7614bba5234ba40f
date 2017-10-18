@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f94b865d_83cf0f28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-18T08:20:39Z",
+      "side": 1,
+      "message": "Add an example in the commit message?",
+      "parentUuid": "9f11b7ee_36c1ade0",
+      "revId": "6e98c08f80a55dd17bc2d4cc7614bba5234ba40f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "364ecab8_f971e3c3",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
         "patchSetId": 5
