@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.webhooks;
 
 import com.google.common.net.MediaType;
 import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -27,11 +28,14 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 class HttpSession {
+  interface Factory {
+    HttpSession create(RemoteConfig remote);
+  }
   private final CloseableHttpClient httpClient;
 
   @Inject
-  HttpSession(CloseableHttpClient httpClient) {
-    this.httpClient = httpClient;
+  HttpSession(HttpClientConfigurator configurator, @Assisted RemoteConfig remote) {
+    this.httpClient = configurator.apply(remote);
   }
 
   HttpResult post(String endpoint, Map<String, String> headers,
