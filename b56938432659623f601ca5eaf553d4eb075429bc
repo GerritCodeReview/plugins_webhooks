@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ed302b2_4373288d",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1045122
+      },
+      "writtenOn": "2017-10-18T18:17:23Z",
+      "side": 1,
+      "message": "Very confusing. The parameter name is negative (disable), but *enables* the verification? And what does \"enabled\" mean; true to disable verification (enable option) or false to enable verification?",
+      "revId": "b56938432659623f601ca5eaf553d4eb075429bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
