@@ -14,6 +14,9 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import static com.googlesource.gerrit.plugins.webhooks.DefaultHttpClientProvider.DEFAULT;
+import static com.googlesource.gerrit.plugins.webhooks.SslVerifyingHttpClientProvider.SSL_VERIFY;
+
 import java.util.concurrent.ScheduledExecutorService;
 
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -23,6 +26,7 @@ import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.inject.Inject;
 import com.google.inject.Scopes;
+import com.google.inject.name.Names;
 
 public class Module extends FactoryModule {
   private final ProcessorModule processors;
@@ -37,10 +41,19 @@ public class Module extends FactoryModule {
     bind(ScheduledExecutorService.class)
         .annotatedWith(WebHooksExecutor.class)
         .toProvider(ExecutorProvider.class);
-    bind(CloseableHttpClient.class).toProvider(HttpClientProvider.class).in(Scopes.SINGLETON);
+
     factory(PostTask.Factory.class);
     factory(RemoteConfig.Factory.class);
+    factory(HttpClientConnectionManagerProvider.Factory.class);
+    factory(HttpSession.Factory.class);
+
     DynamicSet.bind(binder(), EventListener.class).to(EventHandler.class);
+
+    bind(CloseableHttpClient.class).annotatedWith(Names.named(DEFAULT))
+        .toProvider(DefaultHttpClientProvider.class).in(Scopes.SINGLETON);
+    bind(CloseableHttpClient.class).annotatedWith(Names.named(SSL_VERIFY))
+        .toProvider(SslVerifyingHttpClientProvider.class).in(Scopes.SINGLETON);
+    bind(HttpClientConfigurator.class).in(Scopes.SINGLETON);
 
     install(processors);
   }
