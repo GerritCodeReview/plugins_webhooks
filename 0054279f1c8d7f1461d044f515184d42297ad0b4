@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ab030b2a_f0dd6c4e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-18T07:31:15Z",
+      "side": 1,
+      "message": "I know - just wondering if it was me pressing Ctrl+O or GJF call...",
+      "parentUuid": "90c2a2b8_f952f509",
+      "revId": "0054279f1c8d7f1461d044f515184d42297ad0b4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bd50341_579985a6",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-18T06:09:54Z",
       "side": 1,
       "message": "Just to check my understanding: there are two Suppliers.memoize constructs used here, but they are completely different:\n\n* 1. materialization of session instance from Provider\n* 2. Lazy processor.process() invocation on the next line\n\nMay be add a comment and mention that?\n\nHttpSession only creates CloseableHttpClient that is bound to HttpClientProvider. The optimization is here to avoid the creation of CloseableHttpClient in case the processor returns no result for this event?",
+      "revId": "0054279f1c8d7f1461d044f515184d42297ad0b4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25c03cf8_f925536f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-18T07:31:15Z",
+      "side": 1,
+      "message": "that is correct :)",
+      "parentUuid": "8bd50341_579985a6",
       "revId": "0054279f1c8d7f1461d044f515184d42297ad0b4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "3acb88cf_57f13f81",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-18T07:31:15Z",
+      "side": 1,
+      "message": "not really - session.get() calls Supplier.get() which has memoized instance from previous Supplier.get() call IOW works as expected.",
+      "parentUuid": "908892aa_404dc895",
+      "range": {
+        "startLine": 79,
+        "startChar": 26,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "0054279f1c8d7f1461d044f515184d42297ad0b4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5025a7bf_eee992ad",
         "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
         "patchSetId": 2
@@ -70,6 +130,24 @@
       "writtenOn": "2017-10-18T06:09:54Z",
       "side": 1,
       "message": "Unrelated change: import order is changed.",
+      "revId": "0054279f1c8d7f1461d044f515184d42297ad0b4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1991b4b_c23bb121",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-18T07:31:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5025a7bf_eee992ad",
       "revId": "0054279f1c8d7f1461d044f515184d42297ad0b4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
