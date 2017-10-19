@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc0dd3bf_753dc881",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-19T05:28:50Z",
+      "side": 1,
+      "message": "nit: \u0027.\u0027",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 28
+      },
+      "revId": "6e3875e309b336252f185f2a3660efbe5052c4e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
