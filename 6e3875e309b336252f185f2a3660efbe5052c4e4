@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "aa7c02ac_d6ecada1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1045122
+      },
+      "writtenOn": "2017-10-19T08:25:31Z",
+      "side": 1,
+      "message": "Seriously, it currently has SSL certificate validation disabled? That\u0027s not good at all. Please consider setting all verification ON by default.",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "6e3875e309b336252f185f2a3660efbe5052c4e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42bd49f8_7a9c76a2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/DefaultConnectionSocketFactoryProvider.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1045122
+      },
+      "writtenOn": "2017-10-19T08:25:31Z",
+      "side": 1,
+      "message": "Does this disable hostname validation?\n\nhttps://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/conn/ssl/NoopHostnameVerifier.html\n\nIf so, any valid server certificate for any other domain validates too, which is bad.",
+      "revId": "6e3875e309b336252f185f2a3660efbe5052c4e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc0dd3bf_753dc881",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 2
