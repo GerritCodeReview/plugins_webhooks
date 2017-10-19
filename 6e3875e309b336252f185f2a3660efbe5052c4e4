@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "a89bd6d0_b73171e9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/DefaultConnectionSocketFactoryProvider.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1045122
+      },
+      "writtenOn": "2017-10-19T11:12:03Z",
+      "side": 1,
+      "message": "self-signed (trust chain) and hostname validation are different things to validate in SSL contexts, usually. I\u0027m not aware of the implementation details for this specific library, though.",
+      "parentUuid": "1513847c_7878886a",
+      "revId": "6e3875e309b336252f185f2a3660efbe5052c4e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc0dd3bf_753dc881",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 2
