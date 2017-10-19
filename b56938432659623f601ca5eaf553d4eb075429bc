@@ -16,6 +16,24 @@
       "revId": "b56938432659623f601ca5eaf553d4eb075429bc",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc9627f5_25796897",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-19T05:26:08Z",
+      "side": 1,
+      "message": "TBH: I have mistyped definition in both commit message and readme - thanks for pointing it out :)\n\nNow in terms of name I have stolen name from GitHub :P they have webhooks since years and since years it is called like that in UI. I guess if it wasn\u0027t yet changed it means that people don\u0027t complain about it too much ;)\n\nHaving said that I am open for proposals - how about \u0027insecureSsl\u0027 (this is how they call it in API ;)).",
+      "parentUuid": "6ed302b2_4373288d",
+      "revId": "b56938432659623f601ca5eaf553d4eb075429bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
