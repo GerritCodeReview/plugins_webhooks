@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "197e5855_2be87e40",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/DefaultConnectionSocketFactoryProvider.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-19T12:52:13Z",
+      "side": 1,
+      "message": "That is true, what I have meant is that even if you fix this it will anyway fail to validate against SelfSignedCerts (unless one adds it to the java cacerts file) so I would say either you validate everything or nothing and one has this possibility now.",
+      "parentUuid": "a89bd6d0_b73171e9",
+      "revId": "6e3875e309b336252f185f2a3660efbe5052c4e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc0dd3bf_753dc881",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 2
