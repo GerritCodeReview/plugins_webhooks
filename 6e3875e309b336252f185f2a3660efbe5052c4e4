@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab055133_e05392f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-19T10:47:25Z",
+      "side": 1,
+      "message": "@Sasa, @Hugo any input on that?",
+      "parentUuid": "aa7c02ac_d6ecada1",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "6e3875e309b336252f185f2a3660efbe5052c4e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42bd49f8_7a9c76a2",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/DefaultConnectionSocketFactoryProvider.java",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2017-10-19T08:25:31Z",
       "side": 1,
       "message": "Does this disable hostname validation?\n\nhttps://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/conn/ssl/NoopHostnameVerifier.html\n\nIf so, any valid server certificate for any other domain validates too, which is bad.",
+      "revId": "6e3875e309b336252f185f2a3660efbe5052c4e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1513847c_7878886a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/DefaultConnectionSocketFactoryProvider.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-10-19T10:47:25Z",
+      "side": 1,
+      "message": "this is current implementation and as you pointed out it is not acceptable for any env that is even remotely closed to be open in public - that is the reason for this patch :) OTOH I recognise that internally people use self-signed certs therefore I am keeping old behaviour in place...",
+      "parentUuid": "42bd49f8_7a9c76a2",
       "revId": "6e3875e309b336252f185f2a3660efbe5052c4e4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
