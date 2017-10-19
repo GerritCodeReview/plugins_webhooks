@@ -34,6 +34,24 @@
       "revId": "b56938432659623f601ca5eaf553d4eb075429bc",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f14a1cf3_6710eb9d",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1045122
+      },
+      "writtenOn": "2017-10-19T08:25:31Z",
+      "side": 1,
+      "message": "I\u0027m in favour of parameters named positively, but it\u0027s not really up to me to decide. At least it\u0027s clear now.",
+      "parentUuid": "dc9627f5_25796897",
+      "revId": "b56938432659623f601ca5eaf553d4eb075429bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
