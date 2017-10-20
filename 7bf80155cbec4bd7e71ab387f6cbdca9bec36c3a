@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81d8a7fe_11a3b632",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpSession.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-20T15:30:59Z",
+      "side": 1,
+      "message": "These two parameters are actually one EventProcessor.Request. Replace with one (Request) parameter?",
+      "range": {
+        "startLine": 36,
+        "startChar": 35,
+        "endLine": 36,
+        "endChar": 78
+      },
+      "revId": "7bf80155cbec4bd7e71ab387f6cbdca9bec36c3a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07421f2b_6e5531ea",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-10-20T15:30:59Z",
+      "side": 1,
+      "message": "... and then here replace these two with just content.get()",
+      "range": {
+        "startLine": 79,
+        "startChar": 44,
+        "endLine": 79,
+        "endChar": 86
+      },
+      "revId": "7bf80155cbec4bd7e71ab387f6cbdca9bec36c3a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
