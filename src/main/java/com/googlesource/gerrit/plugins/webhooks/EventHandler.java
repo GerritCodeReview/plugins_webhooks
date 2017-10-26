@@ -16,10 +16,6 @@ package com.googlesource.gerrit.plugins.webhooks;
 
 import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.REMOTE;
 
-import org.eclipse.jgit.lib.Config;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.common.base.Strings;
 import com.google.gerrit.common.EventListener;
 import com.google.gerrit.extensions.annotations.PluginName;
@@ -28,6 +24,9 @@ import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectEvent;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.inject.Inject;
+import org.eclipse.jgit.lib.Config;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class EventHandler implements EventListener {
   private static final Logger log = LoggerFactory.getLogger(EventHandler.class);

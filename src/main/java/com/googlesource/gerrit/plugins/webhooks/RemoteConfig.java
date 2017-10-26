@@ -14,10 +14,9 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import org.eclipse.jgit.lib.Config;
-
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
+import org.eclipse.jgit.lib.Config;
 
 public class RemoteConfig {
   public interface Factory {
@@ -31,8 +30,7 @@ public class RemoteConfig {
   private final String name;
 
   @Inject
-  RemoteConfig(@Assisted("config") Config config,
-      @Assisted("name") String name) {
+  RemoteConfig(@Assisted("config") Config config, @Assisted("name") String name) {
     this.config = config;
     this.name = name;
     this.url = config.getString(REMOTE, name, "url");
