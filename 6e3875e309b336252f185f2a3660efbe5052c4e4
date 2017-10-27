@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "c17c2fd2_025cbe3f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/DefaultConnectionSocketFactoryProvider.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1045122
+      },
+      "writtenOn": "2017-10-27T07:30:44Z",
+      "side": 1,
+      "message": "\u003e I would say either you validate everything or nothing\n\nagree. It\u0027s like how all tools would work. For example, curl will validate quite thoroughly, but with -k/--insecure it will validate nothing at all anymore. Let\u0027t not confuse users with more settings. :)\n\nBy the way, isn\u0027t there a more secure default way to do this in Java? I\u0027m not familiar/fluent in Java, but in Python this feels like \u0027urllib\u0027 (traditional, everything has to set to secure by developer like this) vs \u0027requests\u0027 (modern, secure default).",
+      "parentUuid": "197e5855_2be87e40",
+      "revId": "6e3875e309b336252f185f2a3660efbe5052c4e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc0dd3bf_753dc881",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 2
