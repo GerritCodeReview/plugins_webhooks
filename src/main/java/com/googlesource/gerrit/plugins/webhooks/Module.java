@@ -34,7 +34,8 @@ public class Module extends FactoryModule {
   protected void configure() {
     bind(ScheduledExecutorService.class)
         .annotatedWith(WebHooksExecutor.class)
-        .toProvider(ExecutorProvider.class);
+        .toProvider(ExecutorProvider.class)
+        .in(Scopes.SINGLETON);
     bind(CloseableHttpClient.class).toProvider(HttpClientProvider.class).in(Scopes.SINGLETON);
     factory(PostTask.Factory.class);
     factory(RemoteConfig.Factory.class);

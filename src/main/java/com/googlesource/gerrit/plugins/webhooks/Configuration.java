@@ -29,7 +29,7 @@ public class Configuration {
   private static final int DEFAULT_TIMEOUT_MS = 5000;
   private static final int DEFAULT_MAX_TRIES = 5;
   private static final int DEFAULT_RETRY_INTERVAL = 1000;
-  private static final int DEFAULT_THREAD_POOL_SIZE = 1;
+  private static final int DEFAULT_THREAD_POOL_SIZE = 2;
 
   private final int connectionTimeout;
   private final int socketTimeout;
