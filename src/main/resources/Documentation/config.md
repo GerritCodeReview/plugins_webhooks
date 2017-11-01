@@ -66,4 +66,4 @@ File 'gerrit.config'
 
 @PLUGIN@.threadPoolSize
 :   Maximum number of threads used to send events to the target instance.
-    Defaults to 1.
+    Defaults to 2.

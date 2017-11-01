@@ -36,7 +36,8 @@ public class Module extends FactoryModule {
   protected void configure() {
     bind(ScheduledThreadPoolExecutor.class)
         .annotatedWith(WebHooksExecutor.class)
-        .toProvider(ExecutorProvider.class);
+        .toProvider(ExecutorProvider.class)
+        .in(Scopes.SINGLETON);
     bind(Configuration.class).in(Scopes.SINGLETON);
     bind(CloseableHttpClient.class).toProvider(HttpClientProvider.class)
         .in(Scopes.SINGLETON);
