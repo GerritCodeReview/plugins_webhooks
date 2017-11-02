@@ -22,6 +22,30 @@
       "revId": "3813f8fdd86f8b4a17764d06a0ba153c43fdd014",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43954ea8_e67b5712",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-11-02T10:04:51Z",
+      "side": 1,
+      "message": "Addressed in the follow up change: https://gerrit-review.googlesource.com/#/c/plugins/webhooks/+/138291",
+      "parentUuid": "07e3121a_2fd377fd",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "3813f8fdd86f8b4a17764d06a0ba153c43fdd014",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
