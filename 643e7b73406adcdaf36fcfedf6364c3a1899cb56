@@ -16,6 +16,24 @@
       "revId": "643e7b73406adcdaf36fcfedf6364c3a1899cb56",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d4d7ee7_1352517b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpClientProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-11-02T14:57:21Z",
+      "side": 1,
+      "message": "Idea is to instantiate clients only when HttpSession is created (but once client is instantiated it is being re-used for subsequent calls) - therefore one needs to have 2 *HttpClientProvider classes (bound in SINGLETON scope). They get called in HttpSession constructor (technically it is being called in HttpClientConfigurator which is kind of a redundant):\n1. remote.getSslVerify() value is retrieved and depending on its value corresponding *HttpClientProvider is called in order to get HttpClient\n2. each implementation of HttpClientProvider is constructed with corresponding *ConnectionSocketFactoryProvider and as a result call to HttpClientConnectionManagerProvider.Factory method is performed and again it is being delayed to the moment when provider\u0027s get() method is called - I have consolidated the code and removed HttpClientConnectionManagerProvider.Factory",
+      "parentUuid": "b28034e0_3f84d1f0",
+      "revId": "643e7b73406adcdaf36fcfedf6364c3a1899cb56",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
