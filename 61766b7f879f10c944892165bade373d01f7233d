@@ -22,6 +22,30 @@
       "revId": "61766b7f879f10c944892165bade373d01f7233d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef5a5dee_2eeceba2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-11-02T12:23:17Z",
+      "side": 1,
+      "message": "It throws 2017-11-02 12:18:08,407|DEBUG|ReceiveCommits-1|EventUtil      | Error in event listener com.google.gerrit.server.events.StreamEventsApiListener for event com.google.gerrit.server.extensions.events.GitReferenceUpdated\njava.lang.IllegalStateException: Testing how exceptions are being handled\n\tat com.googlesource.gerrit.plugins.webhooks.Configuration.getInt(Configuration.java:54)\n\tat com.googlesource.gerrit.plugins.webhooks.Configuration.\u003cinit\u003e(Configuration.java:41)\n\tat com.googlesource.gerrit.plugins.webhooks.Configuration$$FastClassByGuice$$a80ded4a.newInstance(\u003cgenerated\u003e)\n\tat com.google.inject.internal.DefaultConstructionProxyFactory$FastClassProxy.newInstance(DefaultConstructionProxyFactory.java:89)\n\tat com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:111)\n\tat com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)\n\tat com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)\n\tat com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)\n\tat com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)\n\tat com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)\n\tat com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)\n\tat com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)\n\tat com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)\n\tat com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)\n\tat com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)\n\tat com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)\n\tat com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)\n\tat com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)\n\tat com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)\n\tat com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)\n\tat com.google.inject.assistedinject.FactoryProvider2.invoke(FactoryProvider2.java:776)\n\tat com.sun.proxy.$Proxy428.create(Unknown Source)\n\tat com.googlesource.gerrit.plugins.webhooks.EventHandler.onEvent(EventHandler.java:72)\n\tat com.google.gerrit.common.EventBroker.fireEventForUnrestrictedListeners(EventBroker.java:103)\n\tat com.google.gerrit.common.EventBroker.fireEvent(EventBroker.java:131)\n\tat com.google.gerrit.common.EventBroker.postEvent(EventBroker.java:88)\n\tat com.google.gerrit.server.events.StreamEventsApiListener.onGitReferenceUpdated(StreamEventsApiListener.java:386)\n\tat com.google.gerrit.server.extensions.events.GitReferenceUpdated.fire(GitReferenceUpdated.java:149)\n\tat com.google.gerrit.server.extensions.events.GitReferenceUpdated.fire(GitReferenceUpdated.java:123)\n\tat com.google.gerrit.server.update.ReviewDbBatchUpdate.execute(ReviewDbBatchUpdate.java:334)\n\tat com.google.gerrit.server.update.BatchUpdate$Factory.execute(BatchUpdate.java:116)\n\tat com.google.gerrit.server.git.MergeOp.integrateIntoHistory(MergeOp.java:474)\n\tat com.google.gerrit.server.git.MergeOp.merge(MergeOp.java:439)\n\tat com.google.gerrit.server.git.ReceiveCommits.submit(ReceiveCommits.java:2223)\n\tat com.google.gerrit.server.git.ReceiveCommits.insertChangesAndPatchSets(ReceiveCommits.java:871)\n\tat com.google.gerrit.server.git.ReceiveCommits.processCommands(ReceiveCommits.java:610)\n\tat com.google.gerrit.server.git.AsyncReceiveCommits$Worker.run(AsyncReceiveCommits.java:81)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)\n\tat com.google.gerrit.server.util.RequestScopePropagator$5.call(RequestScopePropagator.java:217)\n\tat com.google.gerrit.server.util.RequestScopePropagator$4.call(RequestScopePropagator.java:193)\n\tat com.google.gerrit.server.util.ThreadLocalRequestScopePropagator$1.call(ThreadLocalRequestScopePropagator.java:52)\n\tat com.google.gerrit.server.util.RequestScopePropagator$1.call(RequestScopePropagator.java:94)\n\tat com.google.gerrit.server.util.RequestScopePropagator$2.run(RequestScopePropagator.java:125)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)\n\tat java.util.concurrent.FutureTask.run(Unknown Source)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)\n\tat com.google.gerrit.server.git.WorkQueue$Task.run(WorkQueue.java:418)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)\n\tat java.lang.Thread.run(Unknown Source)\n\ntherefore one should be able to deduct what is wrong ;)",
+      "parentUuid": "94d25044_3f65a2aa",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "61766b7f879f10c944892165bade373d01f7233d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
