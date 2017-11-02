@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b28034e0_3f84d1f0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpClientProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-11-02T10:52:26Z",
+      "side": 1,
+      "message": "I wonder what if we inject a HttpClientConnectionManagerFacotry (instead of Provider\u003cHttpClientConnectionManager\u003e) and here we pass the sslVerify parameter (which we can get from the Configuration) to the factory create method:\n\n  .setConnectionManager(factory.create(sslVerify))\n\nLooks like this way the creation of HttpClientConnectionManager could be localized in that factory and passing sslVerify done from this place only.\n\nWould this approach make this change smaller?",
+      "revId": "643e7b73406adcdaf36fcfedf6364c3a1899cb56",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
