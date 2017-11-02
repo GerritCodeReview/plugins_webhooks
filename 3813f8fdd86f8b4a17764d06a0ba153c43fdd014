@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07e3121a_2fd377fd",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-11-02T08:32:05Z",
+      "side": 1,
+      "message": "I see that this coding pattern originates from my initial commit of this plugin but it looks wrong to me.\nThis should be rather a warning and not an error, because in case of invalid value,\nit will fall back to the default value and getInt will not fail.\n\nCould be fixed in a follow-up change?\n\nFurther, do we follow this strategy in other plugins and Gerrit core too? If a config value cannot be interpreted do we fall back to the default value? AFAIR, Gerrit core doesn\u0027t do that\nand I guess that most of other plugins do not do that too.\n\nWhy not just fail (propagate the exception) if a config value is wrong?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "3813f8fdd86f8b4a17764d06a0ba153c43fdd014",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
