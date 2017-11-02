@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a9d38fa_1858d82b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-11-02T08:16:12Z",
+      "side": 1,
+      "message": "returns non-empty content?",
+      "revId": "65609e0aa0802718d8390770b8c250132dce597d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "164b81d4_90ecf33e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-11-02T08:16:12Z",
+      "side": 1,
+      "message": "This is standard behavior of Suppliers.memoize and need not be documented.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "65609e0aa0802718d8390770b8c250132dce597d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
