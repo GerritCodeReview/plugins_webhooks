@@ -54,8 +54,8 @@ public class Configuration {
     try {
       return cfg.getBoolean(name, defaultValue);
     } catch (IllegalArgumentException e) {
-      logError(name, "boolean", defaultValue, e);
-      return defaultValue;
+      logError(name, "boolean", e);
+      throw e;
     }
   }
 
@@ -63,13 +63,13 @@ public class Configuration {
     try {
       return cfg.getInt(name, defaultValue);
     } catch (IllegalArgumentException e) {
-      logError(name, "integer", defaultValue, e);
-      return defaultValue;
+      logError(name, "integer", e);
+      throw e;
     }
   }
 
-  protected void logError(String name, String type, Object defaultValue, Exception e) {
-    log.error("invalid value for{}; using default value {}", name, defaultValue);
+  protected void logError(String name, String type, Exception e) {
+    log.error("invalid value for{}", name);
     log.debug("Failed retrieve {} value: {}", type, e.getMessage(), e);
   }
 
