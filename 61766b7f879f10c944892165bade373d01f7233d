@@ -46,6 +46,30 @@
       "revId": "61766b7f879f10c944892165bade373d01f7233d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a0c92d_c502e654",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-11-02T12:26:28Z",
+      "side": 1,
+      "message": "In such case neither getBoolean nor getInt are needed ;)",
+      "parentUuid": "ef5a5dee_2eeceba2",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "61766b7f879f10c944892165bade373d01f7233d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
