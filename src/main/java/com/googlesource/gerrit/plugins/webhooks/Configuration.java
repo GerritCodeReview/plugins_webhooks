@@ -14,9 +14,6 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
@@ -25,8 +22,6 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class Configuration {
-  private static final Logger log = LoggerFactory.getLogger(Configuration.class);
-
   private static final int DEFAULT_TIMEOUT_MS = 5000;
   private static final int DEFAULT_MAX_TRIES = 5;
   private static final int DEFAULT_RETRY_INTERVAL = 1000;
@@ -44,35 +39,12 @@ public class Configuration {
   protected Configuration(PluginConfigFactory config,
       @PluginName String pluginName) {
     PluginConfig cfg = config.getFromGerritConfig(pluginName, true);
-    connectionTimeout = getInt(cfg, RemoteConfig.CONNECTION_TIMEOUT, DEFAULT_TIMEOUT_MS);
-    socketTimeout = getInt(cfg, RemoteConfig.SOCKET_TIMEOUT, DEFAULT_TIMEOUT_MS);
-    maxTries = getInt(cfg, RemoteConfig.MAX_TRIES, DEFAULT_MAX_TRIES);
-    retryInterval = getInt(cfg, RemoteConfig.RETRY_INTERVAL, DEFAULT_RETRY_INTERVAL);
-    threadPoolSize = getInt(cfg, "threadPoolSize", DEFAULT_THREAD_POOL_SIZE);
-    sslVerify = getBoolean(cfg, RemoteConfig.SSL_VERIFY, DEFAULT_SSL_VERIFY);
-  }
-
-  protected boolean getBoolean(PluginConfig cfg, String name, boolean defaultValue) {
-    try {
-      return cfg.getBoolean(name, defaultValue);
-    } catch (IllegalArgumentException e) {
-      logError(name, "boolean", defaultValue, e);
-      return defaultValue;
-    }
-  }
-
-  protected int getInt(PluginConfig cfg, String name, int defaultValue) {
-    try {
-      return cfg.getInt(name, defaultValue);
-    } catch (IllegalArgumentException e) {
-      logError(name, "integer", defaultValue, e);
-      return defaultValue;
-    }
-  }
-
-  protected void logError(String name, String type, Object defaultValue, Exception e) {
-    log.error("invalid value for{}; using default value {}", name, defaultValue);
-    log.debug("Failed retrieve {} value: {}", type, e.getMessage(), e);
+    connectionTimeout = cfg.getInt(RemoteConfig.CONNECTION_TIMEOUT, DEFAULT_TIMEOUT_MS);
+    socketTimeout = cfg.getInt(RemoteConfig.SOCKET_TIMEOUT, DEFAULT_TIMEOUT_MS);
+    maxTries = cfg.getInt(RemoteConfig.MAX_TRIES, DEFAULT_MAX_TRIES);
+    retryInterval = cfg.getInt(RemoteConfig.RETRY_INTERVAL, DEFAULT_RETRY_INTERVAL);
+    threadPoolSize = cfg.getInt("threadPoolSize", DEFAULT_THREAD_POOL_SIZE);
+    sslVerify = cfg.getBoolean(RemoteConfig.SSL_VERIFY, DEFAULT_SSL_VERIFY);
   }
 
   public int getConnectionTimeout() {
