@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9dd6b787_e13b64a6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-11-02T09:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a9d38fa_1858d82b",
+      "revId": "65609e0aa0802718d8390770b8c250132dce597d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "164b81d4_90ecf33e",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
         "patchSetId": 11
@@ -39,6 +57,30 @@
       "revId": "65609e0aa0802718d8390770b8c250132dce597d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f2e1fc8_1c3e2e4d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-11-02T09:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "164b81d4_90ecf33e",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "65609e0aa0802718d8390770b8c250132dce597d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
