@@ -34,6 +34,24 @@
       "revId": "ccd56261121acff3d247e83665a404c743b8140f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a929b1d_17dd62f2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/DefaultHttpClientProvider.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-11-14T11:35:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf971e7c_b286fc7c",
+      "revId": "ccd56261121acff3d247e83665a404c743b8140f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
