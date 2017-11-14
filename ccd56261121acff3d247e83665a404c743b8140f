@@ -16,6 +16,24 @@
       "revId": "ccd56261121acff3d247e83665a404c743b8140f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf971e7c_b286fc7c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/DefaultHttpClientProvider.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-11-14T11:34:20Z",
+      "side": 1,
+      "message": "It cannot implement Provider\u003cRegistry\u003cConnectionSocketFactory\u003e\u003e as it already implements Provider\u003cCloseableHttpClient\u003e and implementing the same interface with different argument is not possible in Java. Having said that corresponding implementation can be created in private static method.",
+      "parentUuid": "196783fe_c36ef065",
+      "revId": "ccd56261121acff3d247e83665a404c743b8140f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
