@@ -17,10 +17,10 @@ package com.googlesource.gerrit.plugins.webhooks;
 import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.REMOTE;
 
 import com.google.common.base.Strings;
-import com.google.gerrit.common.EventListener;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.events.Event;
+import com.google.gerrit.server.events.EventListener;
 import com.google.gerrit.server.events.ProjectEvent;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.inject.Inject;
