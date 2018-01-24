@@ -24,8 +24,8 @@ junit_tests(
     srcs = glob(["src/test/java/**/*.java"]),
     resources = glob(["src/test/resources/**/*"]),
     tags = [
-        "webhooks",
         "local",
+        "webhooks",
     ],
     deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
         ":webhooks__plugin_test_deps",
