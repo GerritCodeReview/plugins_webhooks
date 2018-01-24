@@ -24,7 +24,7 @@ public abstract class AbstractEventProcessor implements EventProcessor {
   @Override
   public Optional<EventProcessor.Request> process(ProjectEvent event, RemoteConfig remote) {
     if (!shouldProcess(event, remote)) {
-      return null;
+      return Optional.empty();
     }
 
     return doProcess(event, remote);
