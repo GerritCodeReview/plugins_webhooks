@@ -44,7 +44,7 @@ To execute the tests run:
 This project can be imported into the Eclipse IDE:
 
 ```
-  ./tools/eclipse.py
+  ./tools/eclipse.sh
 ```
 
 ## Build in Gerrit tree
