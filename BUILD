@@ -27,18 +27,17 @@ junit_tests(
         "local",
         "webhooks",
     ],
-    deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
+    deps = [
         ":webhooks__plugin_test_deps",
-        ":webhooks__plugin",
     ],
 )
 
 java_library(
     name = "webhooks__plugin_test_deps",
+    testonly = 1,
     visibility = ["//visibility:public"],
-    exports = [
-        "@byte-buddy//jar",
+    exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
+        ":webhooks__plugin",
         "@mockito//jar",
-        "@objenesis//jar",
     ],
 )
