@@ -1,6 +1,9 @@
 load("//tools/bzl:maven_jar.bzl", "maven_jar")
 
 def external_plugin_deps():
+  webhooks()
+
+def webhooks():
   maven_jar(
     name = "mockito",
     artifact = "org.mockito:mockito-core:2.9.0",
