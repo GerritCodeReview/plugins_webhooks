@@ -15,10 +15,13 @@
 package com.googlesource.gerrit.plugins.webhooks.processors;
 
 import com.google.common.base.Supplier;
+import com.google.common.collect.ImmutableMap;
+import com.google.gerrit.server.config.CanonicalWebUrl;
 import com.google.gerrit.server.events.ProjectEvent;
 import com.google.gerrit.server.events.SupplierSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.inject.Inject;
 import com.googlesource.gerrit.plugins.webhooks.EventProcessor;
 import com.googlesource.gerrit.plugins.webhooks.RemoteConfig;
 import java.util.Optional;
@@ -27,8 +30,17 @@ public class GerritEventProcessor extends AbstractEventProcessor {
   private static Gson GSON =
       new GsonBuilder().registerTypeAdapter(Supplier.class, new SupplierSerializer()).create();
 
+  private final String canonicalWebUrl;
+
+  @Inject
+  GerritEventProcessor(@CanonicalWebUrl String canonicalWebUrl) {
+    this.canonicalWebUrl = canonicalWebUrl;
+  }
+
   @Override
   public Optional<EventProcessor.Request> doProcess(ProjectEvent event, RemoteConfig remote) {
-    return Optional.of(new EventProcessor.Request(GSON.toJson(event)));
+    return Optional.of(
+        new EventProcessor.Request(
+            GSON.toJson(event), ImmutableMap.of("X-Origin-Url", canonicalWebUrl)));
   }
 }
