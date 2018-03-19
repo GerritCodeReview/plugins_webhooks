@@ -22,6 +22,30 @@
       "revId": "45accb62aa9ba88117ea43ad19fd7d809acc04f6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a00cbe8b_1551f95d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-03-19T20:20:54Z",
+      "side": 1,
+      "message": "yeah I wanted to retry only when it could, at least theoretically ;), succeed e.g. SocketTimeoutException (IOException subclass) that clearly indicates connection issue... I don\u0027t believe that repeating after either RuntimeException or SSLException (e.g. SSLHandshakeException) will likely finish successfully ;)",
+      "parentUuid": "3a1e29bb_6ddcc804",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "45accb62aa9ba88117ea43ad19fd7d809acc04f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
