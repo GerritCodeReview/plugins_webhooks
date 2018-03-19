@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "7e4b46a0_e8ffe02c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-03-19T21:47:47Z",
+      "side": 1,
+      "message": "Do you have a stack trace of one such exception?\n\nI am a bit surprised that we get IllegalMonitorStateException.\nWhen Runnable.run throws an exception I would rather expect that the thread\nin the Executor\u0027s thread pool dies.",
+      "revId": "45accb62aa9ba88117ea43ad19fd7d809acc04f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "760664e7_18c6758c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-03-19T21:47:47Z",
+      "side": 1,
+      "message": "Can we have a unit test for this?",
+      "revId": "45accb62aa9ba88117ea43ad19fd7d809acc04f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dffc60e_ef088276",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-03-19T21:47:47Z",
+      "side": 1,
+      "message": "Actually why don\u0027t we catch Throwable here? We really don\u0027t want any\nexception to exit Runnable.run as it likely means that the thread will die.",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "45accb62aa9ba88117ea43ad19fd7d809acc04f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a1e29bb_6ddcc804",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
         "patchSetId": 3
@@ -37,6 +94,30 @@
       "side": 1,
       "message": "yeah I wanted to retry only when it could, at least theoretically ;), succeed e.g. SocketTimeoutException (IOException subclass) that clearly indicates connection issue... I don\u0027t believe that repeating after either RuntimeException or SSLException (e.g. SSLHandshakeException) will likely finish successfully ;)",
       "parentUuid": "3a1e29bb_6ddcc804",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "45accb62aa9ba88117ea43ad19fd7d809acc04f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7abd991c_f81fb0d2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-03-19T21:47:47Z",
+      "side": 1,
+      "message": "Formally, Jacek\u0027s code is correct because in the base version this method\nwas only invoked for IOException\u0027s and, therefore, isRecoverable was only\ntrue if e was instance of IOException and not an instance of SSLException.\n\nIf we want to consider more exception types being recoverable we should do\nthat in a new change.",
+      "parentUuid": "a00cbe8b_1551f95d",
       "range": {
         "startLine": 93,
         "startChar": 11,
