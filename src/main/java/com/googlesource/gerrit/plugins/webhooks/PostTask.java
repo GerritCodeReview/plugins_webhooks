@@ -79,7 +79,7 @@ class PostTask implements Runnable {
         logRetry(result.message);
         reschedule();
       }
-    } catch (IOException e) {
+    } catch (RuntimeException | IOException e) {
       if (isRecoverable(e) && execCnt < remote.getMaxTries()) {
         logRetry(e);
         reschedule();
@@ -89,8 +89,9 @@ class PostTask implements Runnable {
     }
   }
 
-  private boolean isRecoverable(IOException e) {
-    return !(e instanceof SSLException);
+  private boolean isRecoverable(Exception e) {
+    return !(e instanceof SSLException)
+        && (e instanceof IOException);
   }
 
   private void logRetry(String reason) {
