@@ -24,6 +24,8 @@ import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLException;
@@ -122,5 +124,32 @@ public class PostTaskTest {
             });
     task.run();
     verify(executor, times(MAX_TRIES - 1)).schedule(task, RETRY_INTERVAL, TimeUnit.MILLISECONDS);
+  }
+
+  @Test
+  public void executorSurvivesNonRecoverableExceptions()
+      throws IOException, InterruptedException, ExecutionException {
+    executor = new ScheduledThreadPoolExecutor(1);
+
+    // schedule erroneous task for the first time
+    when(session.post(eq(remote), eq(content))).thenThrow(RuntimeException.class);
+    ScheduledFuture<?> scheduled = executor.schedule(task, 0L, TimeUnit.SECONDS);
+    scheduled.get();
+
+    // schedule erroneous task again
+    when(session.post(eq(remote), eq(content))).thenThrow(SSLException.class);
+    // task needs to be recreated as it uses caching provider for processor result
+    // and process command is called only once
+    task = new PostTask(executor, sessionFactory, processor, projectCreated, remote);
+    scheduled = executor.schedule(task, 0L, TimeUnit.SECONDS);
+    scheduled.get();
+
+    // schedule task that finishes with success
+    when(session.post(eq(remote), eq(content))).thenReturn(OK_RESULT);
+    task = new PostTask(executor, sessionFactory, processor, projectCreated, remote);
+    scheduled = executor.schedule(task, 0L, TimeUnit.SECONDS);
+    scheduled.get();
+
+    verify(processor, times(3)).process(eq(projectCreated), eq(remote));
   }
 }
