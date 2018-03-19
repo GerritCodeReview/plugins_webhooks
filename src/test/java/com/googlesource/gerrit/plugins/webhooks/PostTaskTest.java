@@ -88,9 +88,13 @@ public class PostTaskTest {
   }
 
   @Test
-  public void noRescheduleOnNonRecoverableException() throws IOException {
+  public void noRescheduleOnNonRecoverableExceptions() throws IOException {
     when(session.post(eq(remote), eq(content))).thenThrow(SSLException.class);
     task.run();
+
+    when(session.post(eq(remote), eq(content))).thenThrow(RuntimeException.class);
+    task.run();
+
     verifyZeroInteractions(executor);
   }
 
