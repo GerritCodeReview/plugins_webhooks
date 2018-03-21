@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ff109ef_533e476b",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-03-21T07:48:11Z",
+      "side": 1,
+      "message": "This is basically the same as the test in 92-93. Both SSLException and RuntimeException are\nunrecoverable, so we are testing the same behavior twice. I don\u0027t think this is adding\na value to this test.\n\nWhat could add additional value is a test which verifies that after a task throws an unrecoverable exception, the next (submitted) task will get executed i.e. the executor\nis still healthy. Does this make sense?",
+      "revId": "1533e57d100356434892bc7da18d24f85d4c702d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
