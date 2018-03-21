@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "737e8e1e_88df573a",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-03-21T15:56:37Z",
+      "side": 1,
+      "message": "I understand that task needs to be recreated but why do we need to\nrecreate it two times (lines 143 and this one)?",
+      "revId": "bf508c09e02d641c59a09fe7da4e2189f6d8308e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
