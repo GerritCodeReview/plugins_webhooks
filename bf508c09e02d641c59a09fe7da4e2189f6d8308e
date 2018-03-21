@@ -16,6 +16,24 @@
       "revId": "bf508c09e02d641c59a09fe7da4e2189f6d8308e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98476a22_6da44d39",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-03-21T16:44:18Z",
+      "side": 1,
+      "message": "thanks for pointing it out - I was hooked on processor being the source of proof that task was posted but session mock can be used for that as well - it will simplify the test too",
+      "parentUuid": "737e8e1e_88df573a",
+      "revId": "bf508c09e02d641c59a09fe7da4e2189f6d8308e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
