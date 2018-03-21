@@ -34,6 +34,24 @@
       "revId": "1533e57d100356434892bc7da18d24f85d4c702d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4517c068_3e884505",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-03-21T15:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb2bbd1f_b3a2c8a2",
+      "revId": "1533e57d100356434892bc7da18d24f85d4c702d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
