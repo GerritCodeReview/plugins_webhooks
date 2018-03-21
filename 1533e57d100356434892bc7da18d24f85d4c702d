@@ -16,6 +16,24 @@
       "revId": "1533e57d100356434892bc7da18d24f85d4c702d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb2bbd1f_b3a2c8a2",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/PostTaskTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-03-21T10:29:34Z",
+      "side": 1,
+      "message": "Will check it! Thanks for suggestion :)",
+      "parentUuid": "0ff109ef_533e476b",
+      "revId": "1533e57d100356434892bc7da18d24f85d4c702d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
