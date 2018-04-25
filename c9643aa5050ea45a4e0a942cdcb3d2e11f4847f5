@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d40dfc25_c27f2e4d",
+        "filename": "src/main/resources/Documentation/rest-api-config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2018-04-25T11:52:31Z",
+      "side": 1,
+      "message": "note",
+      "range": {
+        "startLine": 6,
+        "startChar": 17,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "c9643aa5050ea45a4e0a942cdcb3d2e11f4847f5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78352c6f_a0c943f5",
+        "filename": "src/main/resources/Documentation/rest-api-config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2018-04-25T11:52:31Z",
+      "side": 1,
+      "message": "Get",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "c9643aa5050ea45a4e0a942cdcb3d2e11f4847f5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "200d609a_845e95e6",
+        "filename": "src/main/resources/Documentation/rest-api-config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2018-04-25T11:52:31Z",
+      "side": 1,
+      "message": "Create or update a webhook",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "c9643aa5050ea45a4e0a942cdcb3d2e11f4847f5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52353b2b_b27e3221",
+        "filename": "src/main/resources/Documentation/rest-api-config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2018-04-25T11:52:31Z",
+      "side": 1,
+      "message": "for CREATE status code should be 201",
+      "range": {
+        "startLine": 99,
+        "startChar": 11,
+        "endLine": 99,
+        "endChar": 14
+      },
+      "revId": "c9643aa5050ea45a4e0a942cdcb3d2e11f4847f5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "461d2a4c_16cf4c3f",
+        "filename": "src/main/resources/Documentation/rest-api-config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2018-04-25T11:52:31Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "c9643aa5050ea45a4e0a942cdcb3d2e11f4847f5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
