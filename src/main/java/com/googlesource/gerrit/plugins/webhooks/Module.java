@@ -23,6 +23,7 @@ import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.inject.Inject;
 import com.google.inject.Scopes;
 import com.google.inject.name.Names;
+import com.googlesource.gerrit.plugins.webhooks.rest.WebhooksRestModule;
 import java.util.concurrent.ScheduledExecutorService;
 import org.apache.http.impl.client.CloseableHttpClient;
 
@@ -57,5 +58,6 @@ public class Module extends FactoryModule {
         .in(Scopes.SINGLETON);
 
     install(processors);
+    install(new WebhooksRestModule());
   }
 }
