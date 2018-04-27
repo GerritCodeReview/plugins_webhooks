@@ -123,6 +123,23 @@ The response code is 200 when the webhook already existed and was updated:
   }
 ```
 
+### <a id="delete-webhook"> Delete webhook
+_DELETE /config/server/@PLUGIN@~projects/[\{project-name\}](../../../Documentation/rest-api-projects.html#project-name)/remotes/[\{remote-name\}]_
+
+Delete a webhook for a project.
+
+### Request
+
+```
+  DELETE /config/server/@PLUGIN@~projects/myProject/remotes/foo
+```
+
+### Response
+
+```
+  HTTP/1.1 204 No Content
+```
+
 ### <a id="remote-info"> RemoteInfo
 The `RemoteInfo` contains information about a remote section in a `webhooks.config` file.
 
