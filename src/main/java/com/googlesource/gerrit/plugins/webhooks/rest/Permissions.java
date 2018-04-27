@@ -18,4 +18,6 @@ import com.google.gerrit.reviewdb.client.Project.NameKey;
 
 public interface Permissions {
   boolean canRead(NameKey project);
+
+  boolean canUpdate(NameKey project);
 }
