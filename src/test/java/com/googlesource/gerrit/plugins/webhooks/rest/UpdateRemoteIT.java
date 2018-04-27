@@ -19,8 +19,10 @@ import static com.googlesource.gerrit.plugins.webhooks.Configuration.DEFAULT_MAX
 import static com.googlesource.gerrit.plugins.webhooks.Configuration.DEFAULT_RETRY_INTERVAL;
 import static com.googlesource.gerrit.plugins.webhooks.Configuration.DEFAULT_SSL_VERIFY;
 import static com.googlesource.gerrit.plugins.webhooks.Configuration.DEFAULT_TIMEOUT_MS;
+import static com.googlesource.gerrit.plugins.webhooks.rest.GetRemoteIT.asMap;
 import static com.googlesource.gerrit.plugins.webhooks.rest.GetRemoteIT.asRemoteInfo;
 import static javax.servlet.http.HttpServletResponse.SC_CREATED;
+import static javax.servlet.http.HttpServletResponse.SC_NO_CONTENT;
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
 import com.google.common.collect.ImmutableList;
@@ -33,18 +35,18 @@ import org.junit.Test;
 @TestPlugin(name = "webhooks", sysModule = "com.googlesource.gerrit.plugins.webhooks.Module")
 public class UpdateRemoteIT extends LightweightPluginDaemonTest {
 
-  private String putFoo;
+  private String fooEndpoint;
 
   @Before
   public void setUp() throws Exception {
     super.setUp();
-    putFoo = String.format("/config/server/webhooks~projects/%s/remotes/foo", project.get());
+    fooEndpoint = String.format("/config/server/webhooks~projects/%s/remotes/foo", project.get());
   }
 
   @Test
   public void createWebhook() throws Exception {
     RemoteInfo info = newRemoteInfo("https://foo.org/");
-    RestResponse res = adminRestSession.put(putFoo, info);
+    RestResponse res = adminRestSession.put(fooEndpoint, info);
     assertThat(res.getStatusCode()).isEqualTo(SC_CREATED);
     assertThat(info).isEqualTo(asRemoteInfo(res.getEntityContent()));
   }
@@ -53,9 +55,22 @@ public class UpdateRemoteIT extends LightweightPluginDaemonTest {
   public void updateWebhook() throws Exception {
     createWebhook();
     RemoteInfo info = newRemoteInfo("https://foo.org/gerrit-events");
-    RestResponse res = adminRestSession.put(putFoo, info);
+    RestResponse res = adminRestSession.put(fooEndpoint, info);
     assertThat(res.getStatusCode()).isEqualTo(SC_OK);
     assertThat(info).isEqualTo(asRemoteInfo(res.getEntityContent()));
+  }
+
+  @Test
+  public void deleteRemote() throws Exception {
+    createWebhook();
+    RestResponse res = adminRestSession.delete(fooEndpoint);
+    assertThat(res.getStatusCode()).isEqualTo(SC_NO_CONTENT);
+
+    RestResponse response =
+        adminRestSession.get(
+            String.format("/config/server/webhooks~projects/%s/remotes/", project.get()));
+    assertThat(response.getStatusCode()).isEqualTo(200);
+    assertThat(asMap(response.getEntityContent()).size()).isEqualTo(0);
   }
 
   private RemoteInfo newRemoteInfo(String url) {
