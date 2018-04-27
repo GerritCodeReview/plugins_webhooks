@@ -70,3 +70,55 @@ As result a [RemoteInfo](#remote-info) entity is returned.
     "sslVerify": true,
   }
 ```
+
+### <a id="create-webhook"> Create webhook
+_PUT /config/server/@PLUGIN@~projects/[\{project-name\}](../../../Documentation/rest-api-projects.html#project-name)/remotes/[\{remote-name\}]_
+
+Create or update a webhook for a project. The request body needs to include a
+[RemoteInfo](#remote-info) entity.
+
+### Request
+
+```
+  PUT /config/server/@PLUGIN@~projects/myProject/remotes/foo
+  Content-Type: application/json; charset=UTF-8
+
+  {
+    "url" : "https://foo.org/gerrit-events",
+    "maxTries" = 3,
+    "sslVerify": true,
+  }
+```
+
+As response a [RemoteInfo](#remote-info) entity, which describes the created/updated webhook,
+is returned.
+
+### Response
+
+```
+  HTTP/1.1 201 Created
+  Content-Disposition: attachment
+  Content-Type: application/json; charset=UTF-8
+
+  )]}'
+  {
+    "url" : "https://foo.org/gerrit-events",
+    "maxTries" = 3,
+    "sslVerify": true,
+  }
+```
+
+The response code is 200 when the webhook already existed and was updated:
+
+```
+  HTTP/1.1 200 OK
+  Content-Disposition: attachment
+  Content-Type: application/json; charset=UTF-8
+
+  )]}'
+  {
+    "url" : "https://foo.org/gerrit-events",
+    "maxTries" = 3,
+    "sslVerify": true,
+  }
+```
