@@ -35,6 +35,7 @@ public class WebhooksRestModule extends RestApiModule {
     child(PROJECT_WEBHOOK_KIND, "remotes").to(RemotesCollection.class);
     get(REMOTE_KIND).to(GetRemote.class);
     put(REMOTE_KIND).to(UpsertRemote.Updater.class);
+    delete(REMOTE_KIND).to(DeleteRemote.class);
 
     bind(Permissions.class).to(PermissionsImpl.class);
 

@@ -111,4 +111,8 @@ public class WebhooksConfig extends VersionedMetaData {
       cfg.setBoolean(REMOTE, remoteName, key, value);
     }
   }
+
+  public void deleteRemote(String remoteName) {
+    cfg.unsetSection(REMOTE, remoteName);
+  }
 }
