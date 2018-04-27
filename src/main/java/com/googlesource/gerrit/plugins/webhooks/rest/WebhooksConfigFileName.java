@@ -14,10 +14,11 @@
 
 package com.googlesource.gerrit.plugins.webhooks.rest;
 
-import com.google.gerrit.reviewdb.client.Project.NameKey;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-public interface Permissions {
-  boolean canRead(NameKey project);
+import com.google.inject.BindingAnnotation;
+import java.lang.annotation.Retention;
 
-  boolean canUpdate(NameKey project);
-}
+@Retention(RUNTIME)
+@BindingAnnotation
+public @interface WebhooksConfigFileName {}

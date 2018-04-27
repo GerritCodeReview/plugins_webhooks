@@ -22,11 +22,11 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class Configuration {
-  private static final int DEFAULT_TIMEOUT_MS = 5000;
-  private static final int DEFAULT_MAX_TRIES = 5;
-  private static final int DEFAULT_RETRY_INTERVAL = 1000;
+  public static final int DEFAULT_TIMEOUT_MS = 5000;
+  public static final int DEFAULT_MAX_TRIES = 5;
+  public static final int DEFAULT_RETRY_INTERVAL = 1000;
   private static final int DEFAULT_THREAD_POOL_SIZE = 2;
-  private static final boolean DEFAULT_SSL_VERIFY = false;
+  public static final boolean DEFAULT_SSL_VERIFY = false;
 
   private final int connectionTimeout;
   private final int socketTimeout;

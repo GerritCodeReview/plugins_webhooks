@@ -18,8 +18,11 @@ import static com.google.gerrit.server.config.ConfigResource.CONFIG_KIND;
 import static com.googlesource.gerrit.plugins.webhooks.rest.ProjectWebhooksResource.PROJECT_WEBHOOK_KIND;
 import static com.googlesource.gerrit.plugins.webhooks.rest.RemoteResource.REMOTE_KIND;
 
+import com.google.gerrit.extensions.annotations.PluginName;
+import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.registration.DynamicMap;
 import com.google.gerrit.extensions.restapi.RestApiModule;
+import com.google.inject.Provides;
 
 public class WebhooksRestModule extends RestApiModule {
 
@@ -31,7 +34,22 @@ public class WebhooksRestModule extends RestApiModule {
     child(CONFIG_KIND, "projects").to(ProjectsCollection.class);
     child(PROJECT_WEBHOOK_KIND, "remotes").to(RemotesCollection.class);
     get(REMOTE_KIND).to(GetRemote.class);
+    put(REMOTE_KIND).to(UpsertRemote.Updater.class);
 
     bind(Permissions.class).to(PermissionsImpl.class);
+
+    install(
+        new FactoryModule() {
+          @Override
+          protected void configure() {
+            factory(UpsertRemote.Inserter.Factory.class);
+          }
+        });
+  }
+
+  @Provides
+  @WebhooksConfigFileName
+  String getWebhooksConfigFileName(@PluginName String pluginName) {
+    return pluginName + ".config";
   }
 }
