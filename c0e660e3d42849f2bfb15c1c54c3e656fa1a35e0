@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c0c6a54_d4211bfc",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/rest/DeleteRemote.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-04-30T08:09:57Z",
+      "side": 1,
+      "message": "A better exception message might be:\n\"Missing permissions to update webhooks.\"",
+      "range": {
+        "startLine": 54,
+        "startChar": 31,
+        "endLine": 54,
+        "endChar": 61
+      },
+      "revId": "c0e660e3d42849f2bfb15c1c54c3e656fa1a35e0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "324c834c_08d6e41d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/rest/DeleteRemote.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-04-30T08:09:57Z",
+      "side": 1,
+      "message": "nitpick: If we use an abbreviation here, maybe whc or whConfig would be a more descriptive solution.",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "c0e660e3d42849f2bfb15c1c54c3e656fa1a35e0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
