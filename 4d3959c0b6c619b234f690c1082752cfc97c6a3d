@@ -22,6 +22,30 @@
       "revId": "4d3959c0b6c619b234f690c1082752cfc97c6a3d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4861867_39e2014c",
+        "filename": "WORKSPACE",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-05-04T07:33:15Z",
+      "side": 1,
+      "message": "It doesn\u0027t add anything that we need for this plugin, but done.",
+      "parentUuid": "608326a9_e52554d9",
+      "range": {
+        "startLine": 6,
+        "startChar": 14,
+        "endLine": 6,
+        "endChar": 54
+      },
+      "revId": "4d3959c0b6c619b234f690c1082752cfc97c6a3d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
