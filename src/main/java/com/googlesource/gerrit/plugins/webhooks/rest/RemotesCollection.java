@@ -18,6 +18,7 @@ import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.REMOTE;
 
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.registration.DynamicMap;
+import com.google.gerrit.extensions.restapi.AcceptsCreate;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.extensions.restapi.ChildCollection;
 import com.google.gerrit.extensions.restapi.IdString;
@@ -31,13 +32,16 @@ import com.googlesource.gerrit.plugins.webhooks.RemoteConfig;
 import org.eclipse.jgit.lib.Config;
 
 @Singleton
-public class RemotesCollection implements ChildCollection<ProjectWebhooksResource, RemoteResource> {
+public class RemotesCollection
+    implements ChildCollection<ProjectWebhooksResource, RemoteResource>,
+        AcceptsCreate<ProjectWebhooksResource> {
 
   private final DynamicMap<RestView<RemoteResource>> views;
   private final PluginConfigFactory configFactory;
   private final RemoteConfig.Factory remoteFactory;
   private final Provider<ListRemotes> list;
   private final String pluginName;
+  private final UpsertRemote.Inserter.Factory inserterFactory;
 
   @Inject
   RemotesCollection(
@@ -45,12 +49,14 @@ public class RemotesCollection implements ChildCollection<ProjectWebhooksResourc
       PluginConfigFactory configFactory,
       RemoteConfig.Factory remoteFactory,
       Provider<ListRemotes> list,
-      @PluginName String pluginName) {
+      @PluginName String pluginName,
+      UpsertRemote.Inserter.Factory inserterFactory) {
     this.views = views;
     this.configFactory = configFactory;
     this.remoteFactory = remoteFactory;
     this.list = list;
     this.pluginName = pluginName;
+    this.inserterFactory = inserterFactory;
   }
 
   @Override
@@ -73,5 +79,11 @@ public class RemotesCollection implements ChildCollection<ProjectWebhooksResourc
   @Override
   public DynamicMap<RestView<RemoteResource>> views() {
     return views;
+  }
+
+  @Override
+  @SuppressWarnings("unchecked")
+  public UpsertRemote.Inserter create(ProjectWebhooksResource parent, IdString id) {
+    return inserterFactory.create(id.get());
   }
 }
