@@ -43,4 +43,13 @@ public class PermissionsImpl implements Permissions {
         .controlForRef(REFS_CONFIG)
         .isVisible();
   }
+
+  @Override
+  public boolean canUpdate(Project.NameKey project) {
+    return projectCache
+        .get(project)
+        .controlFor(currentUser.get())
+        .controlForRef(REFS_CONFIG)
+        .canUpdate();
+  }
 }

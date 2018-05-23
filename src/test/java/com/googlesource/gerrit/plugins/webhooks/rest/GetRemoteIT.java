@@ -139,11 +139,11 @@ public class GetRemoteIT extends LightweightPluginDaemonTest {
     push.to(REFS_CONFIG);
   }
 
-  private Map<String, RemoteInfo> asMap(String json) {
+  static Map<String, RemoteInfo> asMap(String json) {
     return newGson().fromJson(json, new TypeToken<Map<String, RemoteInfo>>() {}.getType());
   }
 
-  private RemoteInfo asRemoteInfo(String json) {
+  static RemoteInfo asRemoteInfo(String json) {
     return newGson().fromJson(json, new TypeToken<RemoteInfo>() {}.getType());
   }
 
