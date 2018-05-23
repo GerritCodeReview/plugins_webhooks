@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.webhooks.rest;
+package com.googlesource.gerrit.plugins.webhooks;
 
-import com.google.gerrit.reviewdb.client.Project.NameKey;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-public interface Permissions {
-  boolean canRead(NameKey project);
+import com.google.inject.BindingAnnotation;
+import java.lang.annotation.Retention;
 
-  boolean canUpdate(NameKey project);
-}
+@Retention(RUNTIME)
+@BindingAnnotation
+public @interface WebhooksConfigFileName {}
