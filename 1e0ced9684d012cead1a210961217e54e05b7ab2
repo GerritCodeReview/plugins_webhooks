@@ -22,6 +22,30 @@
       "revId": "1e0ced9684d012cead1a210961217e54e05b7ab2",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc07bf9_38082fc9",
+        "filename": "src/main/resources/Documentation/rest-api-config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-05-23T14:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b8beb8c_a0c38c4f",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "1e0ced9684d012cead1a210961217e54e05b7ab2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
