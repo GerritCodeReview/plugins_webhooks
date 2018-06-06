@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "192af44a_17ded2f9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/rest/DeleteRemote.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2018-06-06T07:25:07Z",
+      "side": 1,
+      "message": "name this \"wh\" like in https://gerrit-review.googlesource.com/c/plugins/webhooks/+/175771/4/src/main/java/com/googlesource/gerrit/plugins/webhooks/rest/UpsertRemote.java ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "a11381cac86e10380692a75ccdb82f6d693dadb4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
