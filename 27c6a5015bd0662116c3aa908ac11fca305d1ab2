@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28a0c3cd_0fa71d5d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/rest/RemoteInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2018-06-06T07:09:44Z",
+      "side": 1,
+      "message": "also override hashCode() if you are overriding equals()",
+      "revId": "27c6a5015bd0662116c3aa908ac11fca305d1ab2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
