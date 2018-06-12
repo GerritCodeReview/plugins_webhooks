@@ -14,9 +14,9 @@
 
 package com.googlesource.gerrit.plugins.webhooks.rest;
 
+import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.extensions.restapi.Response;
 import com.google.gerrit.extensions.restapi.RestModifyView;
-import com.google.gerrit.server.auth.AuthException;
 import com.google.gerrit.server.git.MetaDataUpdate;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.inject.Inject;
