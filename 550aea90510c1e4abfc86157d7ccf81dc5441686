@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "826c46f1_796c75ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-06-21T20:06:22Z",
+      "side": 1,
+      "message": "You are mostly right, yet I wouldn\u0027t call this fix ad-hoc. I have implemented toString() ad-hoc back in time (for debug purposes mostly as it was printing whole Request content) not considering that it will perform potentially heavy processing (in our implementation we are doing more than just gson.toJson() ;)) inside get() call - this is my original sin that I want to fix now :).\n\nApart from that it has nothing to do with remote site being slow/fast as processor.get(), line #72, in run() method (precisely where it belongs) happens before the connection attempt is even started. Main idea is to not recalculate it over and over again when connection is flaky as this could be (in our case is) heavy.\n\n\u003e Instead of doing ad-hoc fixes like in this change I propose to fix the issue by making\nsure to keep object locks for shortest possible time i.e. avoid calling the process method\nwhen Supplier is locked.\n\nThis is what my change is about - processor.get() stays in run() whereas toString() provides other (easily accessible) data that is enough for `show-queue` and logging purposes and doesn\u0027t interfere with it anymore.",
+      "parentUuid": "075bdd64_bf5dc698",
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1259002b_89fd0555",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "955aa873_af5304a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-06-21T20:06:22Z",
+      "side": 1,
+      "message": "Gathering request data is taking that long in our case.",
+      "parentUuid": "1259002b_89fd0555",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6de21d04_dd087dc5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2018-06-21T14:32:48Z",
       "side": 1,
       "message": "What do you mean here by useless? Does this command become permanently\nuseless or is it useless because it becomes too slow?",
+      "range": {
+        "startLine": 30,
+        "startChar": 58,
+        "endLine": 30,
+        "endChar": 65
+      },
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd8364f_e44300a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-06-21T20:06:22Z",
+      "side": 1,
+      "message": "useless means that you can\u0027t check what is currently being processed in `queue` and call simply times out.",
+      "parentUuid": "6de21d04_dd087dc5",
       "range": {
         "startLine": 30,
         "startChar": 58,
@@ -94,6 +160,24 @@
       "side": 1,
       "message": "Looking at the Guava source code I see that Suppliers.memoize returns a thread\nsafe Supplier [1]. We see that both MemoizingSupplier.get() [2] and NonSerializableMemoizingSupplier.get() [3] are coded to be thread safe.\n\nWhile you may resolved the issue with this change, I believe that the description\nof the cause of the issue in this commit message is incorrect.\n\n[1] https://github.com/google/guava/blob/master/guava/src/com/google/common/base/Suppliers.java#L106\n[2] https://github.com/google/guava/blob/master/guava/src/com/google/common/base/Suppliers.java#L126\n[3] https://github.com/google/guava/blob/master/guava/src/com/google/common/base/Suppliers.java#L150",
       "parentUuid": "bda2e4a7_8158539b",
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c014aaf5_451d1a47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-06-21T20:06:22Z",
+      "side": 1,
+      "message": "Yeah just double checked that\n\u003e The returned supplier is thread-safe.\n\nI will rephrase the reasoning.",
+      "parentUuid": "784eeaae_d392035c",
       "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
