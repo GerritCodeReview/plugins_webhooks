@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "075bdd64_bf5dc698",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-06-21T14:32:48Z",
+      "side": 1,
+      "message": "IMHO, the root cause of the issue is the design decision where Supplier.get calls EventProcessor.process. Supplier.get will first lock the supplier object and the lock\nwill be kept until EventProcessor.process returns. This can take long time when the\nremote side is slow or non-responding and other threads calling the same method on\nthat supplier will block.\n\nInstead of doing ad-hoc fixes like in this change I propose to fix the issue by making\nsure to keep object locks for shortest possible time i.e. avoid calling the process method\nwhen Supplier is locked.",
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1259002b_89fd0555",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-06-21T14:32:48Z",
+      "side": 1,
+      "message": "A thread in BLOCKED state is nothing that is bad by default.\nWhat is blocking it? Is the webhook processing thread keeping the supplier\nlocked? If yes, have you checked what is this thread doing?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6de21d04_dd087dc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-06-21T14:32:48Z",
+      "side": 1,
+      "message": "What do you mean here by useless? Does this command become permanently\nuseless or is it useless because it becomes too slow?",
+      "range": {
+        "startLine": 30,
+        "startChar": 58,
+        "endLine": 30,
+        "endChar": 65
+      },
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bda2e4a7_8158539b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
