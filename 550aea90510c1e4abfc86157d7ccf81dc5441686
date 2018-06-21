@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bda2e4a7_8158539b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-06-21T14:08:27Z",
+      "side": 1,
+      "message": "Are you sure?",
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
