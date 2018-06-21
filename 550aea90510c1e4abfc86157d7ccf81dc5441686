@@ -16,6 +16,24 @@
       "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "784eeaae_d392035c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-06-21T14:17:44Z",
+      "side": 1,
+      "message": "Looking at the Guava source code I see that Suppliers.memoize returns a thread\nsafe Supplier [1]. We see that both MemoizingSupplier.get() [2] and NonSerializableMemoizingSupplier.get() [3] are coded to be thread safe.\n\nWhile you may resolved the issue with this change, I believe that the description\nof the cause of the issue in this commit message is incorrect.\n\n[1] https://github.com/google/guava/blob/master/guava/src/com/google/common/base/Suppliers.java#L106\n[2] https://github.com/google/guava/blob/master/guava/src/com/google/common/base/Suppliers.java#L126\n[3] https://github.com/google/guava/blob/master/guava/src/com/google/common/base/Suppliers.java#L150",
+      "parentUuid": "bda2e4a7_8158539b",
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
