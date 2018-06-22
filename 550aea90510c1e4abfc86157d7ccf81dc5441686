@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "18630007_52165be7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-06-22T07:42:40Z",
+      "side": 1,
+      "message": "\u003e Apart from that it has nothing to do with remote site being slow/fast as processor.get(), line #72, in run() method (precisely where it belongs) happens before the connection attempt is even started.\n\nHow could a processor.get(), which as you point doesn\u0027t even open a connection to a remote\nhost, be so slow that it keeps the supplier locked such a long time that the show-queue\ncommand eventually timeouts? What are your event processors doing?\n\n\u003e This is what my change is about - processor.get() stays in run() whereas toString() provides other (easily accessible) data that is enough for `show-queue` and logging purposes and doesn\u0027t interfere with it anymore.\n\nThis may fix the issue but the original idea of reusing the supplier from toString method\nwasn\u0027t bad. Why would an processor.process() which just needs to create an HTTP request,\nnot even opening a connection, take any considerable amount of time?",
+      "parentUuid": "826c46f1_796c75ab",
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1259002b_89fd0555",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
