@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "427189ea_daa1bb3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-06-27T15:03:46Z",
+      "side": 1,
+      "message": "Long story short: it does quite expensive stuff of walking over changes between old and new rev and extracts extra info\n\nNow long story:\nRefUpdated event is pretty minimalistic in terms of content at least if you compare it to GitHUB\u0027s one [1] and it has its pros and cons.\nPros:\nit is cheap to get\n\nCons:\nIt has limited use for webhook client mainly due to the fact that one cannot easily get what update is about (I mean real data like which files were changed etc). One cannot ask Gerrit for old/new revs through API (that brings also the problem of sharing credentials). As a result one needs to clone repo and walk over to capture that data. It may seem sophisticated but in reality Jenkins faces this problem - one cannot use path based filter for RefUpdated event trigger as Jenkins is not able to decide without cloning repo first which paths were changed (and that problem applies to new Luca\u0027s jenkins plugin as the same events are used :/). IMHO we should do better for RefUpdated event and include necessary data - it may seem waste of resources/time but in reality I have already implemented RefUpdated data mining multiple times ;)\n\nHaving said that in our implementation we are building event that is very close to GitHub\u0027s push event [1] hence in some cases it takes substantial amount of time to build it.\n\nI am happy to clarify more when needed.\n\n[1] https://developer.github.com/v3/activity/events/types/#pushevent",
+      "parentUuid": "18630007_52165be7",
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1259002b_89fd0555",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
