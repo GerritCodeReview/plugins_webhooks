@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "37da173c_4d778ddf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2018-06-27T15:27:05Z",
+      "side": 1,
+      "message": "1. This change doesn\u0027t make anything worse than it was before this change. Therefore,\nI am not going to CR-1 on it anymore.\n\n2. It still sound strange to me that a RevWalk, which AFAIR would most of the time\njust compare the tip of the branch with its parent commit, takes so long that it blocks\nshow-queue command long enough that it times out.",
+      "parentUuid": "427189ea_daa1bb3f",
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1259002b_89fd0555",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
