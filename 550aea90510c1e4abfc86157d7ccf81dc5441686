@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "5f840c6a_d60647b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-07-05T10:13:53Z",
+      "side": 1,
+      "message": "Single revWalk should be fast, but look at the following show-queue output (it was possible to get cuz it contains the change in question ;))\n\nssh -p 29418 user@gerrit.server gerrit show-queue --by-queue -w\nTask     State        StartTime         Command\n------------------------------------------------------------------------------\nQueue: teamforge-notification\n944bbfc3              03:00:12.461      Processing event: ref-updated for project: proj1 for remote: [remote1]\n89bac6a1              03:00:22.870      Processing event: ref-updated for project: proj2 for remote: [remote2]\nc99c3e56 waiting .... 03:00:24.688      Processing event: ref-updated for project: proj1 for remote: [remote1]\n0997b634 waiting .... 03:00:24.688      Processing event: ref-updated for project: proj1 for remote: [remote3]\n09fb369c waiting .... 03:00:25.054      Processing event: patchset-created for project: proj1 for remote: [remote1]\n46e83dce waiting .... 03:00:25.054      Processing event: patchset-created for project: proj1 for remote: [remote2]\n------------------------------------------------------------------------------\n  6 tasks, 2 worker threads\n\nin order to get it 4 revWalks (3 in proj1 - sure 2 of them are already in progress as events are being processed but still it waits until they finish and 1 in proj2) had to be finished and imagine that there is more ref-updated events in the queue when there is more busy time before iteration end ;)\nIOW thanks again for merging it as show-queue works blazingly fast again ;)",
+      "parentUuid": "37da173c_4d778ddf",
+      "revId": "550aea90510c1e4abfc86157d7ccf81dc5441686",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1259002b_89fd0555",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
