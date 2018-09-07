@@ -16,6 +16,24 @@
       "revId": "524ce3b1c7ff46eb773865de1997c8ebf55864db",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b25e3bc7_42530500",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-09-07T07:40:03Z",
+      "side": 1,
+      "message": "These are all project events so there is no chance it is null - it is not properly stubbed for tests",
+      "parentUuid": "86ca660a_036d3604",
+      "revId": "524ce3b1c7ff46eb773865de1997c8ebf55864db",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
