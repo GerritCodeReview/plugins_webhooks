@@ -113,7 +113,7 @@ class PostTask implements Runnable {
         .append("Processing event: ")
         .append(event.getType())
         .append(" for project: ")
-        .append(event.getProjectNameKey().get())
+        .append(event.getProjectNameKey())
         .append(" for remote: ")
         .append(remote.getUrl())
         .toString();
