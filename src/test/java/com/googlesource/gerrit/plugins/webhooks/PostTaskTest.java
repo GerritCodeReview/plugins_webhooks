@@ -20,6 +20,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
+import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
@@ -70,6 +71,7 @@ public class PostTaskTest {
     when(remote.getUrl()).thenReturn(WEBHOOK_URL);
     when(processor.process(eq(projectCreated), eq(remote))).thenReturn(Optional.of(content));
     when(sessionFactory.create(eq(remote))).thenReturn(session);
+    when(projectCreated.getProjectNameKey()).thenReturn(new Project.NameKey("test"));
     task = new PostTask(executor, sessionFactory, processor, projectCreated, remote);
   }
 
