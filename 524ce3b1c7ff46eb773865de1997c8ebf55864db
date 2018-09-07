@@ -52,6 +52,24 @@
       "revId": "524ce3b1c7ff46eb773865de1997c8ebf55864db",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df9b0f6c_a89d7933",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/PostTask.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-09-07T07:55:53Z",
+      "side": 1,
+      "message": "I would say that fix was good enough ;)",
+      "parentUuid": "def8919f_232ead80",
+      "revId": "524ce3b1c7ff46eb773865de1997c8ebf55864db",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
