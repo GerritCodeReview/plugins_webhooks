@@ -16,9 +16,11 @@ package com.googlesource.gerrit.plugins.webhooks.rest;
 
 import static com.google.gerrit.reviewdb.client.RefNames.REFS_CONFIG;
 
+import com.google.gerrit.reviewdb.client.Branch;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.project.ProjectCache;
+import com.google.gerrit.server.permissions.PermissionBackend;
+import com.google.gerrit.server.permissions.RefPermission;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
@@ -26,30 +28,29 @@ import com.google.inject.Singleton;
 @Singleton
 public class PermissionsImpl implements Permissions {
 
-  private final ProjectCache projectCache;
+  private final PermissionBackend permissionBackend;
   private final Provider<CurrentUser> currentUser;
 
   @Inject
-  PermissionsImpl(ProjectCache projectCache, Provider<CurrentUser> currentUser) {
-    this.projectCache = projectCache;
+  PermissionsImpl(PermissionBackend permissionBackend, Provider<CurrentUser> currentUser) {
+    this.permissionBackend = permissionBackend;
     this.currentUser = currentUser;
   }
 
   @Override
   public boolean canRead(Project.NameKey project) {
-    return projectCache
-        .get(project)
-        .controlFor(currentUser.get())
-        .controlForRef(REFS_CONFIG)
-        .isVisible();
+    return can(project, RefPermission.READ);
   }
 
   @Override
   public boolean canUpdate(Project.NameKey project) {
-    return projectCache
-        .get(project)
-        .controlFor(currentUser.get())
-        .controlForRef(REFS_CONFIG)
-        .canUpdate();
+    return can(project, RefPermission.UPDATE);
+  }
+
+  private boolean can(Project.NameKey project, RefPermission permission) {
+    return permissionBackend
+        .user(currentUser.get())
+        .ref(new Branch.NameKey(project, REFS_CONFIG))
+        .testOrFalse(permission);
   }
 }
