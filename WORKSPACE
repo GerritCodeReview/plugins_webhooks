@@ -3,7 +3,7 @@ workspace(name = "webhooks")
 load("//:bazlets.bzl", "load_bazlets")
 
 load_bazlets(
-    commit = "af56c18c7018ebcbd7b883862277142227543e95",
+    commit = "6d3fd710ea4ca44805bb8c858d72b53bd3a500f3",
 )
 
 #Snapshot Plugin API
