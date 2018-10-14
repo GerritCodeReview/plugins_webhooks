@@ -7,7 +7,7 @@ An example global @PLUGIN@ configuration section:
 ```
 [plugin "@PLUGIN@"]
   connectionTimeout = 3000
-  socketTimeout 2500
+  socketTimeout = 2500
   maxTries = 300
   retryInterval = 2000
   threadPoolSize = 3
