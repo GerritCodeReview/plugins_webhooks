@@ -27,7 +27,6 @@ import com.google.gerrit.acceptance.LightweightPluginDaemonTest;
 import com.google.gerrit.acceptance.PushOneCommit;
 import com.google.gerrit.acceptance.RestResponse;
 import com.google.gerrit.acceptance.TestPlugin;
-import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.util.HashMap;
@@ -39,7 +38,7 @@ import org.junit.Test;
 public class GetRemoteIT extends LightweightPluginDaemonTest {
 
   @Test
-  public void noWebhooks() throws RestApiException, IOException {
+  public void noWebhooks() throws IOException {
     RestResponse response =
         adminRestSession.get(
             String.format("/config/server/webhooks~projects/%s/remotes/", project.get()));
