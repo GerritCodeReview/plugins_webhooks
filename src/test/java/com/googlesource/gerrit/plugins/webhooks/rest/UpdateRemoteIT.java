@@ -37,6 +37,7 @@ public class UpdateRemoteIT extends LightweightPluginDaemonTest {
 
   private String fooEndpoint;
 
+  @Override
   @Before
   public void setUp() throws Exception {
     super.setUp();

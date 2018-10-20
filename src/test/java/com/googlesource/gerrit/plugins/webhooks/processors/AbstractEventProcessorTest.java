@@ -87,7 +87,7 @@ public class AbstractEventProcessorTest {
 
   private class TestEventProcessor extends AbstractEventProcessor {
     @Override
-    public Optional<EventProcessor.Request> doProcess(ProjectEvent event, RemoteConfig remote) {
+    public Optional<EventProcessor.Request> doProcess(ProjectEvent event, RemoteConfig config) {
       // do nothing
       return Optional.empty();
     }
