@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f528897c_eca2a27f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-10-21T00:10:11Z",
+      "side": 1,
+      "message": "Merge with `--log\u003d100` or similar value, to avoid this.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "ce1e8f828930c8882205543bff24da86b51ca3fe",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
