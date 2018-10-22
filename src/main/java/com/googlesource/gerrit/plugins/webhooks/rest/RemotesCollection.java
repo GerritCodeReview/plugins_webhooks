@@ -82,7 +82,6 @@ public class RemotesCollection
   }
 
   @Override
-  @SuppressWarnings("unchecked")
   public UpsertRemote.Inserter create(ProjectWebhooksResource parent, IdString id) {
     return inserterFactory.create(id.get());
   }
