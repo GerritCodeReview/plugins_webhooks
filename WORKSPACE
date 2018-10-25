@@ -3,7 +3,7 @@ workspace(name = "webhooks")
 load("//:bazlets.bzl", "load_bazlets")
 
 load_bazlets(
-    commit = "6d3fd710ea4ca44805bb8c858d72b53bd3a500f3",
+    commit = "087da1f6ca119ad5c4bc443926426ddf44dcde3a",
     #local_path = "/home/<user>/projects/bazlets",
 )
 
