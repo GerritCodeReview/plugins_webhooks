@@ -4,6 +4,7 @@ load("//:bazlets.bzl", "load_bazlets")
 
 load_bazlets(
     commit = "24f104a82d6458a9f7b3e7eef9278f721a9327be",
+    #local_path = "/home/<user>/projects/bazlets",
 )
 
 #Snapshot Plugin API

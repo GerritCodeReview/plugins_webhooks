@@ -17,12 +17,15 @@ package com.googlesource.gerrit.plugins.webhooks;
 import static com.googlesource.gerrit.plugins.webhooks.DefaultHttpClientProvider.DEFAULT;
 import static com.googlesource.gerrit.plugins.webhooks.SslVerifyingHttpClientProvider.SSL_VERIFY;
 
+import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.server.events.EventListener;
 import com.google.inject.Inject;
+import com.google.inject.Provides;
 import com.google.inject.Scopes;
 import com.google.inject.name.Names;
+import com.googlesource.gerrit.plugins.webhooks.rest.WebhooksRestModule;
 import java.util.concurrent.ScheduledExecutorService;
 import org.apache.http.impl.client.CloseableHttpClient;
 
@@ -57,5 +60,12 @@ public class Module extends FactoryModule {
         .in(Scopes.SINGLETON);
 
     install(processors);
+    install(new WebhooksRestModule());
+  }
+
+  @Provides
+  @WebhooksConfigFileName
+  String getWebhooksConfigFileName(@PluginName String pluginName) {
+    return pluginName + ".config";
   }
 }

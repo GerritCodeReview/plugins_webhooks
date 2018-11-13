@@ -38,6 +38,7 @@ class PostTask implements Runnable {
   private final ScheduledExecutorService executor;
   private final Supplier<HttpSession> session;
   private final RemoteConfig remote;
+  private final ProjectEvent event;
   private final Supplier<Optional<EventProcessor.Request>> processor;
   private int execCnt;
 
@@ -49,6 +50,7 @@ class PostTask implements Runnable {
       @Assisted ProjectEvent event,
       @Assisted RemoteConfig remote) {
     this.executor = executor;
+    this.event = event;
     this.remote = remote;
     // postpone creation of HttpSession so that it is obtained only when processor
     // returns non-empty content
@@ -79,7 +81,7 @@ class PostTask implements Runnable {
         logRetry(result.message);
         reschedule();
       }
-    } catch (IOException e) {
+    } catch (Throwable e) {
       if (isRecoverable(e) && execCnt < remote.getMaxTries()) {
         logRetry(e);
         reschedule();
@@ -89,8 +91,8 @@ class PostTask implements Runnable {
     }
   }
 
-  private boolean isRecoverable(IOException e) {
-    return !(e instanceof SSLException);
+  private boolean isRecoverable(Throwable e) {
+    return (e instanceof IOException) && !(e instanceof SSLException);
   }
 
   private void logRetry(String reason) {
@@ -107,7 +109,13 @@ class PostTask implements Runnable {
 
   @Override
   public String toString() {
-    Optional<EventProcessor.Request> content = processor.get();
-    return content.isPresent() ? content.get().toString() : "no content";
+    return new StringBuilder()
+        .append("Processing event: ")
+        .append(event.getType())
+        .append(" for project: ")
+        .append(event.getProjectNameKey().get())
+        .append(" for remote: ")
+        .append(remote.getUrl())
+        .toString();
   }
 }
