@@ -20,10 +20,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
+import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLException;
@@ -69,6 +71,7 @@ public class PostTaskTest {
     when(remote.getUrl()).thenReturn(WEBHOOK_URL);
     when(processor.process(eq(projectCreated), eq(remote))).thenReturn(Optional.of(content));
     when(sessionFactory.create(eq(remote))).thenReturn(session);
+    when(projectCreated.getProjectNameKey()).thenReturn(new Project.NameKey("test"));
     task = new PostTask(executor, sessionFactory, processor, projectCreated, remote);
   }
 
@@ -122,5 +125,25 @@ public class PostTaskTest {
             });
     task.run();
     verify(executor, times(MAX_TRIES - 1)).schedule(task, RETRY_INTERVAL, TimeUnit.MILLISECONDS);
+  }
+
+  @Test
+  public void executorSurvivesNonRecoverableExceptions()
+      throws IOException, InterruptedException, ExecutionException {
+    executor = new ScheduledThreadPoolExecutor(1);
+
+    // schedule erroneous task for the first time
+    when(session.post(eq(remote), eq(content))).thenThrow(RuntimeException.class);
+    executor.schedule(task, 0L, TimeUnit.SECONDS).get();
+
+    // schedule erroneous task again (with another non-recoverable exception)
+    when(session.post(eq(remote), eq(content))).thenThrow(SSLException.class);
+    executor.schedule(task, 0L, TimeUnit.SECONDS).get();
+
+    // schedule task that finishes with success
+    when(session.post(eq(remote), eq(content))).thenReturn(OK_RESULT);
+    executor.schedule(task, 0L, TimeUnit.SECONDS).get();
+
+    verify(session, times(3)).post(eq(remote), eq(content));
   }
 }

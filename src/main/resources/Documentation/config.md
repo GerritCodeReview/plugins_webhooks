@@ -7,7 +7,7 @@ An example global @PLUGIN@ configuration section:
 ```
 [plugin "@PLUGIN@"]
   connectionTimeout = 3000
-  socketTimeout 2500
+  socketTimeout = 2500
   maxTries = 300
   retryInterval = 2000
   threadPoolSize = 3
@@ -69,33 +69,33 @@ File 'gerrit.config'
 File '@PLUGIN@.config'
 ----------------------
 
-remote.NAME.url
+<a id="url"> remote.NAME.url
 : Address of the remote server to post events to.
 
-remote.NAME.event
+<a id="event"> remote.NAME.event
 : Type of the event which will be posted to the remote url. Multiple event
   types can be specified, listing event types which should be posted.
   When no event type is configured, all events will be posted.
 
-remote.NAME.connectionTimeout
+<a id="connectionTimeout"> remote.NAME.connectionTimeout
 : Maximum interval of time in milliseconds the plugin waits for a connection
   to the target instance. When not specified, the default value is derrived
   from global configuration.
 
-remote.NAME.socketTimeout
+<a id="socketTimeout">remote.NAME.socketTimeout
 : Maximum interval of time in milliseconds the plugin waits for a response from the
   target instance once the connection has been established. When not specified,
   the default value is derrived from global configuration.
 
-remote.NAME.maxTries
+<a id="maxTries">remote.NAME.maxTries
 : Maximum number of times the plugin should attempt when posting an event to
   the target url. Setting this value to 0 will disable retries. When not
   specified, the default value is derrived from global configuration.
 
-remote.NAME.retryInterval
+<a id="retryInterval">remote.NAME.retryInterval
 : The interval of time in milliseconds between the subsequent auto-retries.
   When not specified, the default value is derrived from global configuration.
 
-remote.NAME.sslVerify
+<a id="sslVerify">remote.NAME.sslVerify
 : When 'true' SSL certificate verification of remote url *is* performed
   when payload is delivered, the default value is derived from global configuration.
