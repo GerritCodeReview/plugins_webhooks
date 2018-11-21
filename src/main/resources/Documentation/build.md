@@ -38,7 +38,7 @@ The output is created in:
 To execute the tests run:
 
 ```
-  bazel test webhooks_tests
+  bazel test //...
 ```
 
 This project can be imported into the Eclipse IDE:
@@ -92,11 +92,11 @@ Add the plugin name to the `CUSTOM_PLUGINS` and to the
 To execute the tests run:
 
 ```
-  buck test --include @PLUGIN@
+  bazel test plugins/@PLUGIN@:@PLUGIN@_tests 
 ```
 
 How to build the Gerrit Plugin API is described in the [Gerrit
-documentation](../../../Documentation/dev-buck.html#_extension_and_plugin_api_jar_files).
+documentation](../../../Documentation/dev-bazel.html#_extension_and_plugin_api_jar_files).
 
 [Back to @PLUGIN@ documentation index][index]
 
