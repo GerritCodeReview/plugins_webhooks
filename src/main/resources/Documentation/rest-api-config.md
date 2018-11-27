@@ -33,12 +33,12 @@ As result a map is returned that maps remote name to [RemoteInfo](#remote-info) 
   {
     "foo": {
       "url" : "https://foo.org/gerrit-events",
-      "maxTries" = 3,
-      "sslVerify": true,
-    }
+      "maxTries" : 3,
+      "sslVerify": true
+    },
     "bar": {
       "url" : "https://bar.org/",
-      "events" : ["patchset-created", "ref-updated"],
+      "events" : ["patchset-created", "ref-updated"]
     }
   }
 ```
@@ -66,8 +66,8 @@ As result a [RemoteInfo](#remote-info) entity is returned.
   )]}'
   {
     "url" : "https://foo.org/gerrit-events",
-    "maxTries" = 3,
-    "sslVerify": true,
+    "maxTries" : 3,
+    "sslVerify": true
   }
 ```
 
@@ -85,8 +85,8 @@ Create or update a webhook for a project. The request body needs to include a
 
   {
     "url" : "https://foo.org/gerrit-events",
-    "maxTries" = 3,
-    "sslVerify": true,
+    "maxTries" : "3",
+    "sslVerify": "true"
   }
 ```
 
@@ -103,8 +103,8 @@ is returned.
   )]}'
   {
     "url" : "https://foo.org/gerrit-events",
-    "maxTries" = 3,
-    "sslVerify": true,
+    "maxTries" : 3,
+    "sslVerify": true
   }
 ```
 
@@ -118,8 +118,8 @@ The response code is 200 when the webhook already existed and was updated:
   )]}'
   {
     "url" : "https://foo.org/gerrit-events",
-    "maxTries" = 3,
-    "sslVerify": true,
+    "maxTries" : 3,
+    "sslVerify": true
   }
 ```
 
