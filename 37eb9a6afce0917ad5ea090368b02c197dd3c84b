@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b26a87f8_2c0a7138",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2018-12-10T20:54:18Z",
+      "side": 1,
+      "message": "Upgrade\n\n-For next time maybe, like the other changes, so the gerrit-plugins semi (naive) automation fits for this plugin too.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "37eb9a6afce0917ad5ea090368b02c197dd3c84b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
