@@ -22,6 +22,30 @@
       "revId": "37eb9a6afce0917ad5ea090368b02c197dd3c84b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff5e6c2_e3221c28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-12-11T00:26:05Z",
+      "side": 1,
+      "message": "I did this one manually; can\u0027t remember why.",
+      "parentUuid": "b26a87f8_2c0a7138",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "37eb9a6afce0917ad5ea090368b02c197dd3c84b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
