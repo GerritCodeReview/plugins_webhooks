@@ -134,7 +134,7 @@ public class GetRemoteIT extends LightweightPluginDaemonTest {
   private void push(String content) throws Exception {
     PushOneCommit push =
         pushFactory.create(
-            db, admin.getIdent(), testRepo, "Create webhooks", "webhooks.config", content);
+            admin.getIdent(), testRepo, "Create webhooks", "webhooks.config", content);
     push.to(REFS_CONFIG);
   }
 
