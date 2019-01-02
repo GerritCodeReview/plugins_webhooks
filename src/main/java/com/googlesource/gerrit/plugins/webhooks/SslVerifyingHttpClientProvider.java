@@ -32,16 +32,12 @@ class SslVerifyingHttpClientProvider extends HttpClientProvider {
   }
 
   private static Provider<Registry<ConnectionSocketFactory>> socketFactoryProvider() {
-    return new Provider<Registry<ConnectionSocketFactory>>() {
-      @Override
-      public Registry<ConnectionSocketFactory> get() {
-        return RegistryBuilder.<ConnectionSocketFactory>create()
+    return () ->
+        RegistryBuilder.<ConnectionSocketFactory>create()
             .register("https", SSLConnectionSocketFactory.getSocketFactory())
             // the following registration is added for case when one enables SSL verification
             // for HTTP remote
             .register("http", PlainConnectionSocketFactory.INSTANCE)
             .build();
-      }
-    };
   }
 }

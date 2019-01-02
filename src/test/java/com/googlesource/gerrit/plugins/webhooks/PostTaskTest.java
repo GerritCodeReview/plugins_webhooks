@@ -33,7 +33,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
@@ -116,13 +115,11 @@ public class PostTaskTest {
     when(session.post(eq(remote), eq(content))).thenThrow(IOException.class);
     when(executor.schedule(task, RETRY_INTERVAL, TimeUnit.MILLISECONDS))
         .then(
-            new Answer<Void>() {
-              @Override
-              public Void answer(InvocationOnMock invocation) throws Throwable {
-                task.run();
-                return null;
-              }
-            });
+            (Answer<Void>)
+                invocation -> {
+                  task.run();
+                  return null;
+                });
     task.run();
     verify(executor, times(MAX_TRIES - 1)).schedule(task, RETRY_INTERVAL, TimeUnit.MILLISECONDS);
   }
