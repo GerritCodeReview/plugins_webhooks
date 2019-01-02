@@ -43,17 +43,13 @@ class DefaultHttpClientProvider extends HttpClientProvider {
   }
 
   private static Provider<Registry<ConnectionSocketFactory>> socketFactoryProvider() {
-    return new Provider<Registry<ConnectionSocketFactory>>() {
-      @Override
-      public Registry<ConnectionSocketFactory> get() {
-        return RegistryBuilder.<ConnectionSocketFactory>create()
+    return () ->
+        RegistryBuilder.<ConnectionSocketFactory>create()
             .register(
                 "https",
                 new SSLConnectionSocketFactory(buildSslContext(), NoopHostnameVerifier.INSTANCE))
             .register("http", PlainConnectionSocketFactory.INSTANCE)
             .build();
-      }
-    };
   }
 
   private static SSLContext buildSslContext() {
