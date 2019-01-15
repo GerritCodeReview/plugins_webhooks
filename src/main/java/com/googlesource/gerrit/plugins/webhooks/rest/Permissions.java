@@ -14,10 +14,10 @@
 
 package com.googlesource.gerrit.plugins.webhooks.rest;
 
-import com.google.gerrit.reviewdb.client.Project.NameKey;
+import com.google.gerrit.reviewdb.client.Project;
 
 public interface Permissions {
-  boolean canRead(NameKey project);
+  boolean canRead(Project.NameKey project);
 
-  boolean canUpdate(NameKey project);
+  boolean canUpdate(Project.NameKey project);
 }

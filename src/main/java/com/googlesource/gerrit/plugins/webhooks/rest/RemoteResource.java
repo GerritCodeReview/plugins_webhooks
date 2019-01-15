@@ -17,7 +17,6 @@ package com.googlesource.gerrit.plugins.webhooks.rest;
 import com.google.gerrit.extensions.restapi.RestResource;
 import com.google.gerrit.extensions.restapi.RestView;
 import com.google.gerrit.reviewdb.client.Project;
-import com.google.gerrit.reviewdb.client.Project.NameKey;
 import com.google.inject.TypeLiteral;
 import com.googlesource.gerrit.plugins.webhooks.RemoteConfig;
 
@@ -25,7 +24,7 @@ public class RemoteResource implements RestResource {
   public static final TypeLiteral<RestView<RemoteResource>> REMOTE_KIND =
       new TypeLiteral<RestView<RemoteResource>>() {};
 
-  private final NameKey project;
+  private final Project.NameKey project;
   private final RemoteConfig rc;
 
   RemoteResource(Project.NameKey project, RemoteConfig rc) {
@@ -37,7 +36,7 @@ public class RemoteResource implements RestResource {
     return rc;
   }
 
-  public NameKey getProject() {
+  public Project.NameKey getProject() {
     return project;
   }
 }
