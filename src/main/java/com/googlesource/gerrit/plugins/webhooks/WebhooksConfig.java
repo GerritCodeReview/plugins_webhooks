@@ -30,7 +30,6 @@ import com.google.gerrit.reviewdb.client.RefNames;
 import com.google.gerrit.server.git.meta.VersionedMetaData;
 import com.google.inject.Inject;
 import com.googlesource.gerrit.plugins.webhooks.rest.UpsertRemote;
-import java.io.IOException;
 import java.util.List;
 import org.eclipse.jgit.errors.ConfigInvalidException;
 import org.eclipse.jgit.lib.CommitBuilder;
@@ -52,12 +51,12 @@ public class WebhooksConfig extends VersionedMetaData {
   }
 
   @Override
-  protected void onLoad() throws IOException, ConfigInvalidException {
+  protected void onLoad() throws ConfigInvalidException {
     cfg = readConfig(cfgFileName);
   }
 
   @Override
-  protected boolean onSave(CommitBuilder commit) throws IOException, ConfigInvalidException {
+  protected boolean onSave(CommitBuilder commit) {
     if (Strings.isNullOrEmpty(commit.getMessage())) {
       commit.setMessage("Updated webhooks\n");
     }
