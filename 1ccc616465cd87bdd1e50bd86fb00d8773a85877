@@ -22,6 +22,30 @@
       "revId": "1ccc616465cd87bdd1e50bd86fb00d8773a85877",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf03659_0ed0714c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpSession.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1014482
+      },
+      "writtenOn": "2019-01-27T17:26:20Z",
+      "side": 1,
+      "message": "Made it optional in patchset 2: Not specifying (leaving empty) means no authentication",
+      "parentUuid": "f67d6d7d_519693ba",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "1ccc616465cd87bdd1e50bd86fb00d8773a85877",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
