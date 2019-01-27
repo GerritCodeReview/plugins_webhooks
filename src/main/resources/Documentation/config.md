@@ -22,6 +22,8 @@ and propagate only `patchset-created` and `ref-updated` events to
 ```
 [remote "foo"]
   url = https://foo.org/gerrit-events
+  username = loginuser
+  passsword = password4loginuser
   maxTries = 3
   sslVerify = true
 
@@ -71,6 +73,12 @@ File '@PLUGIN@.config'
 
 <a id="url"> remote.NAME.url
 : Address of the remote server to post events to.
+
+<a id="username"> remote.NAME.username
+: username of the user to login while posting he webhook.
+
+<a id="password"> remote.NAME.password
+: password of the user to login while posting he webhook.
 
 <a id="event"> remote.NAME.event
 : Type of the event which will be posted to the remote url. Multiple event

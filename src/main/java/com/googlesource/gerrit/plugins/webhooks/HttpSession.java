@@ -25,9 +25,12 @@ import com.google.inject.name.Named;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import org.apache.http.auth.AuthenticationException;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 class HttpSession {
@@ -48,6 +51,20 @@ class HttpSession {
 
   HttpResult post(RemoteConfig remote, EventProcessor.Request request) throws IOException {
     HttpPost post = new HttpPost(remote.getUrl());
+
+    String username = remote.getUsername();
+    String password = remote.getPassword();
+
+    try {
+      if (username != null && password != null)  {
+        UsernamePasswordCredentials creds =
+            new UsernamePasswordCredentials(username, password);
+        post.addHeader(new BasicScheme().authenticate(creds, post, null));
+      }
+    } catch (AuthenticationException e) {
+      return new HttpResult(false, "Bad username/password configured in webhooks.config");
+    }
+
     post.addHeader("Content-Type", MediaType.JSON_UTF_8.toString());
     post.setConfig(getConfig(remote));
     request
