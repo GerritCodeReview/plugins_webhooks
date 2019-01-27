@@ -30,10 +30,14 @@ public class RemoteConfig {
   static final String MAX_TRIES = "maxTries";
   static final String RETRY_INTERVAL = "retryInterval";
   static final String SSL_VERIFY = "sslVerify";
+  static final String USERNAME = "username";
+  static final String PASSWORD = "password";
 
   private final Configuration global;
   private final Config config;
   private final String url;
+  private final String username;
+  private final String password;
   private final String name;
 
   @Inject
@@ -43,10 +47,20 @@ public class RemoteConfig {
     this.config = config;
     this.name = name;
     this.url = config.getString(REMOTE, name, "url");
+    this.username = config.getString(REMOTE, name, USERNAME);
+    this.password = config.getString(REMOTE, name, PASSWORD);
   }
 
   public String getUrl() {
     return url;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public String getPassword() {
+    return password;
   }
 
   public String[] getEvents() {

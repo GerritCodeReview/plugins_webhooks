@@ -45,6 +45,8 @@ public class GetRemote implements RestReadView<RemoteResource> {
   static RemoteInfo fromRemoteConfig(RemoteConfig rc) {
     RemoteInfo info = new RemoteInfo();
     info.url = rc.getUrl();
+    info.username = rc.getUsername();
+    info.password = rc.getPassword();
     info.events = Arrays.asList(rc.getEvents());
     info.connectionTimeout = rc.getConnectionTimeout();
     info.socketTimeout = rc.getSocketTimeout();

@@ -19,6 +19,8 @@ import java.util.Objects;
 
 public class RemoteInfo {
   String url;
+  String username;
+  String password;
   List<String> events;
   int connectionTimeout;
   int socketTimeout;
@@ -31,6 +33,8 @@ public class RemoteInfo {
     if (o instanceof RemoteInfo) {
       RemoteInfo i = (RemoteInfo) o;
       return Objects.equals(url, i.url)
+          && Objects.equals(username, i.username)
+          && Objects.equals(password, i.password)
           && Objects.equals(events, i.events)
           && connectionTimeout == i.connectionTimeout
           && socketTimeout == i.socketTimeout
@@ -44,6 +48,14 @@ public class RemoteInfo {
   @Override
   public int hashCode() {
     return Objects.hash(
-        url, events, connectionTimeout, socketTimeout, maxTries, retryInterval, sslVerify);
+        url,
+        username,
+        password,
+        events,
+        connectionTimeout,
+        socketTimeout,
+        maxTries,
+        retryInterval,
+        sslVerify);
   }
 }
