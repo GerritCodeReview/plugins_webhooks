@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f67d6d7d_519693ba",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpSession.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2019-01-27T17:04:22Z",
+      "side": 1,
+      "message": "This should be made optional.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "1ccc616465cd87bdd1e50bd86fb00d8773a85877",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
