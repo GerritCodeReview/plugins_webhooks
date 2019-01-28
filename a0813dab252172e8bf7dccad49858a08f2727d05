@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "85ba230b_643b26f9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpSession.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1014482
+      },
+      "writtenOn": "2019-01-28T09:58:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1faf0dfb_82bdae1e",
+      "range": {
+        "startLine": 59,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b6bbfbe_581a36d2",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/rest/RemoteInfo.java",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56bb4947_b91f2a3c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/rest/RemoteInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1014482
+      },
+      "writtenOn": "2019-01-28T09:58:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b6bbfbe_581a36d2",
+      "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "810ef14e_3686c3d5",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1014482
+      },
+      "writtenOn": "2019-01-28T09:58:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d35278e6_76bc6ccf",
+      "range": {
+        "startLine": 78,
+        "startChar": 46,
+        "endLine": 78,
+        "endChar": 48
+      },
+      "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c6730db_51e1fe56",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "6ce598df_c467ccf8",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1014482
+      },
+      "writtenOn": "2019-01-28T09:58:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c6730db_51e1fe56",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "253356ed_2bceb0dd",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 2
@@ -108,6 +198,30 @@
       "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8cf5d7_ba58f85e",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1014482
+      },
+      "writtenOn": "2019-01-28T09:58:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "253356ed_2bceb0dd",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
