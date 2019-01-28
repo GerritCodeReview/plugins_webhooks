@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1faf0dfb_82bdae1e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpSession.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-01-28T02:55:26Z",
+      "side": 1,
+      "message": "This can go outside the try-block.  It could also be changed to use the Strings.isNullOrEmpty method.",
+      "range": {
+        "startLine": 59,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b6bbfbe_581a36d2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/rest/RemoteInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-01-28T02:55:26Z",
+      "side": 1,
+      "message": "wrap this line.\n\nplease use google-java-format on this file and other modified files.",
+      "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d35278e6_76bc6ccf",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-01-28T02:55:26Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 78,
+        "startChar": 46,
+        "endLine": 78,
+        "endChar": 48
+      },
+      "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c6730db_51e1fe56",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-01-28T02:55:26Z",
+      "side": 1,
+      "message": "L\n\nalso, missing period at the end of the sentence.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "253356ed_2bceb0dd",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-01-28T02:55:26Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "a0813dab252172e8bf7dccad49858a08f2727d05",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
