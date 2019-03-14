@@ -50,10 +50,7 @@ class HttpSession {
     HttpPost post = new HttpPost(remote.getUrl());
     post.addHeader("Content-Type", MediaType.JSON_UTF_8.toString());
     post.setConfig(getConfig(remote));
-    request
-        .headers
-        .entrySet()
-        .stream()
+    request.headers.entrySet().stream()
         .forEach(
             e -> {
               post.addHeader(e.getKey(), e.getValue());
