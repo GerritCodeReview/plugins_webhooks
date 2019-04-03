@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba68cc88_70f77089",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2019-04-03T15:30:58Z",
+      "side": 1,
+      "message": "I submitted this change even though this does not show explicitly for each such commit. This is also the case for the already merged stable-2.14 change(s). -So I will submit the other similar changes the very same way.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "c457bc3ab94879a6ef8270a3263e5af9043c64db",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
