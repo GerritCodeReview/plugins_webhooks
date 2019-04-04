@@ -17,6 +17,7 @@ package com.googlesource.gerrit.plugins.webhooks;
 import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.REMOTE;
 
 import com.google.common.base.Strings;
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.events.Event;
@@ -25,11 +26,9 @@ import com.google.gerrit.server.events.ProjectEvent;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.inject.Inject;
 import org.eclipse.jgit.lib.Config;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class EventHandler implements EventListener {
-  private static final Logger log = LoggerFactory.getLogger(EventHandler.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
   private final PluginConfigFactory configFactory;
   private final String pluginName;
@@ -61,17 +60,16 @@ class EventHandler implements EventListener {
           configFactory.getProjectPluginConfigWithInheritance(
               projectEvent.getProjectNameKey(), pluginName);
     } catch (NoSuchProjectException e) {
-      log.warn(
-          "Ignoring event for a non-existing project {}, {}",
-          projectEvent.getProjectNameKey().get(),
-          projectEvent);
+      log.atWarning().log(
+          "Ignoring event for a non-existing project %s, %s",
+          projectEvent.getProjectNameKey().get(), projectEvent);
       return;
     }
 
     for (String name : cfg.getSubsections(REMOTE)) {
       RemoteConfig remote = remoteFactory.create(cfg, name);
       if (Strings.isNullOrEmpty(remote.getUrl())) {
-        log.warn("remote.{}.url not defined, skipping this remote", name);
+        log.atWarning().log("remote.%s.url not defined, skipping this remote", name);
         continue;
       }
 

@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import com.google.common.flogger.FluentLogger;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import java.security.KeyManagementException;
@@ -28,12 +29,10 @@ import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /* HTTP client that doesn't verify remote's SSL certificate */
 class DefaultHttpClientProvider extends HttpClientProvider {
-  private static final Logger log = LoggerFactory.getLogger(DefaultHttpClientProvider.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
   static final String DEFAULT = "default";
 
@@ -63,7 +62,7 @@ class DefaultHttpClientProvider extends HttpClientProvider {
       context.init(null, trustAllCerts, null);
       return context;
     } catch (KeyManagementException | NoSuchAlgorithmException e) {
-      log.warn("Error building SSLContext object", e);
+      log.atWarning().withCause(e).log("Error building SSLContext object");
       return null;
     }
   }
