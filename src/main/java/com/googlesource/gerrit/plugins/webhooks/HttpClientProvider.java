@@ -14,6 +14,9 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import static com.google.common.flogger.LazyArgs.lazy;
+
+import com.google.common.flogger.FluentLogger;
 import com.google.inject.Provider;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ServiceUnavailableRetryStrategy;
@@ -25,12 +28,10 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.protocol.HttpContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /** Provides an HTTP client with SSL capabilities. */
 abstract class HttpClientProvider implements Provider<CloseableHttpClient> {
-  private static final Logger log = LoggerFactory.getLogger(HttpClientProvider.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private static final int CONNECTIONS_PER_ROUTE = 100;
   // Up to 2 target instances with the max number of connections per host:
   private static final int MAX_CONNECTIONS = 2 * CONNECTIONS_PER_ROUTE;
@@ -85,14 +86,9 @@ abstract class HttpClientProvider implements Provider<CloseableHttpClient> {
   }
 
   private void logRetry(String cause, HttpContext context) {
-    if (log.isDebugEnabled()) {
-      log.debug(
-          "Retrying request caused by '"
-              + cause
-              + "', request: '"
-              + context.getAttribute("http.request")
-              + "'");
-    }
+    log.atFine().log(
+        "Retrying request caused by '%s', request: '%s'",
+        cause, lazy(() -> context.getAttribute("http.request")));
   }
 
   private HttpClientConnectionManager create(

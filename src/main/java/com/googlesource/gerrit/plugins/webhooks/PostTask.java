@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.webhooks;
 
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.server.events.ProjectEvent;
 import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
@@ -25,11 +26,9 @@ import java.util.Optional;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class PostTask implements Runnable {
-  private static final Logger log = LoggerFactory.getLogger(PostTask.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
   interface Factory {
     PostTask create(ProjectEvent event, RemoteConfig remote);
@@ -71,7 +70,7 @@ class PostTask implements Runnable {
     try {
       Optional<EventProcessor.Request> content = processor.get();
       if (!content.isPresent()) {
-        log.debug("No content. Webhook [{}] skipped.", remote.getUrl());
+        log.atFine().log("No content. Webhook [%s] skipped.", remote.getUrl());
         return;
       }
 
@@ -86,7 +85,7 @@ class PostTask implements Runnable {
         logRetry(e);
         reschedule();
       } else {
-        log.error("Failed to post: {}", toString(), e);
+        log.atSevere().withCause(e).log("Failed to post: %s", toString());
       }
     }
   }
@@ -96,15 +95,12 @@ class PostTask implements Runnable {
   }
 
   private void logRetry(String reason) {
-    if (log.isDebugEnabled()) {
-      log.debug("Retrying {} in {}ms. Reason: {}", toString(), remote.getRetryInterval(), reason);
-    }
+    log.atFine().log(
+        "Retrying %s in %dms. Reason: %s", toString(), remote.getRetryInterval(), reason);
   }
 
   private void logRetry(Throwable cause) {
-    if (log.isDebugEnabled()) {
-      log.debug("Retrying {} in {}ms. Cause: {}", toString(), remote.getRetryInterval(), cause);
-    }
+    log.atFine().withCause(cause).log("Retrying %s in %dms", toString(), remote.getRetryInterval());
   }
 
   @Override

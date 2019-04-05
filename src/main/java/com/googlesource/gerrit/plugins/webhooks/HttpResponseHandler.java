@@ -18,14 +18,13 @@ import static javax.servlet.http.HttpServletResponse.SC_CREATED;
 import static javax.servlet.http.HttpServletResponse.SC_NO_CONTENT;
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
+import com.google.common.flogger.FluentLogger;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class HttpResponseHandler implements ResponseHandler<HttpResult> {
 
@@ -39,7 +38,7 @@ class HttpResponseHandler implements ResponseHandler<HttpResult> {
     }
   }
 
-  private static final Logger log = LoggerFactory.getLogger(HttpResponseHandler.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
   @Override
   public HttpResult handleResponse(HttpResponse response) {
@@ -57,7 +56,7 @@ class HttpResponseHandler implements ResponseHandler<HttpResult> {
       try {
         return EntityUtils.toString(entity);
       } catch (IOException e) {
-        log.error("Error parsing entity", e);
+        log.atSevere().withCause(e).log("Error parsing entity");
       }
     }
     return "";
