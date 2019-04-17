@@ -50,7 +50,7 @@ public class PermissionsImpl implements Permissions {
   private boolean can(Project.NameKey project, RefPermission permission) {
     return permissionBackend
         .user(currentUser.get())
-        .ref(new Branch.NameKey(project, REFS_CONFIG))
+        .ref(Branch.nameKey(project, REFS_CONFIG))
         .testOrFalse(permission);
   }
 }
