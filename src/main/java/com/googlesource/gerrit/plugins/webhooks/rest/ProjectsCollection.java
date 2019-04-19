@@ -52,9 +52,9 @@ public class ProjectsCollection
   }
 
   private ProjectWebhooksResource parse(String id) throws ResourceNotFoundException {
-    Project.NameKey n = new Project.NameKey(id);
+    Project.NameKey n = Project.nameKey(id);
     if (projectCache.get(n) != null) {
-      return new ProjectWebhooksResource(new Project.NameKey(id));
+      return new ProjectWebhooksResource(Project.nameKey(id));
     }
     throw new ResourceNotFoundException(String.format("Project %s does not exist", id));
   }

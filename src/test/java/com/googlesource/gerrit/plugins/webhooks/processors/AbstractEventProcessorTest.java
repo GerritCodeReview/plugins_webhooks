@@ -33,7 +33,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class AbstractEventProcessorTest {
   private static final String PROJECT = "p";
-  private static final Project.NameKey PROJECT_NAME = new Project.NameKey(PROJECT);
+  private static final Project.NameKey PROJECT_NAME = Project.nameKey(PROJECT);
 
   private static final ProjectCreatedEvent PROJECT_CREATED =
       new ProjectCreatedEvent() {

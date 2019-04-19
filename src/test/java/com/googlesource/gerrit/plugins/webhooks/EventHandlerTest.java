@@ -35,7 +35,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EventHandlerTest {
-  private static final Project.NameKey PROJECT_NAME = new Project.NameKey("p");
+  private static final Project.NameKey PROJECT_NAME = Project.nameKey("p");
   private static final String PLUGIN = "webhooks";
   private static final String REMOTE = "remote";
   private static final String FOO = "foo";
