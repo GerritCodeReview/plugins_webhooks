@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "583ad8e2_e2f90426",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpSession.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2019-04-30T12:07:47Z",
+      "side": 1,
+      "message": "optional: this could be inlined",
+      "range": {
+        "startLine": 61,
+        "startChar": 36,
+        "endLine": 61,
+        "endChar": 41
+      },
+      "revId": "a6c932fd52a3c7cc7d144a106d339c4bfd2a3711",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97944a94_52049acd",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 4
@@ -19,6 +42,23 @@
         "endLine": 26,
         "endChar": 32
       },
+      "revId": "a6c932fd52a3c7cc7d144a106d339c4bfd2a3711",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca9b09f_4a255260",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2019-04-30T12:07:47Z",
+      "side": 1,
+      "message": "Keep in mind that webhooks.config resides in the refs/meta/config branch of the Git repository\nof this project. In a Gerrit server with typical permission setup where everyone has\nat least Read permission for all projects this would expose the password to everyone.",
       "revId": "a6c932fd52a3c7cc7d144a106d339c4bfd2a3711",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
