@@ -16,7 +16,7 @@ package com.googlesource.gerrit.plugins.webhooks.rest;
 
 import static com.google.gerrit.reviewdb.client.RefNames.REFS_CONFIG;
 
-import com.google.gerrit.reviewdb.client.BranchNameKey;
+import com.google.gerrit.reviewdb.client.Branch;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
@@ -50,7 +50,7 @@ public class PermissionsImpl implements Permissions {
   private boolean can(Project.NameKey project, RefPermission permission) {
     return permissionBackend
         .user(currentUser.get())
-        .ref(BranchNameKey.create(project, REFS_CONFIG))
+        .ref(new Branch.NameKey(project, REFS_CONFIG))
         .testOrFalse(permission);
   }
 }
