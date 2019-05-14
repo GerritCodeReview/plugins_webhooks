@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cacbb3da_72de303e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2019-05-14T08:18:32Z",
+      "side": 1,
+      "message": "s/therefor/therefore/",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "a6c932fd52a3c7cc7d144a106d339c4bfd2a3711",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "583ad8e2_e2f90426",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpSession.java",
         "patchSetId": 4
