@@ -14,9 +14,9 @@
 
 package com.googlesource.gerrit.plugins.webhooks.rest;
 
+import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.restapi.RestResource;
 import com.google.gerrit.extensions.restapi.RestView;
-import com.google.gerrit.reviewdb.client.Project;
 import com.google.inject.TypeLiteral;
 import com.googlesource.gerrit.plugins.webhooks.RemoteConfig;
 
