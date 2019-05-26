@@ -26,7 +26,7 @@ import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.SOCKET_TIMEO
 import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.SSL_VERIFY;
 
 import com.google.common.base.Strings;
-import com.google.gerrit.reviewdb.client.RefNames;
+import com.google.gerrit.entities.RefNames;
 import com.google.gerrit.server.git.meta.VersionedMetaData;
 import com.google.inject.Inject;
 import com.googlesource.gerrit.plugins.webhooks.rest.UpsertRemote;

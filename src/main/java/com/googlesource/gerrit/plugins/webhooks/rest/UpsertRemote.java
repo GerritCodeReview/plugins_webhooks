@@ -17,12 +17,12 @@ package com.googlesource.gerrit.plugins.webhooks.rest;
 import static com.googlesource.gerrit.plugins.webhooks.rest.GetRemote.fromRemoteConfig;
 
 import com.google.common.base.Strings;
+import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.extensions.restapi.IdString;
 import com.google.gerrit.extensions.restapi.RestCollectionCreateView;
 import com.google.gerrit.extensions.restapi.RestModifyView;
-import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.git.meta.MetaDataUpdate;
 import com.google.gerrit.server.project.NoSuchProjectException;
