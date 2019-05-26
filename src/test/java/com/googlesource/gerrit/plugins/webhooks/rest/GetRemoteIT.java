@@ -15,7 +15,7 @@
 package com.googlesource.gerrit.plugins.webhooks.rest;
 
 import static com.google.common.truth.Truth.assertThat;
-import static com.google.gerrit.reviewdb.client.RefNames.REFS_CONFIG;
+import static com.google.gerrit.entities.RefNames.REFS_CONFIG;
 import static com.googlesource.gerrit.plugins.webhooks.Configuration.DEFAULT_MAX_TRIES;
 import static com.googlesource.gerrit.plugins.webhooks.Configuration.DEFAULT_RETRY_INTERVAL;
 import static com.googlesource.gerrit.plugins.webhooks.Configuration.DEFAULT_SSL_VERIFY;

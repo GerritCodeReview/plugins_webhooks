@@ -14,7 +14,7 @@
 
 package com.googlesource.gerrit.plugins.webhooks.rest;
 
-import com.google.gerrit.reviewdb.client.Project;
+import com.google.gerrit.entities.Project;
 
 public interface Permissions {
   boolean canRead(Project.NameKey project);
