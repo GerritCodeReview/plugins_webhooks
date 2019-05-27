@@ -84,7 +84,7 @@ public class AbstractEventProcessorTest {
     assertThat(actual).isFalse();
   }
 
-  private class TestEventProcessor extends AbstractEventProcessor {
+  private static class TestEventProcessor extends AbstractEventProcessor {
     @Override
     public Optional<EventProcessor.Request> doProcess(ProjectEvent event, RemoteConfig config) {
       // do nothing
