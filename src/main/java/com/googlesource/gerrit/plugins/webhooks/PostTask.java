@@ -24,6 +24,7 @@ import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLException;
 
@@ -62,7 +63,9 @@ class PostTask implements Runnable {
   }
 
   private void reschedule() {
-    executor.schedule(this, remote.getRetryInterval(), TimeUnit.MILLISECONDS);
+    @SuppressWarnings("unused")
+    ScheduledFuture<?> ignored =
+        executor.schedule(this, remote.getRetryInterval(), TimeUnit.MILLISECONDS);
   }
 
   @Override
