@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.webhooks.rest;
 
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.extensions.restapi.ResourceNotFoundException;
+import com.google.gerrit.extensions.restapi.Response;
 import com.google.gerrit.extensions.restapi.RestReadView;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.inject.Inject;
@@ -34,12 +35,12 @@ public class GetRemote implements RestReadView<RemoteResource> {
   }
 
   @Override
-  public RemoteInfo apply(RemoteResource rsrc)
+  public Response<RemoteInfo> apply(RemoteResource rsrc)
       throws NoSuchProjectException, ResourceNotFoundException, AuthException {
     if (!permissions.canRead(rsrc.getProject())) {
       throw new AuthException("not allowed to read webhooks");
     }
-    return fromRemoteConfig(rsrc.getRemoteConfig());
+    return Response.ok(fromRemoteConfig(rsrc.getRemoteConfig()));
   }
 
   static RemoteInfo fromRemoteConfig(RemoteConfig rc) {

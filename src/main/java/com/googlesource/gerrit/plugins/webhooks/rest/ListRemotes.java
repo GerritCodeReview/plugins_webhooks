@@ -18,6 +18,7 @@ import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.REMOTE;
 import static com.googlesource.gerrit.plugins.webhooks.rest.GetRemote.fromRemoteConfig;
 
 import com.google.gerrit.extensions.annotations.PluginName;
+import com.google.gerrit.extensions.restapi.Response;
 import com.google.gerrit.extensions.restapi.RestReadView;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.project.NoSuchProjectException;
@@ -46,7 +47,7 @@ public class ListRemotes implements RestReadView<ProjectWebhooksResource> {
   }
 
   @Override
-  public Map<String, RemoteInfo> apply(ProjectWebhooksResource resource)
+  public Response<Map<String, RemoteInfo>> apply(ProjectWebhooksResource resource)
       throws NoSuchProjectException {
     Map<String, RemoteInfo> remotes = new HashMap<>();
     Config cfg =
@@ -54,6 +55,6 @@ public class ListRemotes implements RestReadView<ProjectWebhooksResource> {
     for (String name : cfg.getSubsections(REMOTE)) {
       remotes.put(name, fromRemoteConfig(remoteFactory.create(cfg, name)));
     }
-    return remotes;
+    return Response.ok(remotes);
   }
 }

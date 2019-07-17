@@ -48,7 +48,7 @@ public class DeleteRemote implements RestModifyView<RemoteResource, Input> {
   }
 
   @Override
-  public Object apply(RemoteResource rsrc, Input input)
+  public Response<Object> apply(RemoteResource rsrc, Input input)
       throws RepositoryNotFoundException, IOException, ConfigInvalidException, AuthException {
     if (!permissions.canUpdate(rsrc.getProject())) {
       throw new AuthException("not allowed to update webhooks");
