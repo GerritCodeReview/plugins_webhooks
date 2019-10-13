@@ -23,21 +23,8 @@ junit_tests(
     name = "webhooks_tests",
     srcs = glob(["src/test/java/**/*.java"]),
     resources = glob(["src/test/resources/**/*"]),
-    tags = [
-        "local",
-        "webhooks",
-    ],
-    deps = [
-        ":webhooks__plugin_test_deps",
-    ],
-)
-
-java_library(
-    name = "webhooks__plugin_test_deps",
-    testonly = 1,
-    visibility = ["//visibility:public"],
-    exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
+    tags = ["webhooks"],
+    deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
         ":webhooks__plugin",
-        "@mockito//jar",
     ],
 )
