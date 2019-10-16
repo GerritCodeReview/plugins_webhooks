@@ -2,7 +2,6 @@
 /.project
 /.settings/
 /bazel-bin
-/bazel-genfiles
 /bazel-out
 /bazel-reviewers
 /bazel-testlogs
