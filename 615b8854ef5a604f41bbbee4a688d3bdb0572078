@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0133d82_dc00ca35",
+        "filename": "tools/workspace_status.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2019-12-26T12:43:10Z",
+      "side": 1,
+      "message": "This should have been removed.",
+      "revId": "615b8854ef5a604f41bbbee4a688d3bdb0572078",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
