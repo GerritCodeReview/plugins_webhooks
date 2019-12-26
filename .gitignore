@@ -1,9 +1,0 @@
-/.classpath
-/.project
-/.settings/
-/bazel-bin
-/bazel-out
-/bazel-reviewers
-/bazel-testlogs
-/bazel-webhooks
-/eclipse-out/
