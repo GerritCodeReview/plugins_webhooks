@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b17bb0b3_4872f51c",
+        "filename": ".gitignore",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2019-12-26T22:57:09Z",
+      "side": 1,
+      "message": "Remove as well, i.e., remove this whole file? -The .settings directory is used by some core plugins but not this one, as far as I know. And as only in-tree gets supported, the used eclipse project files would only be the core root ones.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 11
+      },
+      "revId": "ce1fb790ff6d206ada2af43638d8947755e975a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
