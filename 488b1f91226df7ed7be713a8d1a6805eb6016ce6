@@ -22,6 +22,30 @@
       "revId": "488b1f91226df7ed7be713a8d1a6805eb6016ce6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16775950_ca995685",
+        "filename": ".bazelversion",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2019-12-27T09:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34168010_3d8c7271",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 5
+      },
+      "revId": "488b1f91226df7ed7be713a8d1a6805eb6016ce6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
