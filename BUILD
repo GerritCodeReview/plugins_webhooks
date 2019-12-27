@@ -23,7 +23,6 @@ gerrit_plugin(
 junit_tests(
     name = "webhooks_tests",
     srcs = glob(["src/test/java/**/*.java"]),
-    resources = glob(["src/test/resources/**/*"]),
     tags = [
         "local",
         "webhooks",
