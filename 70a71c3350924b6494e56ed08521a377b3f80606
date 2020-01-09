@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e36ceb54_cc58a379",
+        "filename": "tools/workspace_status.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2020-01-09T00:40:21Z",
+      "side": 1,
+      "message": "This file should not be added since the standalone build is removed on this branch.",
+      "revId": "70a71c3350924b6494e56ed08521a377b3f80606",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
