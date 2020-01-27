@@ -92,7 +92,8 @@ Add the plugin name to the `CUSTOM_PLUGINS` and to the
 To execute the tests run:
 
 ```
-  bazel test plugins/@PLUGIN@:@PLUGIN@_tests 
+  bazel test --test_tag_filters=@PLUGIN@ //...
+  bazel test plugins/@PLUGIN@:@PLUGIN@_tests
 ```
 
 How to build the Gerrit Plugin API is described in the [Gerrit
