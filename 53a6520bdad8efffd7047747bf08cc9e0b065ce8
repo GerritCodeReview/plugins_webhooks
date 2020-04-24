@@ -1,11 +1,13 @@
 {
   "checks": {
     "zuul-check:plugins_webhooks": {
-      "state": "RUNNING",
-      "message": "Jobs have started running",
+      "state": "FAILED",
+      "message": "Change failed",
+      "url": "https://ci.gerritcodereview.com/t/gerrit/buildset/b2852e1390384ebbba7f846cb2e75d60",
       "started": "2020-04-24T12:32:20Z",
+      "finished": "2020-04-24T12:33:43Z",
       "created": "2020-04-24T12:32:20Z",
-      "updated": "2020-04-24T12:32:25Z"
+      "updated": "2020-04-24T12:33:43Z"
     }
   }
 }
