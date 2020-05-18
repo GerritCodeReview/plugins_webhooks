@@ -92,7 +92,7 @@ public class GetRemoteIT extends LightweightPluginDaemonTest {
     push(webhooksConfig);
     RestResponse res = adminRestSession.get(endpoint);
     assertThat(res.getStatusCode()).isEqualTo(200);
-    assertThat(expected).isEqualTo(asRemoteInfo(res.getEntityContent()));
+    assertThat(asRemoteInfo(res.getEntityContent())).isEqualTo(expected);
   }
 
   @Test
@@ -128,7 +128,7 @@ public class GetRemoteIT extends LightweightPluginDaemonTest {
     push(webhooksConfig);
     RestResponse res = adminRestSession.get(endpoint);
     assertThat(res.getStatusCode()).isEqualTo(SC_OK);
-    assertThat(expected).isEqualTo(asMap(res.getEntityContent()));
+    assertThat(asMap(res.getEntityContent())).isEqualTo(expected);
   }
 
   private void push(String content) throws Exception {
