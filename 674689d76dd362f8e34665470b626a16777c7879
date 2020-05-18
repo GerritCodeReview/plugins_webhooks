@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73bc6baa_465bb644",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2020-05-18T06:51:35Z",
+      "side": 1,
+      "message": "Can you include the message that error prone emits, and a link to the page (it\u0027s usually included in the error message)?",
+      "revId": "674689d76dd362f8e34665470b626a16777c7879",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
