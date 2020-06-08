@@ -1,11 +1,13 @@
 {
   "checks": {
     "zuul-check:plugins_webhooks": {
-      "state": "SCHEDULED",
-      "message": "Change has been enqueued in check",
+      "state": "NOT_RELEVANT",
+      "message": "Project has no jobs configured",
+      "url": "https://ci.gerritcodereview.com/t/gerrit/buildset/dc9c8bf6a4d0470abf9dea6986228428",
       "started": "2020-06-08T21:15:43Z",
+      "finished": "2020-06-08T21:15:46Z",
       "created": "2020-06-08T21:15:44Z",
-      "updated": "2020-06-08T21:15:44Z"
+      "updated": "2020-06-08T21:15:46Z"
     }
   }
 }
