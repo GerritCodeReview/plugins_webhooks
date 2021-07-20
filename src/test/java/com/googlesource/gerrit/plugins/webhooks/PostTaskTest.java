@@ -17,7 +17,7 @@ package com.googlesource.gerrit.plugins.webhooks;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import com.google.gerrit.entities.Project;
@@ -77,22 +77,22 @@ public class PostTaskTest {
   public void noScheduleOnEmptyBody() throws Exception {
     when(processor.process(eq(projectCreated), eq(remote))).thenReturn(Optional.empty());
     task.run();
-    verifyZeroInteractions(session);
-    verifyZeroInteractions(executor);
+    verifyNoInteractions(session);
+    verifyNoInteractions(executor);
   }
 
   @Test
   public void noRescheduleOnSuccess() throws IOException {
     when(session.post(eq(remote), eq(content))).thenReturn(OK_RESULT);
     task.run();
-    verifyZeroInteractions(executor);
+    verifyNoInteractions(executor);
   }
 
   @Test
   public void noRescheduleOnNonRecoverableException() throws IOException {
     when(session.post(eq(remote), eq(content))).thenThrow(SSLException.class);
     task.run();
-    verifyZeroInteractions(executor);
+    verifyNoInteractions(executor);
   }
 
   @Test

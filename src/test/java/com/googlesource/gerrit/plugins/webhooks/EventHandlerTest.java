@@ -17,7 +17,7 @@ package com.googlesource.gerrit.plugins.webhooks;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.ImmutableSet;
@@ -71,8 +71,8 @@ public class EventHandlerTest {
   public void remoteUrlUndefinedTaskNotScheduled() {
     when(config.getSubsections(eq(REMOTE))).thenReturn(ImmutableSet.of(FOO));
     eventHandler.onEvent(projectCreated);
-    verifyZeroInteractions(taskFactory);
-    verifyZeroInteractions(postTask);
+    verifyNoInteractions(taskFactory);
+    verifyNoInteractions(postTask);
   }
 
   @Test
@@ -89,8 +89,8 @@ public class EventHandlerTest {
   public void nonProjectEventNotProcessed() {
     Event nonProjectEvent = new Event("non-project-event") {};
     eventHandler.onEvent(nonProjectEvent);
-    verifyZeroInteractions(remoteFactory);
-    verifyZeroInteractions(taskFactory);
-    verifyZeroInteractions(postTask);
+    verifyNoInteractions(remoteFactory);
+    verifyNoInteractions(taskFactory);
+    verifyNoInteractions(postTask);
   }
 }
