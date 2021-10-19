@@ -34,7 +34,7 @@ import java.util.Map;
 import org.eclipse.jgit.transport.RefSpec;
 import org.junit.Test;
 
-@TestPlugin(name = "webhooks", sysModule = "com.googlesource.gerrit.plugins.webhooks.Module")
+@TestPlugin(name = "webhooks", sysModule = "com.googlesource.gerrit.plugins.webhooks.PluginModule")
 public class GetRemoteIT extends LightweightPluginDaemonTest {
 
   @Test

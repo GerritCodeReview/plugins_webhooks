@@ -32,7 +32,7 @@ import com.google.gerrit.acceptance.TestPlugin;
 import org.junit.Before;
 import org.junit.Test;
 
-@TestPlugin(name = "webhooks", sysModule = "com.googlesource.gerrit.plugins.webhooks.Module")
+@TestPlugin(name = "webhooks", sysModule = "com.googlesource.gerrit.plugins.webhooks.PluginModule")
 public class UpdateRemoteIT extends LightweightPluginDaemonTest {
 
   private String fooEndpoint;

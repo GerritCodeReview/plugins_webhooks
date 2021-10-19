@@ -29,11 +29,11 @@ import com.googlesource.gerrit.plugins.webhooks.rest.WebhooksRestModule;
 import java.util.concurrent.ScheduledExecutorService;
 import org.apache.http.impl.client.CloseableHttpClient;
 
-public class Module extends FactoryModule {
+public class PluginModule extends FactoryModule {
   private final ProcessorModule processors;
 
   @Inject
-  public Module(ProcessorModule processors) {
+  public PluginModule(ProcessorModule processors) {
     this.processors = processors;
   }
 

@@ -11,7 +11,7 @@ gerrit_plugin(
     srcs = glob(["src/main/java/**/*.java"]),
     manifest_entries = [
         "Gerrit-PluginName: webhooks",
-        "Gerrit-Module: com.googlesource.gerrit.plugins.webhooks.Module",
+        "Gerrit-Module: com.googlesource.gerrit.plugins.webhooks.PluginModule",
         "Implementation-Title: webhooks plugin",
         "Implementation-URL: https://gerrit-review.googlesource.com/#/admin/projects/plugins/webhooks",
         "Implementation-Vendor: Gerrit Code Review",
