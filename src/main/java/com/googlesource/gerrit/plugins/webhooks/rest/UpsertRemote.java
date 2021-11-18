@@ -129,7 +129,7 @@ public class UpsertRemote {
       wh.commit(md);
     }
 
-    projectCache.evict(project);
+    projectCache.evictAndReindex(project);
 
     Config cfg = configFactory.getProjectPluginConfigWithInheritance(project, pluginName);
     RemoteConfig rc = remoteConfigFactory.create(cfg, remoteName);
