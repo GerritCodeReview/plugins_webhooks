@@ -61,7 +61,7 @@ public class DeleteRemote implements RestModifyView<RemoteResource, Input> {
       wh.commit(md);
     }
 
-    projectCache.evict(rsrc.getProject());
+    projectCache.evictAndReindex(rsrc.getProject());
 
     return Response.none();
   }
