@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8d94ea_6406cf92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1105741
+      },
+      "writtenOn": "2021-11-22T17:04:25Z",
+      "side": 1,
+      "message": "Need Depends-on: https://gerrit-review.googlesource.com/c/gerrit/+/324372",
+      "revId": "8b96859b09e70e91c05d43a136fce8f9683cf735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
