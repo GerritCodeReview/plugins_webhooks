@@ -88,7 +88,7 @@ class PostTask implements Runnable {
         logRetry(e);
         reschedule();
       } else {
-        log.atSevere().withCause(e).log("Failed to post: %s", toString());
+        log.atSevere().withCause(e).log("Failed to post: %s", this);
       }
     }
   }
@@ -98,12 +98,11 @@ class PostTask implements Runnable {
   }
 
   private void logRetry(String reason) {
-    log.atFine().log(
-        "Retrying %s in %dms. Reason: %s", toString(), remote.getRetryInterval(), reason);
+    log.atFine().log("Retrying %s in %dms. Reason: %s", this, remote.getRetryInterval(), reason);
   }
 
   private void logRetry(Throwable cause) {
-    log.atFine().withCause(cause).log("Retrying %s in %dms", toString(), remote.getRetryInterval());
+    log.atFine().withCause(cause).log("Retrying %s in %dms", this, remote.getRetryInterval());
   }
 
   @Override
