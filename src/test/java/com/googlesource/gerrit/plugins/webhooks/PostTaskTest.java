@@ -48,8 +48,6 @@ public class PostTaskTest {
 
   @Mock private RemoteConfig remote;
 
-  @Mock private Configuration cfg;
-
   @Mock private HttpSession session;
 
   @Mock private HttpSession.Factory sessionFactory;
