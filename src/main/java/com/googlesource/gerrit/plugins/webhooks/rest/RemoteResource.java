@@ -21,8 +21,7 @@ import com.google.inject.TypeLiteral;
 import com.googlesource.gerrit.plugins.webhooks.RemoteConfig;
 
 public class RemoteResource implements RestResource {
-  public static final TypeLiteral<RestView<RemoteResource>> REMOTE_KIND =
-      new TypeLiteral<RestView<RemoteResource>>() {};
+  public static final TypeLiteral<RestView<RemoteResource>> REMOTE_KIND = new TypeLiteral<>() {};
 
   private final Project.NameKey project;
   private final RemoteConfig rc;

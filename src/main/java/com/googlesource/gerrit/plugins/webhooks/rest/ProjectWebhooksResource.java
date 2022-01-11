@@ -22,7 +22,7 @@ import com.google.inject.TypeLiteral;
 public class ProjectWebhooksResource implements RestResource {
 
   public static final TypeLiteral<RestView<ProjectWebhooksResource>> PROJECT_WEBHOOK_KIND =
-      new TypeLiteral<RestView<ProjectWebhooksResource>>() {};
+      new TypeLiteral<>() {};
 
   private final Project.NameKey project;
 
