@@ -14,10 +14,10 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
-import static javax.servlet.http.HttpServletResponse.SC_CREATED;
-import static javax.servlet.http.HttpServletResponse.SC_NO_CONTENT;
-import static javax.servlet.http.HttpServletResponse.SC_OK;
-import static javax.servlet.http.HttpServletResponse.SC_ACCEPTED;
+import static jakarta.servlet.http.HttpServletResponse.SC_CREATED;
+import static jakarta.servlet.http.HttpServletResponse.SC_NO_CONTENT;
+import static jakarta.servlet.http.HttpServletResponse.SC_OK;
+import static jakarta.servlet.http.HttpServletResponse.SC_ACCEPTED;
 
 import com.google.common.flogger.FluentLogger;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
