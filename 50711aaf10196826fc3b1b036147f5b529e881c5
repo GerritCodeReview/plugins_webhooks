@@ -3,7 +3,7 @@
     "zuul-check:plugins_webhooks": {
       "state": "NOT_STARTED",
       "created": "2022-09-08T15:28:08Z",
-      "updated": "2022-09-08T15:32:21Z"
+      "updated": "2022-09-08T15:32:24Z"
     }
   }
 }
