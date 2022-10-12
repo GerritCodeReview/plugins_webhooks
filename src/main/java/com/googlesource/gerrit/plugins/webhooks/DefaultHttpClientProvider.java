@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.webhooks;
 
 import com.google.common.flogger.FluentLogger;
+import com.google.gerrit.common.Nullable;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import java.security.KeyManagementException;
@@ -51,6 +52,7 @@ class DefaultHttpClientProvider extends HttpClientProvider {
             .build();
   }
 
+  @Nullable
   private static SSLContext buildSslContext() {
     try {
       TrustManager[] trustAllCerts = new TrustManager[] {new DummyX509TrustManager()};
