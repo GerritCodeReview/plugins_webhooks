@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e30c3f71_3dadd24f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2023-05-11T12:44:12Z",
+      "side": 1,
+      "message": "this fixes test failure in https://gerrit-review.googlesource.com/c/gerrit/+/373402",
+      "revId": "ff779a381b120869efced4cc5331e62ba18e6828",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
