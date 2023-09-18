@@ -18,13 +18,16 @@ import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.REMOTE;
 
 import com.google.common.base.Strings;
 import com.google.common.flogger.FluentLogger;
+import com.google.gerrit.common.Nullable;
 import com.google.gerrit.extensions.annotations.PluginName;
+import com.google.gerrit.server.config.GerritInstanceId;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.EventListener;
 import com.google.gerrit.server.events.ProjectEvent;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.inject.Inject;
+import java.util.Optional;
 import org.eclipse.jgit.lib.Config;
 
 class EventHandler implements EventListener {
@@ -34,22 +37,29 @@ class EventHandler implements EventListener {
   private final String pluginName;
   private final RemoteConfig.Factory remoteFactory;
   private final PostTask.Factory taskFactory;
+  private Optional<String> instanceId;
 
   @Inject
   EventHandler(
       PluginConfigFactory configFactory,
       @PluginName String pluginName,
       RemoteConfig.Factory remoteFactory,
-      PostTask.Factory taskFactory) {
+      PostTask.Factory taskFactory,
+      @GerritInstanceId @Nullable String instanceId) {
     this.configFactory = configFactory;
     this.pluginName = pluginName;
     this.remoteFactory = remoteFactory;
     this.taskFactory = taskFactory;
+    this.instanceId = Optional.ofNullable(instanceId);
   }
 
   @Override
   public void onEvent(Event event) {
     if (!(event instanceof ProjectEvent)) {
+      return;
+    }
+
+    if (isRemoteEvent(event)) {
       return;
     }
 
@@ -75,5 +85,9 @@ class EventHandler implements EventListener {
 
       taskFactory.create(projectEvent, remote).schedule();
     }
+  }
+
+  private boolean isRemoteEvent(Event event) {
+    return instanceId.filter(id -> !id.equals(event.instanceId)).isPresent();
   }
 }

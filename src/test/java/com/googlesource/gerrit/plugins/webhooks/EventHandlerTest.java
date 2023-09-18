@@ -64,7 +64,7 @@ public class EventHandlerTest {
         .thenReturn(config);
     when(remoteFactory.create(eq(config), eq(FOO))).thenReturn(remote);
     when(taskFactory.create(eq(projectCreated), eq(remote))).thenReturn(postTask);
-    eventHandler = new EventHandler(configFactory, PLUGIN, remoteFactory, taskFactory);
+    eventHandler = new EventHandler(configFactory, PLUGIN, remoteFactory, taskFactory, null);
   }
 
   @Test
@@ -83,6 +83,30 @@ public class EventHandlerTest {
     eventHandler.onEvent(projectCreated);
     verify(taskFactory, times(1)).create(eq(projectCreated), eq(remote));
     verify(postTask, times(1)).schedule();
+  }
+
+  @Test
+  public void localInstanceIdEventTaskScheduled() {
+    eventHandler =
+        new EventHandler(configFactory, PLUGIN, remoteFactory, taskFactory, "some-instance-id");
+    projectCreated.instanceId = "some-instance-id";
+    when(config.getSubsections(eq(REMOTE))).thenReturn(ImmutableSet.of(FOO));
+    when(remote.getUrl()).thenReturn(FOO_URL);
+
+    eventHandler.onEvent(projectCreated);
+    verify(taskFactory, times(1)).create(eq(projectCreated), eq(remote));
+    verify(postTask, times(1)).schedule();
+  }
+
+  @Test
+  public void remoteEventTaskNotScheduled() {
+    eventHandler =
+        new EventHandler(configFactory, PLUGIN, remoteFactory, taskFactory, "some-instance-id");
+
+    eventHandler.onEvent(projectCreated);
+    verifyNoInteractions(remoteFactory);
+    verifyNoInteractions(taskFactory);
+    verifyNoInteractions(postTask);
   }
 
   @Test
