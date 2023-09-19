@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6364be3c_414dd7c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2023-09-19T06:05:57Z",
+      "side": 1,
+      "message": "LGTM @sasa.zivkov@sap.com WDYT?",
+      "revId": "31afd5f9fc23b9af109781673b794c78c7737c07",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
