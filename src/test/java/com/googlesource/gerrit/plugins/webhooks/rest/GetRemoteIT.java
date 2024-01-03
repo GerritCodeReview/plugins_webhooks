@@ -135,7 +135,7 @@ public class GetRemoteIT extends LightweightPluginDaemonTest {
     PushOneCommit push =
         pushFactory.create(
             admin.newIdent(), testRepo, "Create webhooks", "webhooks.config", content);
-    push.to(REFS_CONFIG);
+    push.to(REFS_CONFIG).assertOkStatus();
   }
 
   static Map<String, RemoteInfo> asMap(String json) {
