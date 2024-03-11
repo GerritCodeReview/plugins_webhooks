@@ -25,44 +25,16 @@ import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.RETRY_INTERV
 import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.SOCKET_TIMEOUT;
 import static com.googlesource.gerrit.plugins.webhooks.RemoteConfig.SSL_VERIFY;
 
-import com.google.common.base.Strings;
 import com.google.gerrit.entities.RefNames;
-import com.google.gerrit.server.git.meta.VersionedMetaData;
+import com.google.gerrit.server.git.meta.VersionedConfigFile;
 import com.google.inject.Inject;
 import com.googlesource.gerrit.plugins.webhooks.rest.UpsertRemote;
-import java.io.IOException;
 import java.util.List;
-import org.eclipse.jgit.errors.ConfigInvalidException;
-import org.eclipse.jgit.lib.CommitBuilder;
-import org.eclipse.jgit.lib.Config;
 
-public class WebhooksConfig extends VersionedMetaData {
-
-  private final String cfgFileName;
-  private Config cfg;
-
+public class WebhooksConfig extends VersionedConfigFile {
   @Inject
   WebhooksConfig(@WebhooksConfigFileName String cfgFileName) {
-    this.cfgFileName = cfgFileName;
-  }
-
-  @Override
-  protected String getRefName() {
-    return RefNames.REFS_CONFIG;
-  }
-
-  @Override
-  protected void onLoad() throws IOException, ConfigInvalidException {
-    cfg = readConfig(cfgFileName);
-  }
-
-  @Override
-  protected boolean onSave(CommitBuilder commit) throws IOException, ConfigInvalidException {
-    if (Strings.isNullOrEmpty(commit.getMessage())) {
-      commit.setMessage("Updated webhooks\n");
-    }
-    saveConfig(cfgFileName, cfg);
-    return true;
+    super(RefNames.REFS_CONFIG, cfgFileName, "Updated webhooks\n");
   }
 
   public void upsertRemote(String name, UpsertRemote.Input in) {
