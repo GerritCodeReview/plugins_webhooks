@@ -1,12 +1,13 @@
 {
   "checks": {
     "zuul-check:plugins_webhooks": {
-      "state": "RUNNING",
-      "message": "Jobs have started running",
-      "url": "https://ci.gerritcodereview.com/t/gerrit/status/change/413078,1",
+      "state": "FAILED",
+      "message": "Change failed",
+      "url": "https://ci.gerritcodereview.com/t/gerrit/buildset/820f7cc827aa41d98e67f5aa791cd1b2",
       "started": "2024-03-12T20:14:44Z",
+      "finished": "2024-03-12T20:16:13Z",
       "created": "2024-03-12T20:14:44Z",
-      "updated": "2024-03-12T20:14:48Z"
+      "updated": "2024-03-12T20:16:13Z"
     }
   }
 }
