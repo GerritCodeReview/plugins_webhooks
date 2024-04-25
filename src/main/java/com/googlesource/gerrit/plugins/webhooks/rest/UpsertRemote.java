@@ -44,6 +44,7 @@ public class UpsertRemote {
   public static class Input {
     public String url;
     public List<String> events;
+    public List<String> headers;
     public Integer connectionTimeout;
     public Integer socketTimeout;
     public Integer maxTries;

@@ -29,6 +29,7 @@ and propagate only `patchset-created` and `ref-updated` events to
   url = https://bar.org/
   event = patchset-created
   event = ref-updated
+  header = Authorization:Bearer eyABCDEEFGHIJKLMNOP123456789
 ```
 
 The configuration is inheritable. Connection parameters
@@ -76,6 +77,10 @@ File '@PLUGIN@.config'
 : Type of the event which will be posted to the remote url. Multiple event
   types can be specified, listing event types which should be posted.
   When no event type is configured, all events will be posted.
+
+<a id="header"> remote.NAME.header
+: HTTP header to include in requests to the remote server. A header consists of a
+  name and value, separated by a colon. Multiple headers can be specified.
 
 <a id="connectionTimeout"> remote.NAME.connectionTimeout
 : Maximum interval of time in milliseconds the plugin waits for a connection

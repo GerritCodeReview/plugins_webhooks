@@ -40,6 +40,7 @@ public class WebhooksConfig extends VersionedConfigFile {
   public void upsertRemote(String name, UpsertRemote.Input in) {
     cfg.setString(REMOTE, name, "url", in.url);
     setStringList(name, "event", in.events);
+    setStringList(name, "header", in.headers);
     setInt(name, CONNECTION_TIMEOUT, in.connectionTimeout, DEFAULT_TIMEOUT_MS);
     setInt(name, SOCKET_TIMEOUT, in.socketTimeout, DEFAULT_TIMEOUT_MS);
     setInt(name, MAX_TRIES, in.maxTries, DEFAULT_MAX_TRIES);

@@ -17,6 +17,8 @@ package com.googlesource.gerrit.plugins.webhooks;
 import static com.googlesource.gerrit.plugins.webhooks.DefaultHttpClientProvider.DEFAULT;
 import static com.googlesource.gerrit.plugins.webhooks.SslVerifyingHttpClientProvider.SSL_VERIFY;
 
+import com.google.common.base.Splitter;
+import com.google.common.flogger.FluentLogger;
 import com.google.common.net.MediaType;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -25,12 +27,18 @@ import com.google.inject.name.Named;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 class HttpSession {
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
+
   interface Factory {
     HttpSession create(RemoteConfig remote);
   }
@@ -49,6 +57,14 @@ class HttpSession {
   HttpResult post(RemoteConfig remote, EventProcessor.Request request) throws IOException {
     HttpPost post = new HttpPost(remote.getUrl());
     post.addHeader("Content-Type", MediaType.JSON_UTF_8.toString());
+    Optional.ofNullable(remote.getHeaders()).ifPresent(headers -> Arrays.stream(headers).forEach(h -> {
+      List<String> header = Splitter.on(':').trimResults().splitToList(h);
+      if (header.size() == 2) {
+        post.setHeader(header.get(0), header.get(1));
+      } else {
+        log.atWarning().log("Ignoring invalid header %s for remote %s", h, remote.getName());
+      }
+    }));
     post.setConfig(getConfig(remote));
     request.headers.entrySet().stream()
         .forEach(

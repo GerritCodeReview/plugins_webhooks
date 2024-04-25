@@ -53,6 +53,10 @@ public class RemoteConfig {
     return config.getStringList(REMOTE, name, "event");
   }
 
+  public String[] getHeaders() {
+    return config.getStringList(REMOTE, name, "header");
+  }
+
   public int getConnectionTimeout() {
     return config.getInt(REMOTE, name, CONNECTION_TIMEOUT, global.getConnectionTimeout());
   }
