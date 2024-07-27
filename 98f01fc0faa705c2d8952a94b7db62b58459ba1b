@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c579c933_de3c6317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3458386
+      },
+      "writtenOn": "2024-07-27T22:01:11Z",
+      "side": 1,
+      "message": "I was advised there 2 Python platforms. I\u0027m not receiving any messages",
+      "revId": "98f01fc0faa705c2d8952a94b7db62b58459ba1b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
