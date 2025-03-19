@@ -79,9 +79,15 @@ class PostTask implements Runnable {
 
       execCnt++;
       HttpResult result = session.get().post(remote, content.get());
-      if (!result.successful && execCnt < remote.getMaxTries()) {
-        logRetry(result.message);
-        reschedule();
+      if (!result.successful) {
+        if (execCnt < remote.getMaxTries()) {
+          logRetry(result.message);
+          reschedule();
+        } else {
+          log.atSevere().log(
+              "Failed to post: %s. Exceeded max retries(%d). Reason: %s",
+              this, remote.getMaxTries(), result.message);
+        }
       }
     } catch (Throwable e) {
       if (isRecoverable(e) && execCnt < remote.getMaxTries()) {
