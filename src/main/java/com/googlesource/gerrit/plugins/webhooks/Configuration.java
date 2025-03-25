@@ -34,6 +34,7 @@ public class Configuration {
   private final int retryInterval;
   private final int threadPoolSize;
   private final boolean sslVerify;
+  private final String[] allowedEvents;
 
   @Inject
   protected Configuration(PluginConfigFactory config, @PluginName String pluginName) {
@@ -44,6 +45,7 @@ public class Configuration {
     retryInterval = cfg.getInt(RemoteConfig.RETRY_INTERVAL, DEFAULT_RETRY_INTERVAL);
     threadPoolSize = cfg.getInt("threadPoolSize", DEFAULT_THREAD_POOL_SIZE);
     sslVerify = cfg.getBoolean(RemoteConfig.SSL_VERIFY, DEFAULT_SSL_VERIFY);
+    allowedEvents = cfg.getStringList("allowedEvent");
   }
 
   public int getConnectionTimeout() {
@@ -68,5 +70,9 @@ public class Configuration {
 
   public boolean getSslVerify() {
     return sslVerify;
+  }
+
+  public String[] getAllowedEvents() {
+    return allowedEvents;
   }
 }
