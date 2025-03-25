@@ -22,6 +22,9 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class Configuration {
+  public static final String THREAD_POOL_SIZE = "threadPoolSize";
+  public static final String ALLOWED_EVENT = "allowedEvent";
+
   public static final int DEFAULT_TIMEOUT_MS = 5000;
   public static final int DEFAULT_MAX_TRIES = 5;
   public static final int DEFAULT_RETRY_INTERVAL = 1000;
@@ -34,6 +37,7 @@ public class Configuration {
   private final int retryInterval;
   private final int threadPoolSize;
   private final boolean sslVerify;
+  private final String[] allowedEvents;
 
   @Inject
   protected Configuration(PluginConfigFactory config, @PluginName String pluginName) {
@@ -42,8 +46,9 @@ public class Configuration {
     socketTimeout = cfg.getInt(RemoteConfig.SOCKET_TIMEOUT, DEFAULT_TIMEOUT_MS);
     maxTries = cfg.getInt(RemoteConfig.MAX_TRIES, DEFAULT_MAX_TRIES);
     retryInterval = cfg.getInt(RemoteConfig.RETRY_INTERVAL, DEFAULT_RETRY_INTERVAL);
-    threadPoolSize = cfg.getInt("threadPoolSize", DEFAULT_THREAD_POOL_SIZE);
+    threadPoolSize = cfg.getInt(THREAD_POOL_SIZE, DEFAULT_THREAD_POOL_SIZE);
     sslVerify = cfg.getBoolean(RemoteConfig.SSL_VERIFY, DEFAULT_SSL_VERIFY);
+    allowedEvents = cfg.getStringList(ALLOWED_EVENT);
   }
 
   public int getConnectionTimeout() {
@@ -68,5 +73,9 @@ public class Configuration {
 
   public boolean getSslVerify() {
     return sslVerify;
+  }
+
+  public String[] getAllowedEvents() {
+    return allowedEvents;
   }
 }

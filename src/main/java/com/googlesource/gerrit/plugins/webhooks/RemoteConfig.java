@@ -16,6 +16,8 @@ package com.googlesource.gerrit.plugins.webhooks;
 
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
+import java.util.Arrays;
+import java.util.List;
 import org.eclipse.jgit.lib.Config;
 
 public class RemoteConfig {
@@ -50,7 +52,19 @@ public class RemoteConfig {
   }
 
   public String[] getEvents() {
-    return config.getStringList(REMOTE, name, "event");
+    String[] globalAllowedEvents = global.getAllowedEvents();
+    String[] remoteEvents = config.getStringList(REMOTE, name, "event");
+    if (globalAllowedEvents.length > 0) {
+      if (remoteEvents.length > 0) {
+        List<String> globalAllowedEventsList = Arrays.asList(globalAllowedEvents);
+        return Arrays.stream(remoteEvents)
+            .distinct()
+            .filter(globalAllowedEventsList::contains)
+            .toArray(String[]::new);
+      }
+      return globalAllowedEvents;
+    }
+    return remoteEvents;
   }
 
   public int getConnectionTimeout() {
