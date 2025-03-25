@@ -66,6 +66,12 @@ File 'gerrit.config'
     when payload is delivered.
     Default value is 'false'.
 
+@PLUGIN@.allowedEvent
+:   Type of the event which is allowed to be posted to the remote url.
+    Multiple event types can be provided. If not specified, then all event
+    types are allowed.
+
+
 File '@PLUGIN@.config'
 ----------------------
 
@@ -73,9 +79,11 @@ File '@PLUGIN@.config'
 : Address of the remote server to post events to.
 
 <a id="event"> remote.NAME.event
-: Type of the event which will be posted to the remote url. Multiple event
-  types can be specified, listing event types which should be posted.
-  When no event type is configured, all events will be posted.
+: Type of the event which will be posted to the remote url. If this event is
+  not an allowed one in the global configuration, then it won't be posted.
+  Multiple event types can be specified, listing event types which should be
+  posted. If no event type is configured, only the allowed events from the
+  global configuration will be posted.
 
 <a id="connectionTimeout"> remote.NAME.connectionTimeout
 : Maximum interval of time in milliseconds the plugin waits for a connection
