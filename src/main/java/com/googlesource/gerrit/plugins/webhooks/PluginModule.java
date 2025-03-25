@@ -19,6 +19,7 @@ import static com.googlesource.gerrit.plugins.webhooks.SslVerifyingHttpClientPro
 
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.config.FactoryModule;
+import com.google.gerrit.extensions.events.GitReferenceUpdatedListener;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.server.events.EventListener;
 import com.google.inject.Inject;
@@ -49,6 +50,7 @@ public class PluginModule extends FactoryModule {
     factory(HttpSession.Factory.class);
 
     DynamicSet.bind(binder(), EventListener.class).to(EventHandler.class);
+    DynamicSet.bind(binder(), GitReferenceUpdatedListener.class).to(WebHookUpdateListener.class);
 
     bind(CloseableHttpClient.class)
         .annotatedWith(Names.named(DEFAULT))
