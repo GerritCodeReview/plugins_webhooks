@@ -71,6 +71,25 @@ File 'gerrit.config'
     Multiple event types can be provided. If not specified, then all event
     types are allowed.
 
+@PLUGIN@.maxAllowedConnectionTimeout
+:   Maximum allowed value for the connection timeout. If a value greater than
+    this is configured in the @PLUGIN@.config, the minimum value will be chosen
+    instead.
+
+@PLUGIN@.maxAllowedSocketTimeout
+:   Maximum allowed value for the socket timeout. If a value greater than
+    this is configured in the @PLUGIN@.config, the minimum value will be chosen
+    instead.
+
+@PLUGIN@.maxAllowedTries
+:   Maximum allowed value for the retries. If a value greater than this is
+    configured in the @PLUGIN@.config, the minimum value will be chosen instead.
+
+@PLUGIN@.maxAllowedRetryInterval
+:   Maximum allowed value for the retry interval. If a value greater than
+    this is configured in the @PLUGIN@.config, the minimum value will be chosen
+    instead.
+
 
 File '@PLUGIN@.config'
 ----------------------

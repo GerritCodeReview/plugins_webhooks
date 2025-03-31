@@ -68,19 +68,32 @@ public class RemoteConfig {
   }
 
   public int getConnectionTimeout() {
-    return config.getInt(REMOTE, name, CONNECTION_TIMEOUT, global.getConnectionTimeout());
+    int connectionTimeout =
+        config.getInt(REMOTE, name, CONNECTION_TIMEOUT, global.getConnectionTimeout());
+    return (global.getMaxAllowedConnectionTimeout() > 0)
+        ? Math.min(connectionTimeout, global.getMaxAllowedConnectionTimeout())
+        : connectionTimeout;
   }
 
   public int getSocketTimeout() {
-    return config.getInt(REMOTE, name, SOCKET_TIMEOUT, global.getSocketTimeout());
+    int socketTimeout = config.getInt(REMOTE, name, SOCKET_TIMEOUT, global.getSocketTimeout());
+    return (global.getMaxAllowedSocketTimeout() > 0)
+        ? Math.min(socketTimeout, global.getMaxAllowedSocketTimeout())
+        : socketTimeout;
   }
 
   public int getMaxTries() {
-    return config.getInt(REMOTE, name, MAX_TRIES, global.getMaxTries());
+    int maxTries = config.getInt(REMOTE, name, MAX_TRIES, global.getMaxTries());
+    return (global.getMaxAllowedTries() > 0)
+        ? Math.min(maxTries, global.getMaxAllowedTries())
+        : maxTries;
   }
 
   public int getRetryInterval() {
-    return config.getInt(REMOTE, name, RETRY_INTERVAL, global.getRetryInterval());
+    int retryInterval = config.getInt(REMOTE, name, RETRY_INTERVAL, global.getRetryInterval());
+    return (global.getMaxAllowedRetryInterval() > 0)
+        ? Math.min(retryInterval, global.getMaxAllowedRetryInterval())
+        : retryInterval;
   }
 
   public boolean getSslVerify() {
