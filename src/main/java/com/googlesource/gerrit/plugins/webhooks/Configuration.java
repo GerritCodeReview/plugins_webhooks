@@ -22,6 +22,20 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class Configuration {
+<<<<<<< HEAD   (d864a2 Adjust exception types to match gerrit types)
+||||||| BASE
+  public static final String THREAD_POOL_SIZE = "threadPoolSize";
+  public static final String ALLOWED_EVENT = "allowedEvent";
+
+=======
+  public static final String THREAD_POOL_SIZE = "threadPoolSize";
+  public static final String ALLOWED_EVENT = "allowedEvent";
+  public static final String MAX_ALLOWED_CONNECTION_TIMEOUT = "maxAllowedConnectionTimeout";
+  public static final String MAX_ALLOWED_SOCKET_TIMEOUT = "maxAllowedSocketTimeout";
+  public static final String MAX_ALLOWED_TRIES = "maxAllowedTries";
+  public static final String MAX_ALLOWED_RETRY_INTERVAL = "maxAllowedRetryInterval";
+
+>>>>>>> CHANGE (eec83d Allow admins to limit timeouts, retries and retry interval)
   public static final int DEFAULT_TIMEOUT_MS = 5000;
   public static final int DEFAULT_MAX_TRIES = 5;
   public static final int DEFAULT_RETRY_INTERVAL = 1000;
@@ -34,6 +48,16 @@ public class Configuration {
   private final int retryInterval;
   private final int threadPoolSize;
   private final boolean sslVerify;
+<<<<<<< HEAD   (d864a2 Adjust exception types to match gerrit types)
+||||||| BASE
+  private final String[] allowedEvents;
+=======
+  private final String[] allowedEvents;
+  private final int maxAllowedConnectionTimeout;
+  private final int maxAllowedSocketTimeout;
+  private final int maxAllowedTries;
+  private final int maxAllowedRetryInterval;
+>>>>>>> CHANGE (eec83d Allow admins to limit timeouts, retries and retry interval)
 
   @Inject
   protected Configuration(PluginConfigFactory config, @PluginName String pluginName) {
@@ -44,6 +68,16 @@ public class Configuration {
     retryInterval = cfg.getInt(RemoteConfig.RETRY_INTERVAL, DEFAULT_RETRY_INTERVAL);
     threadPoolSize = cfg.getInt("threadPoolSize", DEFAULT_THREAD_POOL_SIZE);
     sslVerify = cfg.getBoolean(RemoteConfig.SSL_VERIFY, DEFAULT_SSL_VERIFY);
+<<<<<<< HEAD   (d864a2 Adjust exception types to match gerrit types)
+||||||| BASE
+    allowedEvents = cfg.getStringList(ALLOWED_EVENT);
+=======
+    allowedEvents = cfg.getStringList(ALLOWED_EVENT);
+    maxAllowedConnectionTimeout = cfg.getInt(MAX_ALLOWED_CONNECTION_TIMEOUT, 0);
+    maxAllowedSocketTimeout = cfg.getInt(MAX_ALLOWED_SOCKET_TIMEOUT, 0);
+    maxAllowedTries = cfg.getInt(MAX_ALLOWED_TRIES, 0);
+    maxAllowedRetryInterval = cfg.getInt(MAX_ALLOWED_RETRY_INTERVAL, 0);
+>>>>>>> CHANGE (eec83d Allow admins to limit timeouts, retries and retry interval)
   }
 
   public int getConnectionTimeout() {
@@ -69,4 +103,32 @@ public class Configuration {
   public boolean getSslVerify() {
     return sslVerify;
   }
+<<<<<<< HEAD   (d864a2 Adjust exception types to match gerrit types)
+||||||| BASE
+
+  public String[] getAllowedEvents() {
+    return allowedEvents;
+  }
+=======
+
+  public String[] getAllowedEvents() {
+    return allowedEvents;
+  }
+
+  public int getMaxAllowedConnectionTimeout() {
+    return maxAllowedConnectionTimeout;
+  }
+
+  public int getMaxAllowedSocketTimeout() {
+    return maxAllowedSocketTimeout;
+  }
+
+  public int getMaxAllowedTries() {
+    return maxAllowedTries;
+  }
+
+  public int getMaxAllowedRetryInterval() {
+    return maxAllowedRetryInterval;
+  }
+>>>>>>> CHANGE (eec83d Allow admins to limit timeouts, retries and retry interval)
 }

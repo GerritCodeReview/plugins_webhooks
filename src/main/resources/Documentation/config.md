@@ -66,6 +66,41 @@ File 'gerrit.config'
     when payload is delivered.
     Default value is 'false'.
 
+<<<<<<< HEAD   (d864a2 Adjust exception types to match gerrit types)
+||||||| BASE
+@PLUGIN@.allowedEvent
+:   Type of the event which is allowed to be posted to the remote url.
+    Multiple event types can be provided. If not specified, then all event
+    types are allowed.
+
+
+=======
+@PLUGIN@.allowedEvent
+:   Type of the event which is allowed to be posted to the remote url.
+    Multiple event types can be provided. If not specified, then all event
+    types are allowed.
+
+@PLUGIN@.maxAllowedConnectionTimeout
+:   Maximum allowed value for the connection timeout. If a value greater than
+    this is configured in the @PLUGIN@.config, this value will be chosen
+    instead.
+
+@PLUGIN@.maxAllowedSocketTimeout
+:   Maximum allowed value for the socket timeout. If a value greater than
+    this is configured in the @PLUGIN@.config, this value will be chosen
+    instead.
+
+@PLUGIN@.maxAllowedTries
+:   Maximum allowed value for the retries. If a value greater than this is
+    configured in the @PLUGIN@.config, this value will be chosen instead.
+
+@PLUGIN@.maxAllowedRetryInterval
+:   Maximum allowed value for the retry interval. If a value greater than
+    this is configured in the @PLUGIN@.config, this value will be chosen
+    instead.
+
+
+>>>>>>> CHANGE (eec83d Allow admins to limit timeouts, retries and retry interval)
 File '@PLUGIN@.config'
 ----------------------
 
