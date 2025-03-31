@@ -24,6 +24,10 @@ import com.google.inject.Singleton;
 public class Configuration {
   public static final String THREAD_POOL_SIZE = "threadPoolSize";
   public static final String ALLOWED_EVENT = "allowedEvent";
+  public static final String MAX_ALLOWED_CONNECTION_TIMEOUT = "maxAllowedConnectionTimeout";
+  public static final String MAX_ALLOWED_SOCKET_TIMEOUT = "maxAllowedSocketTimeout";
+  public static final String MAX_ALLOWED_TRIES = "maxAllowedTries";
+  public static final String MAX_ALLOWED_RETRY_INTERVAL = "maxAllowedRetryInterval";
 
   public static final int DEFAULT_TIMEOUT_MS = 5000;
   public static final int DEFAULT_MAX_TRIES = 5;
@@ -38,6 +42,10 @@ public class Configuration {
   private final int threadPoolSize;
   private final boolean sslVerify;
   private final String[] allowedEvents;
+  private final int maxAllowedConnectionTimeout;
+  private final int maxAllowedSocketTimeout;
+  private final int maxAllowedTries;
+  private final int maxAllowedRetryInterval;
 
   @Inject
   protected Configuration(PluginConfigFactory config, @PluginName String pluginName) {
@@ -49,6 +57,10 @@ public class Configuration {
     threadPoolSize = cfg.getInt(THREAD_POOL_SIZE, DEFAULT_THREAD_POOL_SIZE);
     sslVerify = cfg.getBoolean(RemoteConfig.SSL_VERIFY, DEFAULT_SSL_VERIFY);
     allowedEvents = cfg.getStringList(ALLOWED_EVENT);
+    maxAllowedConnectionTimeout = cfg.getInt(MAX_ALLOWED_CONNECTION_TIMEOUT, 0);
+    maxAllowedSocketTimeout = cfg.getInt(MAX_ALLOWED_SOCKET_TIMEOUT, 0);
+    maxAllowedTries = cfg.getInt(MAX_ALLOWED_TRIES, 0);
+    maxAllowedRetryInterval = cfg.getInt(MAX_ALLOWED_RETRY_INTERVAL, 0);
   }
 
   public int getConnectionTimeout() {
@@ -77,5 +89,21 @@ public class Configuration {
 
   public String[] getAllowedEvents() {
     return allowedEvents;
+  }
+
+  public int getMaxAllowedConnectionTimeout() {
+    return maxAllowedConnectionTimeout;
+  }
+
+  public int getMaxAllowedSocketTimeout() {
+    return maxAllowedSocketTimeout;
+  }
+
+  public int getMaxAllowedTries() {
+    return maxAllowedTries;
+  }
+
+  public int getMaxAllowedRetryInterval() {
+    return maxAllowedRetryInterval;
   }
 }
