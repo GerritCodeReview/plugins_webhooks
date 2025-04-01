@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d898f91d_eac60b3b",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-01T23:53:12Z",
+      "side": 1,
+      "message": "```suggestion\n    this is configured in the @PLUGIN@.config, this value will be chosen\n```",
+      "range": {
+        "startLine": 76,
+        "startChar": 47,
+        "endLine": 76,
+        "endChar": 58
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2447c019_c8aedb44",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-01T23:53:12Z",
+      "side": 1,
+      "message": "```suggestion\n    this is configured in the @PLUGIN@.config, this value will be chosen\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 47,
+        "endLine": 81,
+        "endChar": 58
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1154a3b_086cece3",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-01T23:53:12Z",
+      "side": 1,
+      "message": "```suggestion\n    configured in the @PLUGIN@.config, this value will be chosen instead.\n```",
+      "range": {
+        "startLine": 86,
+        "startChar": 39,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec25dbf5_30fc8c38",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-01T23:53:12Z",
+      "side": 1,
+      "message": "```suggestion\n    this is configured in the @PLUGIN@.config, this value will be chosen\n```",
+      "range": {
+        "startLine": 90,
+        "startChar": 47,
+        "endLine": 90,
+        "endChar": 58
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
