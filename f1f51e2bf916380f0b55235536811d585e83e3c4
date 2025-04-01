@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87b8819f_67183ac6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-01T23:50:16Z",
+      "side": 1,
+      "message": "unrelated?",
+      "revId": "f1f51e2bf916380f0b55235536811d585e83e3c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b4506d_07e56ce2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/RemoteConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-01T23:50:16Z",
+      "side": 1,
+      "message": "It would probably be nice to log an info message if we filter out any events. That way admins can easily correlate a user complaint about \"missing events\" to this feature. If we don\u0027t log, they can still figure it out by looking at the config, so it\u0027s not a big deal if you don\u0027t.",
+      "revId": "f1f51e2bf916380f0b55235536811d585e83e3c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
