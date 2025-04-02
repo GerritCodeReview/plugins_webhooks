@@ -18,6 +18,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e94c95_3bbaea94",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/WebHookUpdateListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-02T00:15:35Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "d2f4b749_2c6a365c",
+      "revId": "ded04e1d40b04e5c61580acbeb2cca756f64903e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cd1c5af_d533dfb9",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-04-01T23:43:18Z",
       "side": 1,
       "message": "Log this?",
+      "revId": "ded04e1d40b04e5c61580acbeb2cca756f64903e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2076a6e_4fb3247d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/WebHookUpdateListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-02T00:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cd1c5af_d533dfb9",
       "revId": "ded04e1d40b04e5c61580acbeb2cca756f64903e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
