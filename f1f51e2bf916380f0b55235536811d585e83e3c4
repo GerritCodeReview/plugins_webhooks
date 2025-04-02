@@ -69,6 +69,24 @@
       "parentUuid": "b6b4506d_07e56ce2",
       "revId": "f1f51e2bf916380f0b55235536811d585e83e3c4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e59c5a3_5e65895e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/RemoteConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-02T16:53:30Z",
+      "side": 1,
+      "message": "\u003e It it be good to not repeat this for each event though. We can attempt that in a follow-up change.\n\nI was thinking that too. Let\u0027s add the log when we do that.",
+      "parentUuid": "c7f5d3bf_7fe71c13",
+      "revId": "f1f51e2bf916380f0b55235536811d585e83e3c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
