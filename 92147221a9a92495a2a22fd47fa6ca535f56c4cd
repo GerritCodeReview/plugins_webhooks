@@ -24,6 +24,54 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdeb48c0_24e79ae7",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-02T16:38:17Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "d898f91d_eac60b3b",
+      "range": {
+        "startLine": 76,
+        "startChar": 47,
+        "endLine": 76,
+        "endChar": 58
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d556ea09_3e687a8c",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-02T16:38:17Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "d898f91d_eac60b3b",
+      "range": {
+        "startLine": 76,
+        "startChar": 47,
+        "endLine": 76,
+        "endChar": 58
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2447c019_c8aedb44",
@@ -37,6 +85,54 @@
       "writtenOn": "2025-04-01T23:53:12Z",
       "side": 1,
       "message": "```suggestion\n    this is configured in the @PLUGIN@.config, this value will be chosen\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 47,
+        "endLine": 81,
+        "endChar": 58
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a0c794_e69a2aa2",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-02T16:38:17Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "2447c019_c8aedb44",
+      "range": {
+        "startLine": 81,
+        "startChar": 47,
+        "endLine": 81,
+        "endChar": 58
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9607859_8951b295",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-02T16:38:17Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "2447c019_c8aedb44",
       "range": {
         "startLine": 81,
         "startChar": 47,
@@ -70,6 +166,54 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ead96f_aed0baac",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-02T16:38:17Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "d1154a3b_086cece3",
+      "range": {
+        "startLine": 86,
+        "startChar": 39,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a48b4759_7c3822a8",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-02T16:38:17Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "d1154a3b_086cece3",
+      "range": {
+        "startLine": 86,
+        "startChar": 39,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec25dbf5_30fc8c38",
@@ -83,6 +227,54 @@
       "writtenOn": "2025-04-01T23:53:12Z",
       "side": 1,
       "message": "```suggestion\n    this is configured in the @PLUGIN@.config, this value will be chosen\n```",
+      "range": {
+        "startLine": 90,
+        "startChar": 47,
+        "endLine": 90,
+        "endChar": 58
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed536dc_674a800f",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-02T16:38:17Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "ec25dbf5_30fc8c38",
+      "range": {
+        "startLine": 90,
+        "startChar": 47,
+        "endLine": 90,
+        "endChar": 58
+      },
+      "revId": "92147221a9a92495a2a22fd47fa6ca535f56c4cd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ccb96b_74707692",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-02T16:38:17Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "ec25dbf5_30fc8c38",
       "range": {
         "startLine": 90,
         "startChar": 47,
