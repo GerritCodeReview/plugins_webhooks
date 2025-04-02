@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100dc9af_f7bd9cb7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/WebHookUpdateListener.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-02T16:52:00Z",
+      "side": 1,
+      "message": "Use `contains()`?\n```suggestion\n        if (files.contains(cfgFileName)) {\n          log.atInfo().log(\"Webhook created/updated for project %s\", project.get());\n          return;\n        }\n```\n\nAlso, if you wanted to be more exact with your message, you could keep the full map returned above and use the value\u0027s `changeType()` method instead of the generic `created/updated` string.\n\n```\n        FileDiffOutput diff \u003d files.get(cfgFileName);\n        if (diff !\u003d null) {\n          log.atInfo().log(\"Webhook config %s for project %s\", diff.changeType(), project.get());\n          return;\n        }\n```",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 9
+      },
+      "revId": "dd146368dc375b7d487c079b6b29d7c9be3a9913",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
