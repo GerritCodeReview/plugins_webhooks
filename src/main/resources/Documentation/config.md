@@ -71,6 +71,11 @@ File 'gerrit.config'
     Multiple event types can be provided. If not specified, then all event
     types are allowed.
 
+@PLUGIN@.allowedUrlPattern
+:    A regex that remote URLs in the plugin config must match. If multiple
+     patterns are provided, the remote URL must match at least one of them.
+     If not specified, then all remote URLs are allowed.
+
 @PLUGIN@.maxAllowedConnectionTimeout
 :   Maximum allowed value for the connection timeout. If a value greater than
     this is configured in the @PLUGIN@.config, this value will be chosen

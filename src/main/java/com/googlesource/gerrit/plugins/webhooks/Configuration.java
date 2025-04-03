@@ -14,15 +14,23 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 @Singleton
 public class Configuration {
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
+
   public static final String THREAD_POOL_SIZE = "threadPoolSize";
+  public static final String ALLOWED_URL_PATTERN = "allowedUrlPattern";
   public static final String ALLOWED_EVENT = "allowedEvent";
   public static final String MAX_ALLOWED_CONNECTION_TIMEOUT = "maxAllowedConnectionTimeout";
   public static final String MAX_ALLOWED_SOCKET_TIMEOUT = "maxAllowedSocketTimeout";
@@ -42,6 +50,7 @@ public class Configuration {
   private final int threadPoolSize;
   private final boolean sslVerify;
   private final String[] allowedEvents;
+  private final String[] allowedUrlPatterns;
   private final int maxAllowedConnectionTimeout;
   private final int maxAllowedSocketTimeout;
   private final int maxAllowedTries;
@@ -57,6 +66,7 @@ public class Configuration {
     threadPoolSize = cfg.getInt(THREAD_POOL_SIZE, DEFAULT_THREAD_POOL_SIZE);
     sslVerify = cfg.getBoolean(RemoteConfig.SSL_VERIFY, DEFAULT_SSL_VERIFY);
     allowedEvents = cfg.getStringList(ALLOWED_EVENT);
+    allowedUrlPatterns = cfg.getStringList(ALLOWED_URL_PATTERN);
     maxAllowedConnectionTimeout = cfg.getInt(MAX_ALLOWED_CONNECTION_TIMEOUT, 0);
     maxAllowedSocketTimeout = cfg.getInt(MAX_ALLOWED_SOCKET_TIMEOUT, 0);
     maxAllowedTries = cfg.getInt(MAX_ALLOWED_TRIES, 0);
@@ -89,6 +99,20 @@ public class Configuration {
 
   public String[] getAllowedEvents() {
     return allowedEvents;
+  }
+
+  public List<Pattern> getAllowedUrlPatterns() {
+    List<Pattern> patterns = new ArrayList<>();
+    for (String regex : allowedUrlPatterns) {
+      try {
+        patterns.add(Pattern.compile(regex));
+      } catch (PatternSyntaxException e) {
+        log.atWarning().withCause(e).log(
+            "Invalid webhook URL pattern %s configured " + "in global config %s",
+            regex, ALLOWED_URL_PATTERN);
+      }
+    }
+    return patterns;
   }
 
   public int getMaxAllowedConnectionTimeout() {
