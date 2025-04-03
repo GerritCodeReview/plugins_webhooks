@@ -20,12 +20,14 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.google.gerrit.server.project.NoSuchProjectException;
+import java.util.regex.Pattern;
 import org.eclipse.jgit.lib.Config;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,6 +42,8 @@ public class EventHandlerTest {
   private static final String REMOTE = "remote";
   private static final String FOO = "foo";
   private static final String FOO_URL = "foo-url";
+
+  @Mock private Configuration global;
 
   @Mock private ProjectCreatedEvent projectCreated;
 
@@ -64,7 +68,7 @@ public class EventHandlerTest {
         .thenReturn(config);
     when(remoteFactory.create(eq(config), eq(FOO))).thenReturn(remote);
     when(taskFactory.create(eq(projectCreated), eq(remote))).thenReturn(postTask);
-    eventHandler = new EventHandler(configFactory, PLUGIN, remoteFactory, taskFactory);
+    eventHandler = new EventHandler(global, configFactory, PLUGIN, remoteFactory, taskFactory);
   }
 
   @Test
@@ -90,6 +94,29 @@ public class EventHandlerTest {
     Event nonProjectEvent = new Event("non-project-event") {};
     eventHandler.onEvent(nonProjectEvent);
     verifyNoInteractions(remoteFactory);
+    verifyNoInteractions(taskFactory);
+    verifyNoInteractions(postTask);
+  }
+
+  @Test
+  public void allowedUrlTaskScheduled() {
+    when(config.getSubsections(eq(REMOTE))).thenReturn(ImmutableSet.of(FOO));
+    when(global.getAllowedUrlPatterns()).thenReturn(ImmutableList.of(Pattern.compile(FOO_URL)));
+    when(remote.getUrl()).thenReturn(FOO_URL);
+
+    eventHandler.onEvent(projectCreated);
+    verify(taskFactory, times(1)).create(eq(projectCreated), eq(remote));
+    verify(postTask, times(1)).schedule();
+  }
+
+  @Test
+  public void allowedUrlTaskNotScheduled() {
+    when(config.getSubsections(eq(REMOTE))).thenReturn(ImmutableSet.of(FOO));
+    when(global.getAllowedUrlPatterns())
+        .thenReturn(ImmutableList.of(Pattern.compile("does-not-match")));
+    when(remote.getUrl()).thenReturn(FOO_URL);
+
+    eventHandler.onEvent(projectCreated);
     verifyNoInteractions(taskFactory);
     verifyNoInteractions(postTask);
   }
