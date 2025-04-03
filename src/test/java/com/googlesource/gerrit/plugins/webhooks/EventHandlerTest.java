@@ -41,6 +41,8 @@ public class EventHandlerTest {
   private static final String FOO = "foo";
   private static final String FOO_URL = "foo-url";
 
+  @Mock private Configuration global;
+
   @Mock private ProjectCreatedEvent projectCreated;
 
   @Mock private PluginConfigFactory configFactory;
@@ -64,7 +66,7 @@ public class EventHandlerTest {
         .thenReturn(config);
     when(remoteFactory.create(eq(config), eq(FOO))).thenReturn(remote);
     when(taskFactory.create(eq(projectCreated), eq(remote))).thenReturn(postTask);
-    eventHandler = new EventHandler(configFactory, PLUGIN, remoteFactory, taskFactory);
+    eventHandler = new EventHandler(global, configFactory, PLUGIN, remoteFactory, taskFactory);
   }
 
   @Test
