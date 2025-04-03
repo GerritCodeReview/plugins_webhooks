@@ -30,6 +30,7 @@ import org.eclipse.jgit.lib.Config;
 class EventHandler implements EventListener {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
+  private final Configuration global;
   private final PluginConfigFactory configFactory;
   private final String pluginName;
   private final RemoteConfig.Factory remoteFactory;
@@ -37,10 +38,12 @@ class EventHandler implements EventListener {
 
   @Inject
   EventHandler(
+      Configuration global,
       PluginConfigFactory configFactory,
       @PluginName String pluginName,
       RemoteConfig.Factory remoteFactory,
       PostTask.Factory taskFactory) {
+    this.global = global;
     this.configFactory = configFactory;
     this.pluginName = pluginName;
     this.remoteFactory = remoteFactory;
@@ -72,8 +75,18 @@ class EventHandler implements EventListener {
         log.atWarning().log("remote.%s.url not defined, skipping this remote", name);
         continue;
       }
-
+      if (!isUrlAllowed(remote.getUrl())) {
+        log.atWarning().log(
+            "remote.%s.url does not match any allowed URL patterns, skipping this remote", name);
+        continue;
+      }
       taskFactory.create(projectEvent, remote).schedule();
     }
+  }
+
+  private boolean isUrlAllowed(String url) {
+    return global.getAllowedUrlPatterns().isEmpty()
+        || global.getAllowedUrlPatterns().stream()
+            .anyMatch(pattern -> pattern.matcher(url).matches());
   }
 }
