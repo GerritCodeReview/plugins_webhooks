@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb8bb286_d796d0f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-04T17:06:44Z",
+      "side": 1,
+      "message": "You could do this directly on the 3.9 branch first so that you don\u0027t have to cherry-pick it back. I would at least do that for the new tests changes I suggested.",
+      "revId": "acf356f0c3e30226db2db1d6c1957f1094a3b8d0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "031a1731_c868baa7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-04T17:06:44Z",
+      "side": 1,
+      "message": "Let\u0027s put the regex string in quotes so it\u0027s easier to read.\n\n```suggestion\n            \"Invalid webhook allowed URL pattern \u0027%s\u0027 configured\", regex);\n```",
+      "revId": "acf356f0c3e30226db2db1d6c1957f1094a3b8d0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e5dc787_243706d4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-04T17:06:44Z",
+      "side": 1,
+      "message": "Probably good to use wording for the behavior that\u0027s consistent with what\u0027s above.\n\nAlso \"configured allowed\" is a little confusing. I think it\u0027s sufficient to say \"any allowed\".\n\n```suggestion\n        log.atWarning().log(\"remote.%s.url does not match any allowed URL patterns, skipping this remote\", name);\n```",
+      "revId": "acf356f0c3e30226db2db1d6c1957f1094a3b8d0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "116f5c11_e1a2f3f0",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/EventHandlerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-04T17:06:44Z",
+      "side": 1,
+      "message": "Hmm, the other recent changes probably should have added tests here, in `PostTaskTest.java`, or in `AbstractEventProcessorTest.java`.\n\nCan you add a test for this change and then add the missing tests for the other new configs added recently?",
+      "revId": "acf356f0c3e30226db2db1d6c1957f1094a3b8d0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
