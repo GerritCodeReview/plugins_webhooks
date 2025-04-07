@@ -22,6 +22,72 @@
       },
       "revId": "721f12f6bf0349d455b9609351ac0897245719a1",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf17d48c_7b731d90",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/EventHandlerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-07T20:55:02Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "891621c2_ee5a15d9",
+      "range": {
+        "startLine": 116,
+        "startChar": 53,
+        "endLine": 116,
+        "endChar": 70
+      },
+      "revId": "721f12f6bf0349d455b9609351ac0897245719a1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "759dc675_dfbc6bd5",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/EventHandlerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-07T20:55:02Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "891621c2_ee5a15d9",
+      "range": {
+        "startLine": 116,
+        "startChar": 53,
+        "endLine": 116,
+        "endChar": 70
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3acfb335_37d90d55",
+          "description": "User suggestion",
+          "replacements": [
+            {
+              "path": "src/test/java/com/googlesource/gerrit/plugins/webhooks/EventHandlerTest.java",
+              "range": {
+                "startLine": 116,
+                "startChar": 0,
+                "endLine": 116,
+                "endChar": 74
+              },
+              "replacement": "        .thenReturn(ImmutableList.of(Pattern.compile(\"does-not-match\")));"
+            }
+          ]
+        }
+      ],
+      "revId": "721f12f6bf0349d455b9609351ac0897245719a1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
