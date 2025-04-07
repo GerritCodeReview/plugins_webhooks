@@ -35,6 +35,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feab9150_441a0a1c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/Configuration.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-07T20:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "031a1731_c868baa7",
+      "revId": "acf356f0c3e30226db2db1d6c1957f1094a3b8d0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e5dc787_243706d4",
@@ -52,6 +70,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "523172b9_fe29a9db",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-07T20:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e5dc787_243706d4",
+      "revId": "acf356f0c3e30226db2db1d6c1957f1094a3b8d0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "116f5c11_e1a2f3f0",
@@ -65,6 +101,24 @@
       "writtenOn": "2025-04-04T17:06:44Z",
       "side": 1,
       "message": "Hmm, the other recent changes probably should have added tests here, in `PostTaskTest.java`, or in `AbstractEventProcessorTest.java`.\n\nCan you add a test for this change and then add the missing tests for the other new configs added recently?",
+      "revId": "acf356f0c3e30226db2db1d6c1957f1094a3b8d0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "233f2f53_8127e204",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/EventHandlerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1012457
+      },
+      "writtenOn": "2025-04-07T20:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "116f5c11_e1a2f3f0",
       "revId": "acf356f0c3e30226db2db1d6c1957f1094a3b8d0",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
