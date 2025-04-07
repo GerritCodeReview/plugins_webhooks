@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "891621c2_ee5a15d9",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/webhooks/EventHandlerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002666
+      },
+      "writtenOn": "2025-04-07T20:51:14Z",
+      "side": 1,
+      "message": "nit: this would be clearer if you used something like `\"does-not-match\"`\n```suggestion\n        .thenReturn(ImmutableList.of(Pattern.compile(\"does-not-match\")));\n```",
+      "range": {
+        "startLine": 116,
+        "startChar": 53,
+        "endLine": 116,
+        "endChar": 70
+      },
+      "revId": "721f12f6bf0349d455b9609351ac0897245719a1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
