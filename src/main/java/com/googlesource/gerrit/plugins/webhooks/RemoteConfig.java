@@ -83,10 +83,12 @@ public class RemoteConfig {
   }
 
   public int getMaxTries() {
+    int maxAllowedRetries = global.getMaxAllowedTries();
+    if (maxAllowedRetries == 0) {
+      return 0;
+    }
     int maxTries = config.getInt(REMOTE, name, MAX_TRIES, global.getMaxTries());
-    return (global.getMaxAllowedTries() > 0)
-        ? Math.min(maxTries, global.getMaxAllowedTries())
-        : maxTries;
+    return (maxAllowedRetries > 0) ? Math.min(maxTries, maxAllowedRetries) : maxTries;
   }
 
   public int getRetryInterval() {

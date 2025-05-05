@@ -69,7 +69,7 @@ public class Configuration {
     allowedUrlPatterns = cfg.getStringList(ALLOWED_URL_PATTERN);
     maxAllowedConnectionTimeout = cfg.getInt(MAX_ALLOWED_CONNECTION_TIMEOUT, 0);
     maxAllowedSocketTimeout = cfg.getInt(MAX_ALLOWED_SOCKET_TIMEOUT, 0);
-    maxAllowedTries = cfg.getInt(MAX_ALLOWED_TRIES, 0);
+    maxAllowedTries = cfg.getInt(MAX_ALLOWED_TRIES, -1);
     maxAllowedRetryInterval = cfg.getInt(MAX_ALLOWED_RETRY_INTERVAL, 0);
   }
 
