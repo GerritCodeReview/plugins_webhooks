@@ -37,6 +37,7 @@ public class Configuration {
   public static final String MAX_ALLOWED_TRIES = "maxAllowedTries";
   public static final String MAX_ALLOWED_RETRY_INTERVAL = "maxAllowedRetryInterval";
 
+  public static final int UNSET_CONFIG_INT = -1;
   public static final int DEFAULT_TIMEOUT_MS = 5000;
   public static final int DEFAULT_MAX_TRIES = 5;
   public static final int DEFAULT_RETRY_INTERVAL = 1000;
@@ -69,7 +70,7 @@ public class Configuration {
     allowedUrlPatterns = cfg.getStringList(ALLOWED_URL_PATTERN);
     maxAllowedConnectionTimeout = cfg.getInt(MAX_ALLOWED_CONNECTION_TIMEOUT, 0);
     maxAllowedSocketTimeout = cfg.getInt(MAX_ALLOWED_SOCKET_TIMEOUT, 0);
-    maxAllowedTries = cfg.getInt(MAX_ALLOWED_TRIES, 0);
+    maxAllowedTries = cfg.getInt(MAX_ALLOWED_TRIES, UNSET_CONFIG_INT);
     maxAllowedRetryInterval = cfg.getInt(MAX_ALLOWED_RETRY_INTERVAL, 0);
   }
 

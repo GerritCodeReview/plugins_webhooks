@@ -14,6 +14,8 @@
 
 package com.googlesource.gerrit.plugins.webhooks;
 
+import static com.googlesource.gerrit.plugins.webhooks.Configuration.UNSET_CONFIG_INT;
+
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import java.util.Arrays;
@@ -83,9 +85,10 @@ public class RemoteConfig {
   }
 
   public int getMaxTries() {
+    int maxAllowedRetries = global.getMaxAllowedTries();
     int maxTries = config.getInt(REMOTE, name, MAX_TRIES, global.getMaxTries());
-    return (global.getMaxAllowedTries() > 0)
-        ? Math.min(maxTries, global.getMaxAllowedTries())
+    return (maxAllowedRetries != UNSET_CONFIG_INT)
+        ? Math.min(maxTries, maxAllowedRetries)
         : maxTries;
   }
 

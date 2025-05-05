@@ -89,6 +89,7 @@ File 'gerrit.config'
 @PLUGIN@.maxAllowedTries
 :   Maximum allowed value for the retries. If a value greater than this is
     configured in the @PLUGIN@.config, this value will be chosen instead.
+    If this is set to 0, retries are disabled.
 
 @PLUGIN@.maxAllowedRetryInterval
 :   Maximum allowed value for the retry interval. If a value greater than
