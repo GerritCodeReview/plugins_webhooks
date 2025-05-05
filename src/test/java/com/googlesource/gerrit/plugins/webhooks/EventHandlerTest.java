@@ -27,6 +27,7 @@ import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.google.gerrit.server.project.NoSuchProjectException;
+import java.util.Optional;
 import java.util.regex.Pattern;
 import org.eclipse.jgit.lib.Config;
 import org.junit.Before;
@@ -59,6 +60,10 @@ public class EventHandlerTest {
 
   @Mock private Config config;
 
+  @Mock private EventProcessor processor;
+
+  @Mock private EventProcessor.Request content;
+
   private EventHandler eventHandler;
 
   @Before
@@ -67,8 +72,10 @@ public class EventHandlerTest {
     when(configFactory.getProjectPluginConfigWithInheritance(PROJECT_NAME, PLUGIN))
         .thenReturn(config);
     when(remoteFactory.create(eq(config), eq(FOO))).thenReturn(remote);
-    when(taskFactory.create(eq(projectCreated), eq(remote))).thenReturn(postTask);
-    eventHandler = new EventHandler(global, configFactory, PLUGIN, remoteFactory, taskFactory);
+    when(processor.process(eq(projectCreated), eq(remote))).thenReturn(Optional.of(content));
+    when(taskFactory.create(eq(projectCreated), eq(remote), eq(content))).thenReturn(postTask);
+    eventHandler =
+        new EventHandler(global, configFactory, PLUGIN, remoteFactory, taskFactory, processor);
   }
 
   @Test
@@ -85,7 +92,7 @@ public class EventHandlerTest {
     when(remote.getUrl()).thenReturn(FOO_URL);
 
     eventHandler.onEvent(projectCreated);
-    verify(taskFactory, times(1)).create(eq(projectCreated), eq(remote));
+    verify(taskFactory, times(1)).create(eq(projectCreated), eq(remote), eq(content));
     verify(postTask, times(1)).schedule();
   }
 
@@ -105,7 +112,7 @@ public class EventHandlerTest {
     when(remote.getUrl()).thenReturn(FOO_URL);
 
     eventHandler.onEvent(projectCreated);
-    verify(taskFactory, times(1)).create(eq(projectCreated), eq(remote));
+    verify(taskFactory, times(1)).create(eq(projectCreated), eq(remote), eq(content));
     verify(postTask, times(1)).schedule();
   }
 
@@ -115,6 +122,17 @@ public class EventHandlerTest {
     when(global.getAllowedUrlPatterns())
         .thenReturn(ImmutableList.of(Pattern.compile("does-not-match")));
     when(remote.getUrl()).thenReturn(FOO_URL);
+
+    eventHandler.onEvent(projectCreated);
+    verifyNoInteractions(taskFactory);
+    verifyNoInteractions(postTask);
+  }
+
+  @Test
+  public void noScheduleOnEmptyBody() throws Exception {
+    when(config.getSubsections(eq(REMOTE))).thenReturn(ImmutableSet.of(FOO));
+    when(remote.getUrl()).thenReturn(FOO_URL);
+    when(processor.process(eq(projectCreated), eq(remote))).thenReturn(Optional.empty());
 
     eventHandler.onEvent(projectCreated);
     verifyNoInteractions(taskFactory);

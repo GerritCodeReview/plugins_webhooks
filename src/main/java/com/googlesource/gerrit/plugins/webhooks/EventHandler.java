@@ -25,6 +25,7 @@ import com.google.gerrit.server.events.EventListener;
 import com.google.gerrit.server.events.ProjectEvent;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.inject.Inject;
+import java.util.Optional;
 import org.eclipse.jgit.lib.Config;
 
 class EventHandler implements EventListener {
@@ -35,6 +36,7 @@ class EventHandler implements EventListener {
   private final String pluginName;
   private final RemoteConfig.Factory remoteFactory;
   private final PostTask.Factory taskFactory;
+  private final EventProcessor processor;
 
   @Inject
   EventHandler(
@@ -42,12 +44,14 @@ class EventHandler implements EventListener {
       PluginConfigFactory configFactory,
       @PluginName String pluginName,
       RemoteConfig.Factory remoteFactory,
-      PostTask.Factory taskFactory) {
+      PostTask.Factory taskFactory,
+      EventProcessor processor) {
     this.global = global;
     this.configFactory = configFactory;
     this.pluginName = pluginName;
     this.remoteFactory = remoteFactory;
     this.taskFactory = taskFactory;
+    this.processor = processor;
   }
 
   @Override
@@ -80,7 +84,13 @@ class EventHandler implements EventListener {
             "remote.%s.url does not match any allowed URL patterns, skipping this remote", name);
         continue;
       }
-      taskFactory.create(projectEvent, remote).schedule();
+      Optional<EventProcessor.Request> content = processor.process(projectEvent, remote);
+      if (content.isEmpty()) {
+        log.atFine().log(
+            "No content (rejected by processing). Webhook [%s] skipped.", remote.getUrl());
+        continue;
+      }
+      taskFactory.create(projectEvent, remote, content.get()).schedule();
     }
   }
 

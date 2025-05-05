@@ -22,7 +22,6 @@ import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
-import java.util.Optional;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -32,30 +31,30 @@ class PostTask implements Runnable {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
   interface Factory {
-    PostTask create(ProjectEvent event, RemoteConfig remote);
+    PostTask create(ProjectEvent event, RemoteConfig remote, EventProcessor.Request content);
   }
 
   private final ScheduledExecutorService executor;
   private final Supplier<HttpSession> session;
   private final RemoteConfig remote;
   private final ProjectEvent event;
-  private final Supplier<Optional<EventProcessor.Request>> processor;
+  private final EventProcessor.Request content;
   private int execCnt;
 
   @AssistedInject
   public PostTask(
       @WebHooksExecutor ScheduledExecutorService executor,
       HttpSession.Factory session,
-      EventProcessor processor,
       @Assisted ProjectEvent event,
-      @Assisted RemoteConfig remote) {
+      @Assisted RemoteConfig remote,
+      @Assisted EventProcessor.Request content) {
     this.executor = executor;
     this.event = event;
     this.remote = remote;
+    this.content = content;
     // postpone creation of HttpSession so that it is obtained only when processor
     // returns non-empty content
     this.session = Suppliers.memoize(() -> session.create(remote));
-    this.processor = Suppliers.memoize(() -> processor.process(event, remote));
   }
 
   void schedule() {
@@ -71,14 +70,8 @@ class PostTask implements Runnable {
   @Override
   public void run() {
     try {
-      Optional<EventProcessor.Request> content = processor.get();
-      if (!content.isPresent()) {
-        log.atFine().log("No content. Webhook [%s] skipped.", remote.getUrl());
-        return;
-      }
-
       execCnt++;
-      HttpResult result = session.get().post(remote, content.get());
+      HttpResult result = session.get().post(remote, content);
       if (!result.successful) {
         if (execCnt < remote.getMaxTries()) {
           logRetry(result.message);

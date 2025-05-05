@@ -24,7 +24,6 @@ import com.google.gerrit.entities.Project;
 import com.google.gerrit.server.events.ProjectCreatedEvent;
 import com.googlesource.gerrit.plugins.webhooks.HttpResponseHandler.HttpResult;
 import java.io.IOException;
-import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -54,8 +53,6 @@ public class PostTaskTest {
 
   @Mock private ScheduledThreadPoolExecutor executor;
 
-  @Mock private EventProcessor processor;
-
   @Mock private EventProcessor.Request content;
 
   private PostTask task;
@@ -65,18 +62,9 @@ public class PostTaskTest {
     when(remote.getRetryInterval()).thenReturn(RETRY_INTERVAL);
     when(remote.getMaxTries()).thenReturn(MAX_TRIES);
     when(remote.getUrl()).thenReturn(WEBHOOK_URL);
-    when(processor.process(eq(projectCreated), eq(remote))).thenReturn(Optional.of(content));
     when(sessionFactory.create(eq(remote))).thenReturn(session);
     when(projectCreated.getProjectNameKey()).thenReturn(Project.nameKey("test"));
-    task = new PostTask(executor, sessionFactory, processor, projectCreated, remote);
-  }
-
-  @Test
-  public void noScheduleOnEmptyBody() throws Exception {
-    when(processor.process(eq(projectCreated), eq(remote))).thenReturn(Optional.empty());
-    task.run();
-    verifyNoInteractions(session);
-    verifyNoInteractions(executor);
+    task = new PostTask(executor, sessionFactory, projectCreated, remote, content);
   }
 
   @Test
