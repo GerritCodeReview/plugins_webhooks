@@ -1,12 +1,13 @@
 {
   "checks": {
     "zuul-check:plugins_webhooks": {
-      "state": "SCHEDULED",
-      "message": "Change has been enqueued in check",
-      "url": "https://ci.gerritcodereview.com/t/gerrit/status/change/472881,2",
+      "state": "FAILED",
+      "message": "Change failed",
+      "url": "https://ci.gerritcodereview.com/t/gerrit/buildset/a4c685d041d34af68de0d9a771786ae2",
       "started": "2025-05-06T23:41:49Z",
+      "finished": "2025-05-06T23:41:52Z",
       "created": "2025-05-06T23:41:50Z",
-      "updated": "2025-05-06T23:41:50Z"
+      "updated": "2025-05-06T23:41:53Z"
     }
   }
 }
