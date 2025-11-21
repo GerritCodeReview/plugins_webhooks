@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "573e984b_3481995c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4463133
+      },
+      "writtenOn": "2025-11-21T04:10:05Z",
+      "side": 1,
+      "message": "106112: Add example config files to the documentation | https://gerrit-review.googlesource.com/c/plugins/webhooks/+/106112",
+      "revId": "7872796ebec6ddf84f6097903bde49fd7f8754ef",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
