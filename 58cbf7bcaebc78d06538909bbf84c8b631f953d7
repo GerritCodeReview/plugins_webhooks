@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "db3b96dd_0b979d46",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "nit: unnecessary empty line",
       "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
-      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
-      "unresolved": false
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "927c48f8_a135635b",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
@@ -32,10 +33,28 @@
       "message": "Actually no. This empty line separates injected fields from locally instantiated.",
       "parentUuid": "db3b96dd_0b979d46",
       "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
-      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
-      "unresolved": false
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04fe758d_fb7dfca1",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 4521935
+      },
+      "writtenOn": "2025-12-12T23:52:03Z",
+      "side": 1,
+      "message": "Vista dela pradera #110",
+      "parentUuid": "927c48f8_a135635b",
+      "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "bd2fd44c_9539bdcc",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
@@ -55,10 +74,10 @@
         "endChar": 8
       },
       "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
-      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
-      "unresolved": false
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "18750f25_7a0e618f",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
@@ -79,10 +98,34 @@
         "endChar": 8
       },
       "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
-      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
-      "unresolved": false
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff4aa07_33c55e80",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/EventHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 4521935
+      },
+      "writtenOn": "2025-12-12T23:52:03Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "18750f25_7a0e618f",
+      "range": {
+        "startLine": 103,
+        "startChar": 20,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "89ff1590_08d04675",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpClientProvider.java",
@@ -96,10 +139,10 @@
       "side": 1,
       "message": "nit: extra empty line",
       "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
-      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
-      "unresolved": false
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4f6fc567_29732a21",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpClientProvider.java",
@@ -114,10 +157,28 @@
       "message": "Done",
       "parentUuid": "89ff1590_08d04675",
       "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
-      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
-      "unresolved": false
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24186cb_d425068e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpClientProvider.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 4521935
+      },
+      "writtenOn": "2025-12-12T23:52:03Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "4f6fc567_29732a21",
+      "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "7fbda365_2540e07c",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpClientProvider.java",
@@ -131,10 +192,10 @@
       "side": 1,
       "message": "nit: unnecessary empty line",
       "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
-      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
-      "unresolved": false
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "acff89fe_01ee50b4",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpClientProvider.java",
@@ -149,8 +210,25 @@
       "message": "Done",
       "parentUuid": "7fbda365_2540e07c",
       "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
-      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
-      "unresolved": false
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dda2bff_12b05a43",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/webhooks/HttpClientProvider.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 4521935
+      },
+      "writtenOn": "2025-12-12T23:52:03Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "acff89fe_01ee50b4",
+      "revId": "58cbf7bcaebc78d06538909bbf84c8b631f953d7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
