@@ -1,10 +1,5 @@
 load("@com_googlesource_gerrit_bazlets//tools:junit.bzl", "junit_tests")
-load(
-    "//tools/bzl:plugin.bzl",
-    "PLUGIN_DEPS",
-    "PLUGIN_TEST_DEPS",
-    "gerrit_plugin",
-)
+load("@com_googlesource_gerrit_bazlets//:gerrit_plugin.bzl", "gerrit_plugin")
 
 gerrit_plugin(
     name = "webhooks",
@@ -23,7 +18,9 @@ junit_tests(
     name = "webhooks_tests",
     srcs = glob(["src/test/java/**/*.java"]),
     tags = ["webhooks"],
-    deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
+    deps = [
         ":webhooks__plugin",
+        "//java/com/google/gerrit/acceptance:lib",
+        "//plugins:plugin-lib",
     ],
 )
