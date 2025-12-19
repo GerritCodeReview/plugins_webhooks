@@ -1,10 +1,4 @@
-load("//tools/bzl:junit.bzl", "junit_tests")
-load(
-    "//tools/bzl:plugin.bzl",
-    "PLUGIN_DEPS",
-    "PLUGIN_TEST_DEPS",
-    "gerrit_plugin",
-)
+load("@com_googlesource_gerrit_bazlets//:gerrit_plugin.bzl", "gerrit_plugin", "gerrit_plugin_tests")
 
 gerrit_plugin(
     name = "webhooks",
@@ -19,11 +13,11 @@ gerrit_plugin(
     resources = glob(["src/main/resources/**/*"]),
 )
 
-junit_tests(
+gerrit_plugin_tests(
     name = "webhooks_tests",
     srcs = glob(["src/test/java/**/*.java"]),
     tags = ["webhooks"],
-    deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
+    deps = [
         ":webhooks__plugin",
     ],
 )
