@@ -111,20 +111,26 @@ public class PostTaskTest {
   @Test
   public void executorSurvivesNonRecoverableExceptions()
       throws IOException, InterruptedException, ExecutionException {
-    executor = new ScheduledThreadPoolExecutor(1);
+    ScheduledThreadPoolExecutor singleThreadExecutor = new ScheduledThreadPoolExecutor(1);
+    try {
+      PostTask singleThreadTask =
+          new PostTask(singleThreadExecutor, sessionFactory, projectCreated, remote, content);
 
-    // schedule erroneous task for the first time
-    when(session.post(eq(remote), eq(content))).thenThrow(RuntimeException.class);
-    executor.schedule(task, 0L, TimeUnit.SECONDS).get();
+      // schedule erroneous task for the first time
+      when(session.post(eq(remote), eq(content))).thenThrow(RuntimeException.class);
+      singleThreadExecutor.schedule(singleThreadTask, 0L, TimeUnit.SECONDS).get();
 
-    // schedule erroneous task again (with another non-recoverable exception)
-    when(session.post(eq(remote), eq(content))).thenThrow(SSLException.class);
-    executor.schedule(task, 0L, TimeUnit.SECONDS).get();
+      // schedule erroneous task again (with another non-recoverable exception)
+      when(session.post(eq(remote), eq(content))).thenThrow(SSLException.class);
+      singleThreadExecutor.schedule(singleThreadTask, 0L, TimeUnit.SECONDS).get();
 
-    // schedule task that finishes with success
-    when(session.post(eq(remote), eq(content))).thenReturn(OK_RESULT);
-    executor.schedule(task, 0L, TimeUnit.SECONDS).get();
+      // schedule task that finishes with success
+      when(session.post(eq(remote), eq(content))).thenReturn(OK_RESULT);
+      singleThreadExecutor.schedule(singleThreadTask, 0L, TimeUnit.SECONDS).get();
 
-    verify(session, times(3)).post(eq(remote), eq(content));
+      verify(session, times(3)).post(eq(remote), eq(content));
+    } finally {
+      singleThreadExecutor.shutdownNow();
+    }
   }
 }
