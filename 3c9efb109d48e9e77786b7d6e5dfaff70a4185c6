@@ -1,13 +1,9 @@
 {
   "checks": {
     "zuul-check:plugins_webhooks": {
-      "state": "FAILED",
-      "message": "Change failed",
-      "url": "https://ci.gerritcodereview.com/t/gerrit/buildset/a733227f5981414fa0d1937abc46c3b8",
-      "started": "2026-05-29T15:47:11Z",
-      "finished": "2026-05-29T15:47:22Z",
+      "state": "NOT_STARTED",
       "created": "2026-05-29T15:33:48Z",
-      "updated": "2026-05-29T15:47:29Z"
+      "updated": "2026-05-29T19:36:22Z"
     }
   }
 }
