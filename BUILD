@@ -3,6 +3,7 @@ load("@com_googlesource_gerrit_bazlets//:gerrit_plugin.bzl", "gerrit_plugin", "g
 gerrit_plugin(
     name = "webhooks",
     srcs = glob(["src/main/java/**/*.java"]),
+    flavour = "any",
     manifest_entries = [
         "Gerrit-PluginName: webhooks",
         "Gerrit-Module: com.googlesource.gerrit.plugins.webhooks.PluginModule",
