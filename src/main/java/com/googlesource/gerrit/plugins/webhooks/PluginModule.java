@@ -34,7 +34,7 @@ public class PluginModule extends FactoryModule {
   private final ProcessorModule processors;
 
   @Inject
-  public PluginModule(ProcessorModule processors) {
+  PluginModule(ProcessorModule processors) {
     this.processors = processors;
   }
 

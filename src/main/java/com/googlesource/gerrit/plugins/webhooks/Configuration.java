@@ -58,7 +58,7 @@ public class Configuration {
   private final int maxAllowedRetryInterval;
 
   @Inject
-  protected Configuration(PluginConfigFactory config, @PluginName String pluginName) {
+  Configuration(PluginConfigFactory config, @PluginName String pluginName) {
     PluginConfig cfg = config.getFromGerritConfig(pluginName, true);
     connectionTimeout = cfg.getInt(RemoteConfig.CONNECTION_TIMEOUT, DEFAULT_TIMEOUT_MS);
     socketTimeout = cfg.getInt(RemoteConfig.SOCKET_TIMEOUT, DEFAULT_TIMEOUT_MS);

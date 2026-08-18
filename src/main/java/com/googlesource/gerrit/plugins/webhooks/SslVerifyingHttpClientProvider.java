@@ -27,7 +27,7 @@ class SslVerifyingHttpClientProvider extends HttpClientProvider {
   static final String SSL_VERIFY = "ssl_verify";
 
   @Inject
-  protected SslVerifyingHttpClientProvider(Configuration cfg) {
+  SslVerifyingHttpClientProvider(Configuration cfg) {
     super(cfg, socketFactoryProvider());
   }
 

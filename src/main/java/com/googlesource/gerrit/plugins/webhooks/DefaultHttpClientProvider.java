@@ -38,7 +38,7 @@ class DefaultHttpClientProvider extends HttpClientProvider {
   static final String DEFAULT = "default";
 
   @Inject
-  protected DefaultHttpClientProvider(Configuration cfg) {
+  DefaultHttpClientProvider(Configuration cfg) {
     super(cfg, socketFactoryProvider());
   }
 
